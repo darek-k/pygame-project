@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="" />
+    <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6757">
-              <caret line="1290" column="30" lean-forward="true" selection-start-line="1290" selection-start-column="30" selection-end-line="1290" selection-end-column="30" />
+            <state relative-caret-position="300">
+              <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -63,15 +66,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inventory.py">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/things_to_do.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -85,10 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jounr</find>
-      <find>search</find>
-      <find>barricade</find>
-      <find>gun</find>
       <find>add_to_inventory_while_search</find>
       <find>game o</find>
       <find>level</find>
@@ -115,7 +105,14 @@
       <find>use_it</find>
       <find>use_ite</find>
       <find>open_sea</find>
+      <find>invent</find>
+      <find>pink</find>
+      <find>de</find>
+      <find>weapon</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -150,6 +147,7 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -385,6 +383,7 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/things_to_do.txt" />
     <entry file="file://$PROJECT_DIR$/../PYGAME_example/rocket.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -415,17 +414,10 @@
     <entry file="file://$PROJECT_DIR$/inventory.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/things_to_do.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6757">
-          <caret line="1290" column="30" lean-forward="true" selection-start-line="1290" selection-start-column="30" selection-end-line="1290" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

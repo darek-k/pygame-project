@@ -7,9 +7,9 @@ import time
 pygame.init()
 
 colors = {
-    'black': (0, 0, 0), 'blue': (0, 0, 200), 'dark_cream': (192, 187, 142), 'light_cream': (238, 232, 188),
-    'green': (57, 166, 6), 'grey': (100, 100, 100), 'red': (187, 19, 5), 'pure_red': (255, 0, 0),
-    'ultra_blue': (0, 0, 255), 'ultra_green': (0, 255, 0), 'white': (255, 255, 255), 'yellow': (224, 240, 28),
+    'black': (0, 0, 0), 'blue': (0, 0, 200), 'brown': (153, 77, 0), 'dark_cream': (192, 187, 142), 'light_cream': (238, 232, 188),
+    'green': (57, 166, 6), 'grey': (100, 100, 100), 'orange':(255, 117, 26), 'red': (187, 19, 5), 'pure_red': (255, 0, 0),
+    'ultra_blue': (0, 0, 255), 'ultra_green': (0, 255, 0), 'white': (255, 255, 255), 'violet': (153, 51, 255), 'yellow': (224, 240, 28),
 }
 
 clock = pygame.time.Clock()
@@ -73,21 +73,16 @@ def delete_item_from_inventory(index):
                         inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
                         items_names.remove(item_index.name)  # Remove Item from items_names[]
 
-                        # If weapon item it's an equipped item
-                        # item_type = ''
-                        # if item_index.type == 'weapon':
-                        #     item_type = 'weapon'
-
                         if item_index.name == player_equipment.equipped_weapon_name or \
                                 item_index.name == player_equipment.equipped_torso_name or \
                                 item_index.name == player_equipment.equipped_legs_name:
 
-                            # If deleted weapon is still in inventory.inventory[] -> equip this item
+                            # If deleted item is still in inventory.inventory[] -> equip this item
                             if item_index.name in items_names:
                                 player1.update_attributes()
                                 inventory.show_inventory(0)
 
-                            # If deleted weapon was the last one -> unequip this item
+                            # If deleted item was the last one -> unequip this item
                             elif item_index.name not in items_names:
                                 player1.reset_attributes(item_index.type)
                                 inventory.show_inventory(0)
@@ -152,8 +147,10 @@ class Player:
         self.level = 1
 
     def update_attributes(self):
+        #######   Z tych dwóch linii zrób jedną ###########################
         self.attack = 1 + (player_equipment.equipped_weapon_attribute * (self.strength / 3))
         self.attack = round(self.attack, 1)
+
         self.defence = 1 + (player_equipment.equipped_torso_attribute * (self.strength / 5)) + \
                        (player_equipment.equipped_legs_attribute * (self.strength / 5))
         self.defence = round(self.defence, 1)
@@ -409,7 +406,7 @@ class Sleep:
 sleep = Sleep()  # Instance of Sleep class
 
 
-# Weapon class items
+# Items class
 class Item:
     def __init__(self, name, attribute, size_x, size_y, type, icon):
         self.name = name
@@ -420,7 +417,7 @@ class Item:
         self.type = type
 
 
-# Creates weapon instances
+# Create weapon instances
 stone = Item('Stone', 2, 200, 200, 'weapon', '')
 rod = Item('Rod', 3, 200, 200, 'weapon', '')
 bat = Item('Bat', 4, 200, 200, 'weapon', '')
@@ -429,19 +426,19 @@ hammer = Item('Hammer', 6, 200, 200, 'weapon', '')
 axe = Item('Axe', 7, 200, 200, 'weapon', '')
 sword = Item('Sword', 8, 200, 200, 'weapon', '')
 
-# Creates torso instances
+# Create torso instances
 shirt = Item('Shirt', 2, 200, 200, 'torso', '')
 vest = Item('Vest', 4, 200, 200, 'torso', '')
 jacket = Item('Jacket', 7, 200, 200, 'torso', '')
 armor = Item('Armor', 10, 200, 200, 'torso', '')
 
-# Creates legs instances
+# Create legs instances
 sweatpants = Item('Sweatpants', 3, 200, 200, 'legs', '')
 jeans = Item('Jeans', 5, 200, 200, 'legs', '')
 fishing_trouser = Item('Fishing ts.', 7, 200, 200, 'legs', '')
 military_trousers = Item('Military ts.', 9, 200, 200, 'legs', '')
 
-# Creates food instances
+# Create food instances
 apple = Item('Apple', 2, 200, 200, 'food', '')
 bread = Item('Bread', 3, 200, 200, 'food', '')
 raw_meat = Item('Raw meat', 4, 200, 200, 'food', '')
@@ -452,16 +449,16 @@ raw_fish = Item('Raw fish', 7, 200, 200, 'food', '')
 cooked_fish = Item('Bread', 8, 200, 200, 'food', '')
 cooked_meat = Item('Cooked meat', 10, 200, 200, 'food', '')
 
-# Creates drink instances
+# Create drink instances
 soda = Item('Soda', 5, 200, 200, 'drink', '')
 juice = Item('Soda', 8, 200, 200, 'drink', '')
 water = Item('Water', 10, 200, 200, 'drink', '')
 
-# Creates health instances
+# Create health instances
 painkillers = Item('Painkillers', 3, 200, 200, 'health', '')
 bandage = Item('Bandage', 6, 200, 200, 'health', '')
 
-# Creates stamina instances
+# Create stamina instances
 energy_drink = Item('Energy Drink', 2, 200, 200, 'stamina', '')
 coffee = Item('Coffee', 3, 200, 200, 'stamina', '')
 cocaine = Item('Cocaine', 5, 200, 200, 'stamina', '')
@@ -487,32 +484,32 @@ class Inventory:
             if item.type == 'weapon':
                 text = 'Damage: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
 
             if item.type == 'food':
                 text = 'Food: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
 
             if item.type == 'drink':
                 text = 'Drink: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
 
             if item.type == 'health':
                 text = 'Health: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
 
             if item.type == 'stamina':
                 text = 'Stamina: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
             if count == 0:
                 if item.name == player_equipment.equipped_weapon_name:

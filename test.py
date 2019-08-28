@@ -8,6 +8,7 @@ pygame.init()
 
 colors = {
     'black': (0, 0, 0), 'blue': (0, 0, 200), 'brown': (153, 77, 0), 'dark_cream': (192, 187, 142), 'light_cream': (238, 232, 188),
+    'gold': (218,165,32),
     'green': (57, 166, 6), 'grey': (100, 100, 100), 'orange':(255, 117, 26), 'red': (187, 19, 5), 'pure_red': (255, 0, 0),
     'ultra_blue': (0, 0, 255), 'ultra_green': (0, 255, 0), 'white': (255, 255, 255), 'violet': (153, 51, 255), 'yellow': (224, 240, 28),
 }
@@ -481,6 +482,10 @@ energy_drink = Item('Energy Drink', 2, 200, 200, 'stamina', '')
 coffee = Item('Coffee', 3, 200, 200, 'stamina', '')
 cocaine = Item('Cocaine', 5, 200, 200, 'stamina', '')
 
+# Create other instances
+board = Item("       Board", '', 200, 200, 'other', '')
+key = Item('         Key', '', 200, 200, 'other', '')
+
 
 class Inventory:
     def __init__(self):
@@ -529,18 +534,22 @@ class Inventory:
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
+            if item.type == 'other':
+                text = ''
+                button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', 40, item.name, 'gold')
+                writing_text('', 35, text + str(item.attribute), 'gold', x, y + 50)
+
+            # Make equipped items GREEN
             if count_weapon == 0:
                 if item.name == player_equipment.equipped_weapon_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
                     writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
                     count_weapon += 1
-
             if count_torso == 0:
                 if item.name == player_equipment.equipped_torso_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
                     writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
                     count_torso += 1
-
             if count_legs == 0:
                 if item.name == player_equipment.equipped_legs_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
@@ -668,20 +677,20 @@ class Inventory:
             clock.tick(FPS)
 
 
-inventory = Inventory()  # Creates instance - Inventory
+inventory = Inventory()  # Create instance - Inventory
 
-# Adds items to inventory
+# Add items to inventory
 inventory.add_to_inventory(painkillers)
 inventory.add_to_inventory(sword)
-inventory.add_to_inventory(sword)
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(board)
+
 inventory.add_to_inventory(vest)
-inventory.add_to_inventory(vest)
+
 inventory.add_to_inventory(cocaine)
-inventory.add_to_inventory(sweatpants)
-inventory.add_to_inventory(sweatpants)
+
 inventory.add_to_inventory(fishing_trouser)
-inventory.add_to_inventory(apple)
-inventory.add_to_inventory(apple)
+
 inventory.add_to_inventory(water)
 
 

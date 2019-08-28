@@ -1366,7 +1366,11 @@ chest_inventory = SearchWindow()  # Creates instance of SearchWindow class
 
 class LocationWindow:
 
-    def open_location_window(self, image, window_name, chest_location, found_item_location):
+    def open_location_window(self, image, window_name, chest_location, found_item_location, defence):
+
+        self.defence = defence
+        print(location_window.defence)
+
         while True:
             # Hand;e events
             for event in pygame.event.get():
@@ -1402,7 +1406,7 @@ class LocationWindow:
             # Window name
             pygame.display.set_caption(window_name)
 
-            # Adds screen image
+            # Add screen image
             location_image = pygame.image.load(image)
             display.blit(location_image, (0, 0))
 
@@ -1415,6 +1419,11 @@ class LocationWindow:
                          transparent_on=False)  # Barricade
             button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '          Exit', 'white',
                          transparent_on=False)  # Exit
+
+            # Show DEFENCE stat
+            button_maker(20, 20, 220, 40, 'black', 'black', '', 45, 'Defence = ' + str(self.defence), 'red',
+                         transparent_on=False, transparent_off=False)
+            # writing_text('', 45, 'Defence: ' + str(self.defence), 'pure_red', 20, 20)
 
             pygame.display.update()
             clock.tick(FPS)
@@ -1452,6 +1461,7 @@ class MapWindow:
                             open_sound.play()
                             statistic_window.open_statistics_window()
 
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     button = pygame.Rect(575, 430, 135, 50)
                     if event.button == 1:
@@ -1459,7 +1469,8 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('black_pearl.jpg', '"Black Pearl"',
-                                                                 chest.chest_black_pearl, chest.found_items_black_pearl)
+                                                                 chest.chest_black_pearl, chest.found_items_black_pearl, 50)
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Bridge" window
                     button = pygame.Rect(170, 100, 80, 50)
@@ -1468,7 +1479,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('bridge.jpg', 'Bridge', chest.chest_bridge,
-                                                                 chest.found_items_bridge)
+                                                                 chest.found_items_bridge, 0)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Crane" window
                     button = pygame.Rect(280, 150, 70, 50)
@@ -1477,7 +1488,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('crane.jpg', 'Crane', chest.chest_crane,
-                                                                 chest.found_items_crane)
+                                                                 chest.found_items_crane, 20)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Flat" window
                     button = pygame.Rect(500, 175, 50, 50)
@@ -1486,7 +1497,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('flat.jpg', 'Flat', chest.chest_flat,
-                                                                 chest.found_items_flat)
+                                                                 chest.found_items_flat, 30)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Forest" window
                     button = pygame.Rect(450, 25, 75, 40)
@@ -1495,7 +1506,7 @@ class MapWindow:
                             raven_sound = pygame.mixer.Sound('raven2.wav')
                             raven_sound.play()
                             location_window.open_location_window('forest.jpg', 'Forest', chest.chest_forest,
-                                                                 chest.found_items_forest)
+                                                                 chest.found_items_forest, 0)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Hotel" window
                     button = pygame.Rect(450, 265, 70, 50)
@@ -1504,7 +1515,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('hotel.jpeg', 'Hotel', chest.chest_hotel,
-                                                                 chest.found_items_hotel)
+                                                                 chest.found_items_hotel, 20)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Office" window
                     button = pygame.Rect(650, 270, 80, 50)
@@ -1513,7 +1524,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('office.jpg', 'Office', chest.chest_office,
-                                                                 chest.found_items_office)
+                                                                 chest.found_items_office, 30)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Opera House" window
                     button = pygame.Rect(180, 450, 140, 50)
@@ -1522,7 +1533,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('opera.jpg', 'Opera House', chest.chest_opera,
-                                                                 chest.found_items_opera)
+                                                                 chest.found_items_opera, 10)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Restaurant" window
                     button = pygame.Rect(30, 230, 115, 50)
@@ -1531,7 +1542,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('restaurant.jpg', 'Restaurant', chest.chest_restaurant,
-                                                                 chest.found_items_restaurant)
+                                                                 chest.found_items_restaurant, 0)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Sołdek" window
                     button = pygame.Rect(200, 310, 100, 50)
@@ -1540,7 +1551,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('soldek.jpg', '"Sołdek"', chest.chest_soldek,
-                                                                 chest.found_items_soldek)
+                                                                 chest.found_items_soldek, 60)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "St. Mary's Basilica" window
                     button = pygame.Rect(540, 70, 180, 45)
@@ -1549,7 +1560,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('basilica.jpg', "St. Mary's Basilica",
-                                                                 chest.chest_basilica, chest.found_items_basilica)
+                                                                 chest.chest_basilica, chest.found_items_basilica, 30)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Supermarket" window
                     button = pygame.Rect(10, 50, 135, 40)
@@ -1558,7 +1569,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('supermarket.jpg', '"Supermarket"',
-                                                                 chest.chest_supermarket, chest.found_items_supermarket)
+                                                                 chest.chest_supermarket, chest.found_items_supermarket, 0)
 
             # Screen settings and graphic
             pygame.display.set_caption("Map")

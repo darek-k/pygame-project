@@ -79,13 +79,32 @@ def delete_item_from_inventory(index):
 
                             # If deleted item is still in inventory.inventory[] -> equip this item
                             if item_index.name in items_names:
-                                player1.update_attributes()
-                                inventory.show_inventory(0)
+                                # player1.update_attributes()
+
+                                print('atak: ', player1.attack)
+                                print('obrona: ', player1.defence)
+                                inventory.show_inventory(0, 0, 0)
 
                             # If deleted item was the last one -> unequip this item
                             elif item_index.name not in items_names:
                                 player1.reset_attributes(item_index.type)
-                                inventory.show_inventory(0)
+
+                                if item_index.type == 'weapon':
+                                    # player1.attack = player1.attack - item_index.attribute
+                                    player_equipment.equipped_weapon_attribute -= item_index.attribute
+
+                                if item_index.type == 'torso':
+                                    # player1.defence = player1.defence - item_index.attribute
+                                    player_equipment.equipped_torso_attribute -= item_index.attribute
+
+                                if item_index.type == 'legs':
+                                    player_equipment.equipped_legs_attribute -= item_index.attribute
+
+                                player1.update_attributes()
+
+                                print('atak: ', player1.attack)
+                                print('obrona: ', player1.defence)
+                                inventory.show_inventory(0, 0, 0)
 
                         inventory_window.open_inventory_window()
 
@@ -148,18 +167,17 @@ class Player:
 
     def update_attributes(self):
         #######   Z tych dwóch linii zrób jedną ###########################
-        self.attack = 1 + (player_equipment.equipped_weapon_attribute * (self.strength / 3))
+        # self.attack += player_equipment.equipped_weapon_attribute
+        self.attack = 1 + player_equipment.equipped_weapon_attribute
         self.attack = round(self.attack, 1)
 
-        self.defence = 1 + (player_equipment.equipped_torso_attribute * (self.strength / 5)) + \
-                       (player_equipment.equipped_legs_attribute * (self.strength / 5))
+        self.defence = 1 + (player_equipment.equipped_torso_attribute + player_equipment.equipped_legs_attribute)
         self.defence = round(self.defence, 1)
 
     def reset_attributes(self, type):
-        self.attack = 1
-        self.defence = 1
         if type == 'weapon':
             player_equipment.equipped_weapon_name = ''
+            self.attack = 1
         elif type == 'torso':
             player_equipment.equipped_torso_name = ''
         elif type == 'legs':
@@ -185,7 +203,7 @@ class Player:
         if self.health == 0:
             game_over_window.open_game_over_window()
 
-    def use_item(self, index, type, attribute):
+    def use_item(self, index, type, attribute):   ######## Przenieś tę metodę do klasy PlayerEquipment ##########
         item_index = list(inventory.inventory)[index]
         items_names = []
 
@@ -471,7 +489,7 @@ class Inventory:
     def add_to_inventory(self, item):
         self.inventory.append(item)
 
-    def show_inventory(self, count):
+    def show_inventory(self, count_weapon, count_torso, count_legs):
         x = 0
         y = 0
         # count = count
@@ -511,11 +529,23 @@ class Inventory:
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
-            if count == 0:
+            if count_weapon == 0:
                 if item.name == player_equipment.equipped_weapon_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
-                    count += 1
+                    writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+                    count_weapon += 1
+
+            if count_torso == 0:
+                if item.name == player_equipment.equipped_torso_name:
+                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
+                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                    count_torso += 1
+
+            if count_legs == 0:
+                if item.name == player_equipment.equipped_legs_name:
+                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
+                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                    count_legs += 1
 
             x += 200
             if x > 600:
@@ -539,7 +569,7 @@ class Inventory:
         for item in self.inventory:
             index = inventory.inventory.index(item)
 
-            print(item.name, index)
+            # print(item.name, index)
 
             if item.type == type:
 
@@ -643,8 +673,11 @@ inventory = Inventory()  # Creates instance - Inventory
 # Adds items to inventory
 inventory.add_to_inventory(painkillers)
 inventory.add_to_inventory(sword)
+inventory.add_to_inventory(sword)
+inventory.add_to_inventory(vest)
 inventory.add_to_inventory(vest)
 inventory.add_to_inventory(cocaine)
+inventory.add_to_inventory(sweatpants)
 inventory.add_to_inventory(sweatpants)
 inventory.add_to_inventory(fishing_trouser)
 inventory.add_to_inventory(apple)
@@ -665,6 +698,7 @@ class InventoryWindow:
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     map_window.open_map_window()
 
+                # Create squares in Inventory
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     loop = True
                     x = 0
@@ -863,7 +897,7 @@ class InventoryWindow:
             writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
 
             # Items in Inventory
-            inventory.show_inventory(0)
+            inventory.show_inventory(0, 0, 0)
             pygame.display.update()
             clock.tick(FPS)
 
@@ -877,6 +911,11 @@ class EquipItemWindow:
 
         while True:
             # Handle events
+
+            print(player_equipment.equipped_weapon_name, player_equipment.equipped_weapon_attribute)
+            print(player_equipment.equipped_torso_name, player_equipment.equipped_torso_attribute)
+            print(player_equipment.equipped_legs_name, player_equipment.equipped_legs_attribute)
+
             for event in pygame.event.get():
 
                 if event.type == pygame.QUIT:
@@ -986,7 +1025,7 @@ class StatisticsWindow:
         display.blit(text, (x + 1, y + 2))
 
     def equipment_buttons(self, x, y, w, h, item_name, item_type):
-        # item_name = nazwa wyposazonego itemu, np: player_equipment.equipped_weapon_name
+        # item_name - name of the equipped item
         if item_name == '':
             button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item_type, 'white',
                          text_on=False, )
@@ -1148,32 +1187,32 @@ class SearchItem:
             if item.type == 'weapon':
                 text = 'Damage: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 28, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 28, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
 
             if item.type == 'food':
                 text = 'Food: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
 
             if item.type == 'drink':
                 text = 'Drink: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
 
             if item.type == 'health':
                 text = 'Health: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
 
             if item.type == 'stamina':
                 text = 'Stamina: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 35, text + str(item.attribute), 'white', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
             x += 200
             if x > 600:

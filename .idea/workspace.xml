@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,31 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../PYGAME_example/rocket.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3" selection-start-column="3" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../PYGAME_example/run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39336">
-              <caret line="1642" selection-end-line="1647" />
+            <state relative-caret-position="38976">
+              <caret line="1627" column="31" selection-start-line="1627" selection-start-column="31" selection-end-line="1627" selection-end-column="31" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -54,11 +34,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
+            <state relative-caret-position="211">
+              <caret line="165" column="22" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="22" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -79,23 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add_to_inventory_while_search</find>
-      <find>game o</find>
-      <find>level</find>
-      <find>sleep mo</find>
-      <find>inventory_w</find>
-      <find>invento</find>
-      <find>inventory</find>
-      <find>klik</find>
-      <find>add_to</find>
-      <find>do you</find>
-      <find>eat</find>
-      <find>delete</find>
-      <find>use_item</find>
-      <find>delete_item_from_inventory</find>
-      <find>use_</find>
-      <find>637</find>
-      <find>equi</find>
       <find>equip_item</find>
       <find>use_i</find>
       <find>create insta</find>
@@ -109,6 +81,23 @@
       <find>pink</find>
       <find>de</find>
       <find>weapon</find>
+      <find>inventory_wind</find>
+      <find>inventory_win</find>
+      <find>show_inventory</find>
+      <find>pla</find>
+      <find>class pla</find>
+      <find>add_t</find>
+      <find>atta</find>
+      <find>update_a</find>
+      <find>reset</find>
+      <find>rese</find>
+      <find>updat</find>
+      <find>equip_ite</find>
+      <find>print</find>
+      <find>update</find>
+      <find>update_</find>
+      <find>update_attributes</find>
+      <find>equip</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,11 +114,11 @@
         <option value="$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py" />
         <option value="$PROJECT_DIR$/../cwiczonko/venv/cwiczonko2.py" />
         <option value="$PROJECT_DIR$/../PYGAME_example/inventory.py" />
-        <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/main_menu01.py" />
         <option value="$PROJECT_DIR$/things_to_do.txt" />
         <option value="$PROJECT_DIR$/inventory.py" />
         <option value="$PROJECT_DIR$/main_menu.py" />
+        <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
@@ -144,11 +133,14 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -361,21 +353,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_menu01.py" />
-    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -384,13 +362,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/things_to_do.txt" />
-    <entry file="file://$PROJECT_DIR$/../PYGAME_example/rocket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../PYGAME_example/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -401,13 +372,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../PYGAME_example/rocket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gun.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sleep3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sleep1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sleep2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bridge.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39336">
-          <caret line="1642" selection-end-line="1647" />
+        <state relative-caret-position="38976">
+          <caret line="1627" column="31" selection-start-line="1627" selection-start-column="31" selection-end-line="1627" selection-end-column="31" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -416,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="460" selection-end-column="8" />
+        <state relative-caret-position="211">
+          <caret line="165" column="22" selection-start-line="165" selection-start-column="22" selection-end-line="165" selection-end-column="22" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

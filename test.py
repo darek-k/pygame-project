@@ -158,10 +158,10 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 90
-        self.drink = 50
-        self.stamina = 60
-        self.health = 50
+        self.food = 5
+        self.drink = 15
+        self.stamina = 20
+        self.health = 15
 
         self.exp = 0
         self.level = 1
@@ -425,6 +425,180 @@ class Sleep:
 sleep = Sleep()  # Instance of Sleep class
 
 
+class Barricade:
+
+    def open_barricade_window(self, image, previous_window):
+        # h = str(1)
+        # stamina = int(player1.stamina) + 10
+        # hours_to_full_stamina = int((100 - player1.stamina) / 10)
+
+        # health = int(player1.health) + 10
+        # hours_to_full_health = int((80 - player1.health) / 10)
+
+        defence_on_begin = location_window.defence
+        defence = location_window.defence
+
+        stamina_on_begin = int(player1.stamina)
+        stamina = int(player1.stamina)
+
+        food_on_begin = int(player1.food)
+        food = int(player1.food)
+
+        drink_on_begin = int(player1.drink)
+        drink = int(player1.drink)
+
+        health_on_begin = int(player1.health)
+        health = int(player1.health)
+        count_health = 0
+
+        names_list = []
+        for item in inventory.inventory:
+            names_list.append(item.name.strip())
+
+        boards_number_on_begin = names_list.count('Board')
+        boards_number = names_list.count('Board')
+
+        # if player1.food > 0:
+        #     food = int(player1.food) - 5
+        # if player1.drink > 0:
+        #     drink = int(player1.drink) - 5
+
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    return previous_window
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click "+" Button
+                    button = pygame.Rect(320, 200, 80, 45)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            # Change DEFENCE stat
+                            if defence == 100:
+                                print("DEFENCE = MAX")
+                            elif defence < 100:
+                                if boards_number > 0:
+                                    if stamina > 5:
+                                        defence += 20
+                                        if defence > 100:
+                                            defence = 100
+                                        boards_number -= 1
+                                        stamina -= 5
+                                        if food > 0:
+                                            food -= 5
+                                        else:
+                                            food = 0
+                                            if health > 5:
+                                                health -= 5
+                                                count_health += 1
+                                            else:
+                                                print("Health too low")
+                                        if drink > 0:
+                                            drink -= 5
+                                        else:
+                                            drink = 0
+                                            if health > 5:
+                                                health -= 5
+                                                count_health += 1
+                                            else:
+                                                print("Health too low")
+                                    elif stamina <= 5:
+                                        print("Stamina too low")
+                                elif boards_number == 0:
+                                    print("You don't have boards")
+
+                            print(count_health)
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click "-" Button
+                    button = pygame.Rect(400, 200, 80, 45)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+
+                            if defence > defence_on_begin:
+                                defence -= 20
+
+                            if boards_number < boards_number_on_begin:
+                                boards_number += 1
+
+                            if stamina < stamina_on_begin:
+                                stamina += 5
+
+                            if food < food_on_begin:
+                                food += 5
+
+                            if drink < drink_on_begin:
+                                drink += 5
+
+                            if health < health_on_begin:
+                                health += 5
+                                count_health -= 1
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click BARRICADE Button
+                    button = pygame.Rect(305, 540, 190, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            location_window.defence = defence
+                            player1.stamina = stamina
+                            player1.health = health
+                            player1.food = food
+                            player1.drink = drink
+
+                            # USUN DESKI
+
+                            # Barricade "animation"
+                            barricade_image = pygame.image.load('barricade.jpg')
+                            display.blit(barricade_image, (0, 0))
+                            pygame.display.update()
+                            time.sleep(0.8)
+
+                            return previous_window
+
+            # Window settings and graphic
+            pygame.display.set_caption("Barricade")
+            location_image = pygame.image.load(image)
+            display.blit(location_image, (0, 0))
+
+            button_maker(330, 150, 135, 35, 'grey', 'grey', '', 35, "Barricade?", 'white',
+                         transparent_on=False, transparent_off=False)  # Barricade?
+
+            button_maker(320, 200, 80, 45, 'green', 'green', '', 40, '    +', 'white',  # +
+                         transparent_on=False, transparent_off=False)
+            button_maker(400, 200, 80, 45, 'red', 'red', '', 40, '     -', 'white',  # -
+                         transparent_on=False, transparent_off=False)
+
+            button_maker(310, 260, 180, 35, 'black', 'black', '', 35, 'DEFENCE = ' + str(defence), 'red',  # Defence
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 300, 180, 35, 'grey', 'grey', '', 35, 'BOARDS = ' + str(boards_number), 'gold',  # Boards
+                         transparent_on=False, transparent_off=False)
+
+            pygame.draw.line(display, colors['red'], (310, 345), (490, 345), 4) # line
+
+            button_maker(310, 360, 180, 35, 'grey', 'grey', '', 35, 'STAMINA = ' + str(stamina), 'white',  # Stamina
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 400, 180, 35, 'grey', 'grey', '', 35, 'FOOD = ' + str(food), 'white',  # Food
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 440, 180, 35, 'grey', 'grey', '', 35, 'DRINK = ' + str(drink), 'white',  # Drink
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 480, 180, 35, 'grey', 'grey', '', 35, 'HEALTH = ' + str(health), 'green',  # Drink
+                         transparent_on=False, transparent_off=False)
+
+            button_maker(305, 540, 190, 35, 'green', 'blue', '', 45, 'BARRICADE', 'white',  # BARRICADE
+                         transparent_on=False, transparent_off=False)
+
+            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+
+            pygame.display.update()
+            clock.tick(FPS)
+
+
+barricade = Barricade()  # Instance of Barricade class
+
+
 # Items class
 class Item:
     def __init__(self, name, attribute, size_x, size_y, type, icon):
@@ -681,15 +855,16 @@ inventory = Inventory()  # Create instance - Inventory
 
 # Add items to inventory
 inventory.add_to_inventory(painkillers)
-inventory.add_to_inventory(sword)
-inventory.add_to_inventory(key)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
 
 inventory.add_to_inventory(vest)
 
 inventory.add_to_inventory(cocaine)
-
-inventory.add_to_inventory(fishing_trouser)
 
 inventory.add_to_inventory(water)
 
@@ -1396,6 +1571,12 @@ class LocationWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             sleep.open_sleep_window(image, location_window.open_location_window)
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Barricade
+                    button = pygame.Rect(400, 550, 200, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            barricade.open_barricade_window(image, location_window.open_location_window)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
                     button = pygame.Rect(600, 550, 200, 40)

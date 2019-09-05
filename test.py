@@ -490,10 +490,12 @@ class Barricade:
         health = int(player1.health)
         count_health = 0
 
+        # Create list with items names
         names_list = []
         for item in inventory.inventory:
             names_list.append(item.name.strip())
 
+        # Count number of Boards in Inventory
         boards_number_on_begin = names_list.count('Board')
         boards_number = names_list.count('Board')
 
@@ -576,13 +578,47 @@ class Barricade:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
+                            # Update
                             new_defence = defence
                             player1.stamina = stamina
                             player1.health = health
                             player1.food = food
                             player1.drink = drink
 
-                            # USUN DESKI
+
+
+
+
+                            # Remove used Boards
+                            used_boards_number = boards_number_on_begin - boards_number
+                            print('liczba pozostałych desek: ', boards_number)
+                            print('liczba usunietych desek: ', used_boards_number)
+                            print(inventory.inventory)
+
+
+                            ##########   Przemyśl jak rozwiązać ten syf poniżej ##########
+                            for item in inventory.inventory:
+                                print(item.name.strip())
+                                print(inventory.inventory.index(item))
+                                item_index = (inventory.inventory.index(item.name))
+
+                                inventory.inventory.remove(item_index)
+
+
+                            # index = inventory.inventory.index('Board')
+
+                            ###### Muszę znaleźć indeksy dla użytych desek i będę mógł wykorzystać kod poniżej #######
+                            # index = 0
+                            # item_index = list(inventory.inventory)[index]
+                            # print(index, item_index)
+
+
+                            # del inventory.inventory[2]
+
+
+
+
+
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('barricade.jpg')
@@ -1581,7 +1617,6 @@ class LocationWindow:
     def open_location_window(self, image, window_name, chest_location, found_item_location, defence, location_name):
 
         while True:
-            print('location_window_defence = ', defence)
             # Hand;e events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/kuzma.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/kuzma.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="619">
-              <caret line="469" lean-forward="true" selection-start-line="469" selection-end-line="469" />
+            <state relative-caret-position="451">
+              <caret line="595" column="54" lean-forward="true" selection-start-line="595" selection-start-column="54" selection-end-line="595" selection-end-column="54" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -69,10 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>board</find>
-      <find>stamina</find>
-      <find>delete_item_from_inventory</find>
-      <find>remove</find>
       <find>open</find>
       <find>chest_fo</find>
       <find>map_win</find>
@@ -93,12 +86,16 @@
       <find>defence</find>
       <find>open_loca</find>
       <find>open_locatio</find>
-      <find>barricade</find>
       <find>open_barricade_window</find>
       <find>previous_window</find>
       <find>set_def</find>
       <find>black_pear</find>
       <find>set_defe</find>
+      <find>barricade</find>
+      <find>board</find>
+      <find>for i in inventory.inventory</find>
+      <find>inventory.inventory</find>
+      <find>item_index</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -421,8 +418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="469" lean-forward="true" selection-start-line="469" selection-end-line="469" />
+        <state relative-caret-position="451">
+          <caret line="595" column="54" lean-forward="true" selection-start-line="595" selection-start-column="54" selection-end-line="595" selection-end-column="54" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

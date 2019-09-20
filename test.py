@@ -158,10 +158,10 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 5
-        self.drink = 15
-        self.stamina = 20
-        self.health = 15
+        self.food = 50
+        self.drink = 50
+        self.stamina = 100
+        self.health = 100
 
         self.exp = 0
         self.level = 1
@@ -201,7 +201,7 @@ class Player:
         if self.drink < 0:
             self.health -= 10
             self.drink = 0
-        if self.health == 0:
+        if self.health <= 0:
             game_over_window.open_game_over_window()
 
     def use_item(self, index, type, attribute):   ######## Przenieś tę metodę do klasy PlayerEquipment ##########
@@ -281,10 +281,18 @@ class Sleep:
 
     def open_sleep_window(self, image, previous_window):
         h = str(1)
-        stamina = int(player1.stamina) + 10
+
+        if player1.stamina < 100:
+            stamina = int(player1.stamina) + 10
+        else:
+            stamina = 100
+
         hours_to_full_stamina = int((100 - player1.stamina) / 10)
 
-        health = int(player1.health) + 10
+        if player1.health < 100:
+            health = int(player1.health) + 10
+        else:
+            health = 100
         hours_to_full_health = int((80 - player1.health) / 10)
 
         food = int(player1.food)
@@ -472,7 +480,8 @@ class Barricade:
         location_window.open_location_window(image, window_name, chest_location, found_item_location, defence, location_name)
 
 
-    def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location, found_item_location): # It's used in open_location_window()
+    def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location, found_item_location):
+                                                            # It's used in open_location_window()
 
         defence_on_begin = defence
         new_defence = 0
@@ -578,7 +587,7 @@ class Barricade:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
-                            # Update
+                            # Update statistics
                             new_defence = defence
                             player1.stamina = stamina
                             player1.health = health
@@ -587,33 +596,37 @@ class Barricade:
 
 
 
-
-
                             # Remove used Boards
                             used_boards_number = boards_number_on_begin - boards_number
-                            print('liczba pozostałych desek: ', boards_number)
                             print('liczba usunietych desek: ', used_boards_number)
-                            print(inventory.inventory)
+                            print('liczba pozostałych desek: ', boards_number)
 
 
-                            ##########   Przemyśl jak rozwiązać ten syf poniżej ##########
-                            for item in inventory.inventory:
-                                print(item.name.strip())
-                                print(inventory.inventory.index(item))
-                                item_index = (inventory.inventory.index(item.name))
-
-                                inventory.inventory.remove(item_index)
+                            # Create list of items names
+                            names_list = [item.name for item in inventory.inventory]
+                            print(names_list)
 
 
-                            # index = inventory.inventory.index('Board')
+                            start_index = 0
+                            for item in range(used_boards_number):
+                                print(names_list.index("Board", start_index))
+                                index = names_list.index("Board", start_index)
+                                start_index += 1
 
-                            ###### Muszę znaleźć indeksy dla użytych desek i będę mógł wykorzystać kod poniżej #######
-                            # index = 0
-                            # item_index = list(inventory.inventory)[index]
-                            # print(index, item_index)
+                                del inventory.inventory[index]
+                                names_list = [item.name for item in inventory.inventory]
+                                print('Usunięto przedmiot z indeksem: ', index)
 
 
-                            # del inventory.inventory[2]
+
+
+
+
+
+
+                                # inventory.inventory.remove(index)  # Remove Item from inventory.inventory[]
+                                # names_list.remove(index.name)  # Remove Item from items_names[]
+
 
 
 
@@ -684,6 +697,7 @@ class Item:
         self.type = type
 
 
+
 # Create weapon instances
 stone = Item('Stone', 2, 200, 200, 'weapon', '')
 rod = Item('Rod', 3, 200, 200, 'weapon', '')
@@ -731,8 +745,8 @@ coffee = Item('Coffee', 3, 200, 200, 'stamina', '')
 cocaine = Item('Cocaine', 5, 200, 200, 'stamina', '')
 
 # Create other instances
-board = Item("       Board", '', 200, 200, 'other', '')
-key = Item('         Key', '', 200, 200, 'other', '')
+board = Item("Board", '', 200, 200, 'other', '')
+key = Item('Key', '', 200, 200, 'other', '')
 
 
 class Inventory:
@@ -928,18 +942,10 @@ class Inventory:
 inventory = Inventory()  # Create instance - Inventory
 
 # Add items to inventory
-inventory.add_to_inventory(painkillers)
 inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-
 inventory.add_to_inventory(vest)
-
 inventory.add_to_inventory(cocaine)
-
+inventory.add_to_inventory(board)
 inventory.add_to_inventory(water)
 
 

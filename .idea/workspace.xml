@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="595" column="54" lean-forward="true" selection-start-line="595" selection-start-column="54" selection-end-line="595" selection-end-column="54" />
+            <state relative-caret-position="369">
+              <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -44,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" />
+            <state relative-caret-position="120">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -66,20 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>open</find>
-      <find>chest_fo</find>
-      <find>map_win</find>
-      <find>barri</find>
-      <find>map</find>
-      <find>class ma</find>
-      <find>black_p</find>
-      <find>666</find>
-      <find>45</find>
-      <find>black_</find>
-      <find>open_barr</find>
-      <find>barrica</find>
-      <find>black_pe</find>
-      <find>open_location_window</find>
       <find>set_defence</find>
       <find>location</find>
       <find>set_de</find>
@@ -91,11 +78,25 @@
       <find>set_def</find>
       <find>black_pear</find>
       <find>set_defe</find>
-      <find>barricade</find>
-      <find>board</find>
       <find>for i in inventory.inventory</find>
-      <find>inventory.inventory</find>
       <find>item_index</find>
+      <find>boards</find>
+      <find>barricad</find>
+      <find>barricade</find>
+      <find>__eq</find>
+      <find>board</find>
+      <find>delete_</find>
+      <find>remov</find>
+      <find>delete_item</find>
+      <find>append</find>
+      <find>class item</find>
+      <find>add_t</find>
+      <find>delete_item_from_inventory</find>
+      <find>inventory.inventory</find>
+      <find>game_ove</find>
+      <find>class pla</find>
+      <find>player.s</find>
+      <find>class play</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,9 +115,9 @@
         <option value="$PROJECT_DIR$/../PYGAME_example/inventory.py" />
         <option value="$PROJECT_DIR$/main_menu01.py" />
         <option value="$PROJECT_DIR$/things_to_do.txt" />
-        <option value="$PROJECT_DIR$/inventory.py" />
         <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/main_menu.py" />
+        <option value="$PROJECT_DIR$/inventory.py" />
         <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
@@ -268,8 +269,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.main_menu" />
         <item itemvalue="Python.inventory" />
+        <item itemvalue="Python.main_menu" />
         <item itemvalue="Python.inventory (1)" />
         <item itemvalue="Python.cwiczonko2" />
       </list>
@@ -306,7 +307,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" weight="0.18957618" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.21077845" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.26706588" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -396,6 +397,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/1173598587/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="4724" column="8" selection-start-line="4724" selection-start-column="8" selection-end-line="4724" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46080">
@@ -408,8 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" />
+        <state relative-caret-position="120">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -418,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="595" column="54" lean-forward="true" selection-start-line="595" selection-start-column="54" selection-end-line="595" selection-end-column="54" />
+        <state relative-caret-position="369">
+          <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

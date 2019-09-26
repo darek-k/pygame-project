@@ -158,10 +158,10 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 5
-        self.drink = 15
-        self.stamina = 20
-        self.health = 15
+        self.food = 50
+        self.drink = 50
+        self.stamina = 100
+        self.health = 100
 
         self.exp = 0
         self.level = 1
@@ -201,7 +201,7 @@ class Player:
         if self.drink < 0:
             self.health -= 10
             self.drink = 0
-        if self.health == 0:
+        if self.health <= 0:
             game_over_window.open_game_over_window()
 
     def use_item(self, index, type, attribute):   ######## Przenieś tę metodę do klasy PlayerEquipment ##########
@@ -281,10 +281,18 @@ class Sleep:
 
     def open_sleep_window(self, image, previous_window):
         h = str(1)
-        stamina = int(player1.stamina) + 10
+
+        if player1.stamina < 100:
+            stamina = int(player1.stamina) + 10
+        else:
+            stamina = 100
+
         hours_to_full_stamina = int((100 - player1.stamina) / 10)
 
-        health = int(player1.health) + 10
+        if player1.health < 100:
+            health = int(player1.health) + 10
+        else:
+            health = 100
         hours_to_full_health = int((80 - player1.health) / 10)
 
         food = int(player1.food)
@@ -441,7 +449,7 @@ class Barricade:
         self.supermarket_defense = 50
 
 
-    def set_defence(self, location_name, new_defence):
+    def set_defence(self, location_name, defence, new_defence, image, window_name, chest_location, found_item_location):
 
         if location_name == 'black_pearl':
             barricade.black_pearl_defense = new_defence
@@ -457,27 +465,23 @@ class Barricade:
             barricade.hotel_defense = new_defence
         if location_name == 'office':
             barricade.office_defense = new_defence
-        if location_name == 'opera_house':
+        if location_name == 'opera':
             barricade.opera_defense = new_defence
         if location_name == 'restaurant':
             barricade.restaurant_defense = new_defence
         if location_name == 'soldek':
             barricade.soldek_defense = new_defence
-        if location_name == 'st_mary_basilica':
+        if location_name == 'basilica':
             barricade.basilica_defense = new_defence
         if location_name == 'supermarket':
             barricade.supermarket_defense = new_defence
 
-        # location_window.open_location_window(image, window_name, chest_location, found_item_location, defence, location_name)
-
-        location_window.open_location_window('black_pearl.jpg', '"Black Pearl"',
-                                             chest.chest_black_pearl, chest.found_items_black_pearl,
-                                             barricade.black_pearl_defense,
-                                             'black_pearl')   ###### Dodaj to do argumentów żeby nie powtarzać tego za każdym razem
+        # Open previous window and update 'Defence'
+        location_window.open_location_window(image, window_name, chest_location, found_item_location, defence, location_name)
 
 
-
-    def open_barricade_window(self, image, previous_window, defence, location_name): # It's used in open_location_window()
+    def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location, found_item_location):
+                                                            # It's used in open_location_window()
 
         defence_on_begin = defence
         new_defence = 0
@@ -495,10 +499,12 @@ class Barricade:
         health = int(player1.health)
         count_health = 0
 
+        # Create list with items names
         names_list = []
         for item in inventory.inventory:
             names_list.append(item.name.strip())
 
+        # Count number of Boards in Inventory
         boards_number_on_begin = names_list.count('Board')
         boards_number = names_list.count('Board')
 
@@ -581,13 +587,51 @@ class Barricade:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
+                            # Update statistics
                             new_defence = defence
                             player1.stamina = stamina
                             player1.health = health
                             player1.food = food
                             player1.drink = drink
 
-                            # USUN DESKI
+
+
+                            # Remove used Boards
+                            used_boards_number = boards_number_on_begin - boards_number
+                            print('liczba usunietych desek: ', used_boards_number)
+                            print('liczba pozostałych desek: ', boards_number)
+
+
+                            # Create list of items names
+                            names_list = [item.name for item in inventory.inventory]
+                            print(names_list)
+
+
+                            start_index = 0
+                            for item in range(used_boards_number):
+                                print(names_list.index("Board", start_index))
+                                index = names_list.index("Board", start_index)
+                                start_index += 1
+
+                                del inventory.inventory[index]
+                                names_list = [item.name for item in inventory.inventory]
+                                print('Usunięto przedmiot z indeksem: ', index)
+
+
+
+
+
+
+
+
+                                # inventory.inventory.remove(index)  # Remove Item from inventory.inventory[]
+                                # names_list.remove(index.name)  # Remove Item from items_names[]
+
+
+
+
+
+
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('barricade.jpg')
@@ -595,7 +639,8 @@ class Barricade:
                             pygame.display.update()
                             time.sleep(0.8)
 
-                            return barricade.set_defence(location_name, new_defence)
+                            return barricade.set_defence(location_name, defence, new_defence, image, window_name, chest_location, found_item_location)
+                            # return barricade.set_defence(location_name, new_defence)
 
 
             # Window settings and graphic
@@ -652,6 +697,7 @@ class Item:
         self.type = type
 
 
+
 # Create weapon instances
 stone = Item('Stone', 2, 200, 200, 'weapon', '')
 rod = Item('Rod', 3, 200, 200, 'weapon', '')
@@ -699,8 +745,8 @@ coffee = Item('Coffee', 3, 200, 200, 'stamina', '')
 cocaine = Item('Cocaine', 5, 200, 200, 'stamina', '')
 
 # Create other instances
-board = Item("       Board", '', 200, 200, 'other', '')
-key = Item('         Key', '', 200, 200, 'other', '')
+board = Item("Board", '', 200, 200, 'other', '')
+key = Item('Key', '', 200, 200, 'other', '')
 
 
 class Inventory:
@@ -896,18 +942,10 @@ class Inventory:
 inventory = Inventory()  # Create instance - Inventory
 
 # Add items to inventory
-inventory.add_to_inventory(painkillers)
 inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-
 inventory.add_to_inventory(vest)
-
 inventory.add_to_inventory(cocaine)
-
+inventory.add_to_inventory(board)
 inventory.add_to_inventory(water)
 
 
@@ -1584,9 +1622,7 @@ chest_inventory = SearchWindow()  # Creates instance of SearchWindow class
 class LocationWindow:
     def open_location_window(self, image, window_name, chest_location, found_item_location, defence, location_name):
 
-
         while True:
-            print('location_window_defence = ', defence)
             # Hand;e events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -1616,7 +1652,7 @@ class LocationWindow:
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            barricade.open_barricade_window(image, location_window.open_location_window, defence, location_name)
+                            barricade.open_barricade_window(image, location_window.open_location_window, defence, location_name, window_name, chest_location, found_item_location)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
                     button = pygame.Rect(600, 550, 200, 40)
@@ -1693,7 +1729,6 @@ class MapWindow:
                                                                  chest.chest_black_pearl, chest.found_items_black_pearl, barricade.black_pearl_defense,
                                                                  'black_pearl')
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Bridge" window
                     button = pygame.Rect(170, 100, 80, 50)
                     if event.button == 1:
@@ -1701,7 +1736,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('bridge.jpg', 'Bridge', chest.chest_bridge,
-                                                                 chest.found_items_bridge)
+                                                                 chest.found_items_bridge, barricade.bridge_defense, 'bridge')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Crane" window
                     button = pygame.Rect(280, 150, 70, 50)
@@ -1710,7 +1745,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('crane.jpg', 'Crane', chest.chest_crane,
-                                                                 chest.found_items_crane)
+                                                                 chest.found_items_crane, barricade.crane_defense, 'crane')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Flat" window
                     button = pygame.Rect(500, 175, 50, 50)
@@ -1719,7 +1754,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('flat.jpg', 'Flat', chest.chest_flat,
-                                                                 chest.found_items_flat)
+                                                                 chest.found_items_flat, barricade.flat_defense, 'flat')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Forest" window
                     button = pygame.Rect(450, 25, 75, 40)
@@ -1728,7 +1763,7 @@ class MapWindow:
                             raven_sound = pygame.mixer.Sound('raven2.wav')
                             raven_sound.play()
                             location_window.open_location_window('forest.jpg', 'Forest', chest.chest_forest,
-                                                                 chest.found_items_forest)
+                                                                 chest.found_items_forest, barricade.forest_defense, 'forest')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Hotel" window
                     button = pygame.Rect(450, 265, 70, 50)
@@ -1737,7 +1772,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('hotel.jpeg', 'Hotel', chest.chest_hotel,
-                                                                 chest.found_items_hotel)
+                                                                 chest.found_items_hotel, barricade.hotel_defense, 'hotel')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Office" window
                     button = pygame.Rect(650, 270, 80, 50)
@@ -1746,7 +1781,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('office.jpg', 'Office', chest.chest_office,
-                                                                 chest.found_items_office)
+                                                                 chest.found_items_office, barricade.office_defense, 'office')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Opera House" window
                     button = pygame.Rect(180, 450, 140, 50)
@@ -1755,7 +1790,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('opera.jpg', 'Opera House', chest.chest_opera,
-                                                                 chest.found_items_opera)
+                                                                 chest.found_items_opera, barricade.opera_defense, 'opera')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Restaurant" window
                     button = pygame.Rect(30, 230, 115, 50)
@@ -1764,7 +1799,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('restaurant.jpg', 'Restaurant', chest.chest_restaurant,
-                                                                 chest.found_items_restaurant)
+                                                                 chest.found_items_restaurant, barricade.restaurant_defense, 'restaurant')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Sołdek" window
                     button = pygame.Rect(200, 310, 100, 50)
@@ -1773,7 +1808,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('soldek.jpg', '"Sołdek"', chest.chest_soldek,
-                                                                 chest.found_items_soldek)
+                                                                 chest.found_items_soldek, barricade.soldek_defense, 'soldek')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "St. Mary's Basilica" window
                     button = pygame.Rect(540, 70, 180, 45)
@@ -1782,7 +1817,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('basilica.jpg', "St. Mary's Basilica",
-                                                                 chest.chest_basilica, chest.found_items_basilica)
+                                                                 chest.chest_basilica, chest.found_items_basilica, barricade.basilica_defense, 'basilica')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Supermarket" window
                     button = pygame.Rect(10, 50, 135, 40)
@@ -1791,7 +1826,7 @@ class MapWindow:
                             door_sound = pygame.mixer.Sound('door.wav')
                             door_sound.play()
                             location_window.open_location_window('supermarket.jpg', '"Supermarket"',
-                                                                 chest.chest_supermarket, chest.found_items_supermarket)
+                                                                 chest.chest_supermarket, chest.found_items_supermarket, barricade.supermarket_defense, 'supermarket')
 
             # Screen settings and graphic
             pygame.display.set_caption("Map")

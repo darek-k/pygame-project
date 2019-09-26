@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46080">
-              <caret line="1923" column="27" selection-end-line="1929" />
+            <state relative-caret-position="485">
+              <caret line="1958" column="27" lean-forward="true" selection-start-line="1958" selection-start-column="27" selection-end-line="1958" selection-end-column="27" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -33,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+            <state relative-caret-position="214">
+              <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -67,14 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set_defence</find>
-      <find>location</find>
-      <find>set_de</find>
-      <find>defence</find>
-      <find>open_loca</find>
-      <find>open_locatio</find>
-      <find>open_barricade_window</find>
-      <find>previous_window</find>
       <find>set_def</find>
       <find>black_pear</find>
       <find>set_defe</find>
@@ -97,6 +90,14 @@
       <find>class pla</find>
       <find>player.s</find>
       <find>class play</find>
+      <find>sleep</find>
+      <find>button_m</find>
+      <find>equip</find>
+      <find>weapon</find>
+      <find>statistics</find>
+      <find>open_equip_item_window</find>
+      <find>esc =</find>
+      <find>do you want to eq</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,8 +117,8 @@
         <option value="$PROJECT_DIR$/main_menu01.py" />
         <option value="$PROJECT_DIR$/things_to_do.txt" />
         <option value="$PROJECT_DIR$/map.py" />
-        <option value="$PROJECT_DIR$/main_menu.py" />
         <option value="$PROJECT_DIR$/inventory.py" />
+        <option value="$PROJECT_DIR$/main_menu.py" />
         <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
@@ -307,7 +308,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" weight="0.18957618" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.26706588" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.26706588" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -406,8 +407,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46080">
-          <caret line="1923" column="27" selection-end-line="1929" />
+        <state relative-caret-position="485">
+          <caret line="1958" column="27" lean-forward="true" selection-start-line="1958" selection-start-column="27" selection-end-line="1958" selection-end-column="27" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
@@ -426,8 +427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="293" column="13" lean-forward="true" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
+        <state relative-caret-position="214">
+          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

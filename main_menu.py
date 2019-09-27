@@ -1250,6 +1250,8 @@ class EquipItemWindow:
             pygame.display.set_caption(window_name)
             set_image = pygame.image.load(image)
             display.blit(set_image, (0, 0))
+            writing_text('', 35, 'LMB = Equip Item', 'pure_red', 0, 570)
+            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
 
             # Items in Inventory
             inventory.show_items_to_equip(type, attribute_text)
@@ -1701,9 +1703,6 @@ class MapWindow:
                     pygame.quit()
                     sys.exit()
 
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    main_menu_window.open_main_menu_window()
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open an Inventory window
                     button = pygame.Rect(200, 550, 200, 40)
                     if event.button == 1:
@@ -1862,7 +1861,7 @@ class MapWindow:
             # Menu buttons
             button_maker(0, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Journal', 'white',
                          transparent_on=False)  # Journal
-            button_maker(200, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Inventory', 'white',
+            button_maker(200, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Inventory'.center(20), 'white',
                          transparent_on=False)  # Inventory
             button_maker(400, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Statistics', 'white',
                          transparent_on=False)  # Statistics
@@ -1884,9 +1883,7 @@ class MainMenuWindow:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click START Button
                     button = pygame.Rect(350, 400, 80, 30)
                     if event.button == 1:

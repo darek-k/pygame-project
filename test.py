@@ -1593,18 +1593,12 @@ class SearchWindow:
             # Add menu buttons
             button_maker(0, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Search', 'white',
                          transparent_on=False)  # Search
-            button_maker(100, 550, 150, 40, 'black', 'black', '', 30, ' STAMINA = ' + str(player1.stamina),
-                         'white',  # Stamina
-                         transparent_off=False, transparent_on=False)
-            button_maker(250, 550, 150, 40, 'black', 'black', '', 30, '    HEALTH = ' + str(player1.health), 'white',
-                         # Health
-                         transparent_off=False, transparent_on=False)
-            button_maker(400, 550, 150, 40, 'black', 'black', '', 30, '     FOOD = ' + str(player1.food), 'white',
-                         # Food
-                         transparent_off=False, transparent_on=False)
-            button_maker(550, 550, 150, 40, 'black', 'black', '', 30, '   DRINK = ' + str(player1.drink), 'white',
-                         # Drink
-                         transparent_off=False, transparent_on=False)
+
+            statistic_window.statistics_buttons(100, 550, 150, 40, '', 30, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistic_window.statistics_buttons(250, 550, 150, 40, '', 30, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistic_window.statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistic_window.statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
+
             button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Exit', 'white',
                          transparent_on=False)  # Exit
 

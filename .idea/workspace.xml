@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="1958" column="27" lean-forward="true" selection-start-line="1958" selection-start-column="27" selection-end-line="1958" selection-end-column="27" />
+            <state relative-caret-position="46512">
+              <caret line="1941" column="28" selection-end-line="1961" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -34,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+            <state relative-caret-position="358">
+              <caret line="1603" lean-forward="true" selection-start-line="1603" selection-end-line="1603" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -68,13 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set_def</find>
-      <find>black_pear</find>
-      <find>set_defe</find>
-      <find>for i in inventory.inventory</find>
-      <find>item_index</find>
-      <find>boards</find>
-      <find>barricad</find>
       <find>barricade</find>
       <find>__eq</find>
       <find>board</find>
@@ -98,6 +91,13 @@
       <find>open_equip_item_window</find>
       <find>esc =</find>
       <find>do you want to eq</find>
+      <find>food</find>
+      <find>class in</find>
+      <find>search</find>
+      <find>searc</find>
+      <find>stamina</find>
+      <find>statist</find>
+      <find>statistics_b</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -308,7 +308,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" weight="0.18957618" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.26706588" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.26706588" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -407,8 +407,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="1958" column="27" lean-forward="true" selection-start-line="1958" selection-start-column="27" selection-end-line="1958" selection-end-column="27" />
+        <state relative-caret-position="46512">
+          <caret line="1941" column="28" selection-end-line="1961" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
@@ -427,8 +427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
+        <state relative-caret-position="358">
+          <caret line="1603" lean-forward="true" selection-start-line="1603" selection-end-line="1603" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

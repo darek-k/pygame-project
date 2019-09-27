@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="1163" selection-start-line="1163" selection-end-line="1166" selection-end-column="129" />
+            <state relative-caret-position="-83">
+              <caret line="405" column="69" selection-start-line="405" selection-start-column="69" selection-end-line="405" selection-end-column="69" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -66,7 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>__eq</find>
       <find>board</find>
       <find>delete_</find>
       <find>remov</find>
@@ -80,7 +79,6 @@
       <find>class pla</find>
       <find>player.s</find>
       <find>class play</find>
-      <find>sleep</find>
       <find>button_m</find>
       <find>equip</find>
       <find>weapon</find>
@@ -96,6 +94,8 @@
       <find>statist</find>
       <find>statistics_b</find>
       <find>inventory_w</find>
+      <find>sleep</find>
+      <find>statistics_buttons</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -306,7 +306,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" weight="0.18957618" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.20838323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -425,8 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="1163" selection-start-line="1163" selection-end-line="1166" selection-end-column="129" />
+        <state relative-caret-position="-83">
+          <caret line="405" column="69" selection-start-line="405" selection-start-column="69" selection-end-line="405" selection-end-column="69" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

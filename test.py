@@ -404,7 +404,6 @@ class Sleep:
 
             button_maker(200, 200, 380, 35, 'grey', 'grey', '', 35, "How long do you want to sleep?", 'white',
                          transparent_on=False, transparent_off=False)
-
             button_maker(330, 240, 80, 50, 'grey', 'grey', '', 60, str(h) + 'h', 'white',  # How many hours
                          transparent_on=False, transparent_off=False)
             button_maker(410, 240, 60, 25, 'green', 'green', '', 40, '   +', 'white',  # More
@@ -412,14 +411,14 @@ class Sleep:
             button_maker(410, 265, 60, 25, 'red', 'red', '', 40, '   -', 'white',  # Less
                          transparent_on=False, transparent_off=False)
 
-            button_maker(310, 300, 180, 35, 'grey', 'grey', '', 35, 'STAMINA = ' + str(stamina), 'white',  # Stamina
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 340, 180, 35, 'grey', 'grey', '', 35, 'HEALTH = ' + str(health), 'white',  # Health
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 380, 180, 35, 'grey', 'grey', '', 35, 'FOOD = ' + str(food), 'white',  # Food
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 420, 180, 35, 'grey', 'grey', '', 35, 'DRINK = ' + str(drink), 'white',  # Drink
-                         transparent_on=False, transparent_off=False)
+            statistic_window.statistics_buttons(310, 300, 180, 35, '', 35, f'STAMINA = {stamina}', 'needs',
+                                                stamina)
+            statistic_window.statistics_buttons(310, 340, 180, 35, '', 35, f'HEALTH = {health}', 'needs',
+                                                health)
+            statistic_window.statistics_buttons(310, 380, 180, 35, '', 35, f'FOOD = {food}', 'needs',
+                                                food)
+            statistic_window.statistics_buttons(310, 420, 180, 35, '', 35, f'DRINK = {drink}', 'needs',
+                                                drink)
 
             button_maker(350, 500, 100, 35, 'green', 'blue', '', 45, 'SLEEP', 'white',  # SLEEP
                          transparent_on=False, transparent_off=False)

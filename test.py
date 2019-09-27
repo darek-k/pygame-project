@@ -1156,9 +1156,15 @@ class InventoryWindow:
             pygame.display.set_caption("Inventory")
             backpack_image = pygame.image.load('backpack.jpg')
             display.blit(backpack_image, (0, 0))
-            writing_text('', 35, 'LMB = Use Item', 'pure_red', 0, 570)
-            writing_text('', 35, 'RMB = Delete Item', 'pure_red', 320, 570)
+
+            writing_text('', 18, 'LMB = Use Item', 'pure_red', 0, 555)
+            writing_text('', 18, 'RMB = Delete Item', 'pure_red', 0, 580)
             writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+
+            statistic_window.statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistic_window.statistics_buttons(250, 570, 110, 20, '', 25, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistic_window.statistics_buttons(370, 570, 130, 20, '', 25, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistic_window.statistics_buttons(510, 570, 130, 20, '', 25, f'HEALTH = {player1.health}', 'needs', player1.health)
 
             # Items in Inventory
             inventory.show_inventory(0, 0, 0)

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-83">
-              <caret line="405" column="69" selection-start-line="405" selection-start-column="69" selection-end-line="405" selection-end-column="69" />
+            <state relative-caret-position="540">
+              <caret line="401" column="41" lean-forward="true" selection-start-line="401" selection-start-column="41" selection-end-line="401" selection-end-column="41" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -66,8 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>board</find>
-      <find>delete_</find>
       <find>remov</find>
       <find>delete_item</find>
       <find>append</find>
@@ -91,11 +90,13 @@
       <find>search</find>
       <find>searc</find>
       <find>stamina</find>
-      <find>statist</find>
       <find>statistics_b</find>
       <find>inventory_w</find>
-      <find>sleep</find>
       <find>statistics_buttons</find>
+      <find>statist</find>
+      <find>exit</find>
+      <find>if event.butt</find>
+      <find>sleep</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,7 +136,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
@@ -268,8 +269,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.inventory" />
         <item itemvalue="Python.main_menu" />
+        <item itemvalue="Python.inventory" />
         <item itemvalue="Python.inventory (1)" />
         <item itemvalue="Python.cwiczonko2" />
       </list>
@@ -306,7 +307,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" weight="0.18957618" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.20838323" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -425,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-83">
-          <caret line="405" column="69" selection-start-line="405" selection-start-column="69" selection-end-line="405" selection-end-column="69" />
+        <state relative-caret-position="540">
+          <caret line="401" column="41" lean-forward="true" selection-start-line="401" selection-start-column="41" selection-end-line="401" selection-end-column="41" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

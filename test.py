@@ -397,6 +397,13 @@ class Sleep:
 
                             return previous_window
 
+                if event.type == pygame.MOUSEBUTTONDOWN: # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return previous_window
+
+
             # Window settings and graphic
             pygame.display.set_caption("Sleep")
             location_image = pygame.image.load(image)
@@ -423,7 +430,9 @@ class Sleep:
             button_maker(350, 500, 100, 35, 'green', 'blue', '', 45, 'SLEEP', 'white',  # SLEEP
                          transparent_on=False, transparent_off=False)
 
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
+
 
             pygame.display.update()
             clock.tick(FPS)

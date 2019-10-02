@@ -602,18 +602,14 @@ class Barricade:
                             player1.food = food
                             player1.drink = drink
 
-
-
                             # Remove used Boards
                             used_boards_number = boards_number_on_begin - boards_number
                             print('liczba usunietych desek: ', used_boards_number)
                             print('liczba pozostałych desek: ', boards_number)
 
-
                             # Create list of items names
                             names_list = [item.name for item in inventory.inventory]
                             print(names_list)
-
 
                             start_index = 0
                             for item in range(used_boards_number):
@@ -624,22 +620,6 @@ class Barricade:
                                 del inventory.inventory[index]
                                 names_list = [item.name for item in inventory.inventory]
                                 print('Usunięto przedmiot z indeksem: ', index)
-
-
-
-
-
-
-
-
-                                # inventory.inventory.remove(index)  # Remove Item from inventory.inventory[]
-                                # names_list.remove(index.name)  # Remove Item from items_names[]
-
-
-
-
-
-
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('barricade.jpg')
@@ -696,65 +676,65 @@ barricade = Barricade()  # Instance of Barricade class
 
 # Items class
 class Item:
-    def __init__(self, name, attribute, size_x, size_y, type, icon):
+    def __init__(self, name, attribute, type, icon):
         self.name = name
         self.attribute = attribute
-        self.size_x = size_x
-        self.size_y = size_y
+        self.size_x = 200
+        self.size_y = 150
         self.icon = icon
         self.type = type
 
 
 
 # Create weapon instances
-stone = Item('Stone', 2, 200, 200, 'weapon', '')
-rod = Item('Rod', 3, 200, 200, 'weapon', '')
-bat = Item('Bat', 4, 200, 200, 'weapon', '')
-oar = Item('Oar', 5, 200, 200, 'weapon', '')
-hammer = Item('Hammer', 6, 200, 200, 'weapon', '')
-axe = Item('Axe', 7, 200, 200, 'weapon', '')
-sword = Item('Sword', 8, 200, 200, 'weapon', '')
+stone = Item('Stone', 2, 'weapon', '')
+rod = Item('Rod', 3, 'weapon', '')
+bat = Item('Bat', 4, 'weapon', '')
+oar = Item('Oar', 5, 'weapon', '')
+hammer = Item('Hammer', 6, 'weapon', '')
+axe = Item('Axe', 7, 'weapon', '')
+sword = Item('Sword', 8, 'weapon', '')
 
 # Create torso instances
-shirt = Item('Shirt', 2, 200, 200, 'torso', '')
-vest = Item('Vest', 4, 200, 200, 'torso', '')
-jacket = Item('Jacket', 7, 200, 200, 'torso', '')
-armor = Item('Armor', 10, 200, 200, 'torso', '')
+shirt = Item('Shirt', 2, 'torso', '')
+vest = Item('Vest', 4, 'torso', '')
+jacket = Item('Jacket', 7, 'torso', '')
+armor = Item('Armor', 10, 'torso', '')
 
 # Create legs instances
-sweatpants = Item('Sweatpants', 3, 200, 200, 'legs', '')
-jeans = Item('Jeans', 5, 200, 200, 'legs', '')
-fishing_trouser = Item('Fishing ts.', 7, 200, 200, 'legs', '')
-military_trousers = Item('Military ts.', 9, 200, 200, 'legs', '')
+sweatpants = Item('Sweatpants', 3, 'legs', '')
+jeans = Item('Jeans', 5, 'legs', '')
+fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
+military_trousers = Item('Military ts.', 9, 'legs', '')
 
 # Create food instances
-apple = Item('Apple', 2, 200, 200, 'food', '')
-bread = Item('Bread', 3, 200, 200, 'food', '')
-raw_meat = Item('Raw meat', 4, 200, 200, 'food', '')
-potato = Item('Potato', 4, 200, 200, 'food', '')
-dog_food = Item('Dog Food', 5, 200, 200, 'food', '')
-rat = Item('Rat', 6, 200, 200, 'food', '')
-raw_fish = Item('Raw fish', 7, 200, 200, 'food', '')
-cooked_fish = Item('Bread', 8, 200, 200, 'food', '')
-cooked_meat = Item('Cooked meat', 10, 200, 200, 'food', '')
+apple = Item('Apple', 2, 'food', '')
+bread = Item('Bread', 3, 'food', '')
+raw_meat = Item('Raw meat', 4, 'food', '')
+potato = Item('Potato', 4, 'food', '')
+dog_food = Item('Dog Food', 5, 'food', '')
+rat = Item('Rat', 6, 'food', '')
+raw_fish = Item('Raw fish', 7, 'food', '')
+cooked_fish = Item('Bread', 8, 'food', '')
+cooked_meat = Item('Cooked meat', 10, 'food', '')
 
 # Create drink instances
-soda = Item('Soda', 5, 200, 200, 'drink', '')
-juice = Item('Soda', 8, 200, 200, 'drink', '')
-water = Item('Water', 10, 200, 200, 'drink', '')
+soda = Item('Soda', 5, 'drink', '')
+juice = Item('Soda', 8, 'drink', '')
+water = Item('Water', 10, 'drink', '')
 
 # Create health instances
-painkillers = Item('Painkillers', 3, 200, 200, 'health', '')
-bandage = Item('Bandage', 6, 200, 200, 'health', '')
+painkillers = Item('Painkillers', 3, 'health', '')
+bandage = Item('Bandage', 6, 'health', '')
 
 # Create stamina instances
-energy_drink = Item('Energy Drink', 2, 200, 200, 'stamina', '')
-coffee = Item('Coffee', 3, 200, 200, 'stamina', '')
-cocaine = Item('Cocaine', 5, 200, 200, 'stamina', '')
+energy_drink = Item('Energy Drink', 2, 'stamina', '')
+coffee = Item('Coffee', 3, 'stamina', '')
+cocaine = Item('Cocaine', 5,  'stamina', '')
 
 # Create other instances
-board = Item("Board", '', 200, 200, 'other', '')
-key = Item('Key', '', 200, 200, 'other', '')
+board = Item("Board", '', 'other', '')
+key = Item('Key', '', 'other', '')
 
 
 class Inventory:
@@ -767,7 +747,6 @@ class Inventory:
     def show_inventory(self, count_weapon, count_torso, count_legs):
         x = 0
         y = 0
-        # count = count
 
         for item in self.inventory:
 
@@ -829,17 +808,17 @@ class Inventory:
             x += 200
             if x > 600:
                 x = 0
-                y += 200
+                y += 150
 
         if len(self.inventory) < 12:
             length = 12 - len(self.inventory)
             for i in range(length):
-                button_maker(x, y, 200, 200, 'red', 'blue', '', 40, '', 'ultra_green')
+                button_maker(x, y, 200, 150, 'red', 'blue', '', 40, '', 'ultra_green')
 
                 x += 200
                 if x > 600:
                     x = 0
-                    y += 200
+                    y += 150
 
     def show_items_to_equip(self, type, attribute_text):
         x = 0
@@ -855,9 +834,9 @@ class Inventory:
                 if index <= 3:
                     y = 0
                 elif index <= 7:
-                    y = 200
+                    y = 150
                 elif index <= 11:
-                    y = 400
+                    y = 300
 
                 if index == 0 or index == 4 or index == 8:
                     x = 0
@@ -976,14 +955,14 @@ class InventoryWindow:
                     x = 0
                     y = 0
                     w = 200
-                    h = 200
+                    h = 150
 
                     while loop == True:
                         button = pygame.Rect(x, y, w, h)
                         x += 200
                         if x > 600:
                             x = 0
-                            y += 200
+                            y += 150
 
                         #  Use Item
                         if event.button == 1:
@@ -1020,7 +999,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 0 and y == 200:
+                                    if x == 0 and y == 150:
                                         index = 3
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1030,7 +1009,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 200 and y == 200:
+                                    if x == 200 and y == 150:
                                         index = 4
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1040,7 +1019,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 400 and y == 200:
+                                    if x == 400 and y == 150:
                                         index = 5
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1050,7 +1029,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 600 and y == 200:
+                                    if x == 600 and y == 150:
                                         index = 6
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1060,7 +1039,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 0 and y == 400:
+                                    if x == 0 and y == 300:
                                         index = 7
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1070,7 +1049,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 200 and y == 400:
+                                    if x == 200 and y == 300:
                                         index = 8
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1080,7 +1059,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 400 and y == 400:
+                                    if x == 400 and y == 300:
                                         index = 9
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1090,7 +1069,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 600 and y == 400:
+                                    if x == 600 and y == 300:
                                         index = 10
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1100,7 +1079,7 @@ class InventoryWindow:
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
 
-                                    if x == 0 and y == 600:
+                                    if x == 0 and y == 450:
                                         index = 11
                                         item_index = list(inventory.inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
@@ -1132,23 +1111,23 @@ class InventoryWindow:
                                         delete_item_from_inventory(1)
                                     if x == 600 and y == 0:
                                         delete_item_from_inventory(2)
-                                    if x == 0 and y == 200:
+                                    if x == 0 and y == 150:
                                         delete_item_from_inventory(3)
-                                    if x == 200 and y == 200:
+                                    if x == 200 and y == 150:
                                         delete_item_from_inventory(4)
-                                    if x == 400 and y == 200:
+                                    if x == 400 and y == 150:
                                         delete_item_from_inventory(5)
-                                    if x == 600 and y == 200:
+                                    if x == 600 and y == 150:
                                         delete_item_from_inventory(6)
-                                    if x == 0 and y == 400:
+                                    if x == 0 and y == 300:
                                         delete_item_from_inventory(7)
-                                    if x == 200 and y == 400:
+                                    if x == 200 and y == 300:
                                         delete_item_from_inventory(8)
-                                    if x == 400 and y == 400:
+                                    if x == 400 and y == 300:
                                         delete_item_from_inventory(9)
-                                    if x == 600 and y == 400:
+                                    if x == 600 and y == 300:
                                         delete_item_from_inventory(10)
-                                    if x == 0 and y == 600:
+                                    if x == 0 and y == 450:
                                         delete_item_from_inventory(11)
 
                                 except IndexError:
@@ -1214,14 +1193,14 @@ class EquipItemWindow:
                     x = 0
                     y = 0
                     w = 200
-                    h = 200
+                    h = 150
 
                     while loop == True:  # Create squares
                         button = pygame.Rect(x, y, w, h)
                         x += 200
                         if x > 600:
                             x = 0
-                            y += 200
+                            y += 150
 
                         if event.button == 3:  # RMB
                             if button.collidepoint(event.pos):
@@ -1238,23 +1217,23 @@ class EquipItemWindow:
                                         inventory.equip_item(1, type)
                                     if x == 600 and y == 0:
                                         inventory.equip_item(2, type)
-                                    if x == 0 and y == 200:
+                                    if x == 0 and y == 150:
                                         inventory.equip_item(3, type)
-                                    if x == 200 and y == 200:
+                                    if x == 200 and y == 150:
                                         inventory.equip_item(4, type)
-                                    if x == 400 and y == 200:
+                                    if x == 400 and y == 150:
                                         inventory.equip_item(5, type)
-                                    if x == 600 and y == 200:
+                                    if x == 600 and y == 150:
                                         inventory.equip_item(6, type)
-                                    if x == 0 and y == 400:
+                                    if x == 0 and y == 300:
                                         inventory.equip_item(7, type)
-                                    if x == 200 and y == 400:
+                                    if x == 200 and y == 300:
                                         inventory.equip_item(8, type)
-                                    if x == 400 and y == 400:
+                                    if x == 400 and y == 300:
                                         inventory.equip_item(9, type)
-                                    if x == 600 and y == 400:
+                                    if x == 600 and y == 300:
                                         inventory.equip_item(10, type)
-                                    if x == 0 and y == 600:
+                                    if x == 0 and y == 450:
                                         inventory.equip_item(11, type)
 
                                 except IndexError:
@@ -1513,7 +1492,7 @@ class SearchItem:
             x += 200
             if x > 600:
                 x = 0
-                y += 200
+                y += 150
 
         # if len(self.chest) < 12:
         #     length = 12 - len(self.chest)
@@ -1563,14 +1542,14 @@ class SearchWindow:
                     x = 0
                     y = 0
                     w = 200
-                    h = 200
+                    h = 150
 
                     while loop == True:
                         button = pygame.Rect(x, y, w, h)
                         x += 200
                         if x > 600:
                             x = 0
-                            y += 200
+                            y += 150
 
                         if event.button == 2:
                             break
@@ -1587,23 +1566,23 @@ class SearchWindow:
                                         chest.add_to_inventory_while_search(1, found_item_location)
                                     if x == 600 and y == 0:
                                         chest.add_to_inventory_while_search(2, found_item_location)
-                                    if x == 0 and y == 200:
+                                    if x == 0 and y == 150:
                                         chest.add_to_inventory_while_search(3, found_item_location)
-                                    if x == 200 and y == 200:
+                                    if x == 200 and y == 150:
                                         chest.add_to_inventory_while_search(4, found_item_location)
-                                    if x == 400 and y == 200:
+                                    if x == 400 and y == 150:
                                         chest.add_to_inventory_while_search(5, found_item_location)
-                                    if x == 600 and y == 200:
+                                    if x == 600 and y == 150:
                                         chest.add_to_inventory_while_search(6, found_item_location)
-                                    if x == 0 and y == 400:
+                                    if x == 0 and y == 300:
                                         chest.add_to_inventory_while_search(7, found_item_location)
-                                    if x == 200 and y == 400:
+                                    if x == 200 and y == 300:
                                         chest.add_to_inventory_while_search(8, found_item_location)
-                                    if x == 400 and y == 400:
+                                    if x == 400 and y == 300:
                                         chest.add_to_inventory_while_search(9, found_item_location)
-                                    if x == 600 and y == 400:
+                                    if x == 600 and y == 300:
                                         chest.add_to_inventory_while_search(10, found_item_location)
-                                    if x == 0 and y == 600:
+                                    if x == 0 and y == 450:
                                         chest.add_to_inventory_while_search(11, found_item_location)
 
                                 except IndexError:

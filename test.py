@@ -1203,6 +1203,12 @@ class EquipItemWindow:
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     statistic_window.open_statistics_window()
 
+                if event.type == pygame.MOUSEBUTTONDOWN: # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return statistic_window.open_statistics_window()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     loop = True
                     x = 0
@@ -1265,7 +1271,10 @@ class EquipItemWindow:
             set_image = pygame.image.load(image)
             display.blit(set_image, (0, 0))
             writing_text('', 35, 'LMB = Equip Item', 'pure_red', 0, 570)
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
+
 
             # Items in Inventory
             inventory.show_items_to_equip(type, attribute_text)
@@ -1337,10 +1346,16 @@ class StatisticsWindow:
                             equip_item_window.open_equip_item_window('torso.jpg', "Equip Torso", 'torso', 'Defence: ')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Press 'LEGS' Button
-                    button = pygame.Rect(550, 500, 100, 50)
+                    button = pygame.Rect(530, 490, 100, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             equip_item_window.open_equip_item_window('legs.jpg', "Equip Legs", 'legs', 'Defence: ')
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
 
             # Window settings
             pygame.display.set_caption('Statistics')
@@ -1376,10 +1391,11 @@ class StatisticsWindow:
             # Equipment buttons
             self.equipment_buttons(380, 420, 100, 50, player_equipment.equipped_weapon_name, 'Weapon')  # Weapon
             self.equipment_buttons(500, 200, 100, 50, player_equipment.equipped_torso_name, '   Torso')  # Torso
-            self.equipment_buttons(550, 500, 100, 50, player_equipment.equipped_legs_name, '   Legs')  # Legs
+            self.equipment_buttons(530, 490, 100, 50, player_equipment.equipped_legs_name, '   Legs')  # Legs
 
-            # ESC information
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+            # ESC button
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
 
             pygame.display.update()
             clock.tick(FPS)

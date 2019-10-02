@@ -397,6 +397,13 @@ class Sleep:
 
                             return previous_window
 
+                if event.type == pygame.MOUSEBUTTONDOWN: # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return previous_window
+
+
             # Window settings and graphic
             pygame.display.set_caption("Sleep")
             location_image = pygame.image.load(image)
@@ -404,7 +411,6 @@ class Sleep:
 
             button_maker(200, 200, 380, 35, 'grey', 'grey', '', 35, "How long do you want to sleep?", 'white',
                          transparent_on=False, transparent_off=False)
-
             button_maker(330, 240, 80, 50, 'grey', 'grey', '', 60, str(h) + 'h', 'white',  # How many hours
                          transparent_on=False, transparent_off=False)
             button_maker(410, 240, 60, 25, 'green', 'green', '', 40, '   +', 'white',  # More
@@ -412,19 +418,21 @@ class Sleep:
             button_maker(410, 265, 60, 25, 'red', 'red', '', 40, '   -', 'white',  # Less
                          transparent_on=False, transparent_off=False)
 
-            button_maker(310, 300, 180, 35, 'grey', 'grey', '', 35, 'STAMINA = ' + str(stamina), 'white',  # Stamina
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 340, 180, 35, 'grey', 'grey', '', 35, 'HEALTH = ' + str(health), 'white',  # Health
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 380, 180, 35, 'grey', 'grey', '', 35, 'FOOD = ' + str(food), 'white',  # Food
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 420, 180, 35, 'grey', 'grey', '', 35, 'DRINK = ' + str(drink), 'white',  # Drink
-                         transparent_on=False, transparent_off=False)
+            statistic_window.statistics_buttons(310, 300, 180, 35, '', 35, f'STAMINA = {stamina}', 'needs',
+                                                stamina)
+            statistic_window.statistics_buttons(310, 340, 180, 35, '', 35, f'HEALTH = {health}', 'needs',
+                                                health)
+            statistic_window.statistics_buttons(310, 380, 180, 35, '', 35, f'FOOD = {food}', 'needs',
+                                                food)
+            statistic_window.statistics_buttons(310, 420, 180, 35, '', 35, f'DRINK = {drink}', 'needs',
+                                                drink)
 
             button_maker(350, 500, 100, 35, 'green', 'blue', '', 45, 'SLEEP', 'white',  # SLEEP
                          transparent_on=False, transparent_off=False)
 
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
+
 
             pygame.display.update()
             clock.tick(FPS)
@@ -1156,9 +1164,15 @@ class InventoryWindow:
             pygame.display.set_caption("Inventory")
             backpack_image = pygame.image.load('backpack.jpg')
             display.blit(backpack_image, (0, 0))
-            writing_text('', 35, 'LMB = Use Item', 'pure_red', 0, 570)
-            writing_text('', 35, 'RMB = Delete Item', 'pure_red', 320, 570)
+
+            writing_text('', 18, 'LMB = Use Item', 'pure_red', 0, 555)
+            writing_text('', 18, 'RMB = Delete Item', 'pure_red', 0, 580)
             writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+
+            statistic_window.statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistic_window.statistics_buttons(250, 570, 110, 20, '', 25, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistic_window.statistics_buttons(370, 570, 130, 20, '', 25, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistic_window.statistics_buttons(510, 570, 130, 20, '', 25, f'HEALTH = {player1.health}', 'needs', player1.health)
 
             # Items in Inventory
             inventory.show_inventory(0, 0, 0)
@@ -1593,18 +1607,12 @@ class SearchWindow:
             # Add menu buttons
             button_maker(0, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Search', 'white',
                          transparent_on=False)  # Search
-            button_maker(100, 550, 150, 40, 'black', 'black', '', 30, ' STAMINA = ' + str(player1.stamina),
-                         'white',  # Stamina
-                         transparent_off=False, transparent_on=False)
-            button_maker(250, 550, 150, 40, 'black', 'black', '', 30, '    HEALTH = ' + str(player1.health), 'white',
-                         # Health
-                         transparent_off=False, transparent_on=False)
-            button_maker(400, 550, 150, 40, 'black', 'black', '', 30, '     FOOD = ' + str(player1.food), 'white',
-                         # Food
-                         transparent_off=False, transparent_on=False)
-            button_maker(550, 550, 150, 40, 'black', 'black', '', 30, '   DRINK = ' + str(player1.drink), 'white',
-                         # Drink
-                         transparent_off=False, transparent_on=False)
+
+            statistic_window.statistics_buttons(100, 550, 150, 40, '', 30, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistic_window.statistics_buttons(250, 550, 150, 40, '', 30, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistic_window.statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistic_window.statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
+
             button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Exit', 'white',
                          transparent_on=False)  # Exit
 

@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="809" column="21" lean-forward="true" selection-start-line="809" selection-start-column="21" selection-end-line="809" selection-end-column="21" />
+            <state relative-caret-position="396">
+              <caret line="964" lean-forward="true" selection-start-line="964" selection-end-line="964" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -66,8 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>game_ove</find>
-      <find>class pla</find>
       <find>player.s</find>
       <find>class play</find>
       <find>button_m</find>
@@ -96,6 +94,8 @@
       <find>size</find>
       <find>invento</find>
       <find>invent</find>
+      <find>esc = exit</find>
+      <find>inventor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -309,7 +309,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.06300115" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.20838323" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,8 +428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="809" column="21" lean-forward="true" selection-start-line="809" selection-start-column="21" selection-end-line="809" selection-end-column="21" />
+        <state relative-caret-position="396">
+          <caret line="964" lean-forward="true" selection-start-line="964" selection-end-line="964" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

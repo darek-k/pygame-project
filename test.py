@@ -526,6 +526,12 @@ class Barricade:
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     return previous_window
 
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return previous_window
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "+" Button
                     button = pygame.Rect(320, 200, 80, 45)
                     if event.button == 1:
@@ -665,7 +671,8 @@ class Barricade:
             button_maker(305, 540, 190, 35, 'green', 'blue', '', 45, 'BARRICADE', 'white',  # BARRICADE
                          transparent_on=False, transparent_off=False)
 
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
 
             pygame.display.update()
             clock.tick(FPS)
@@ -849,7 +856,8 @@ class Inventory:
 
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'red')
                 writing_text('', 35, attribute_text + str(item.attribute), 'white', x, y + 50)
-                writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+                button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                             transparent_on=False)  # Exit
 
                 # x += 200
                 # if x > 600:
@@ -948,6 +956,12 @@ class InventoryWindow:
 
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     map_window.open_map_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
 
                 # Create squares in Inventory
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -1146,7 +1160,8 @@ class InventoryWindow:
 
             writing_text('', 18, 'LMB = Use Item', 'pure_red', 0, 555)
             writing_text('', 18, 'RMB = Delete Item', 'pure_red', 0, 580)
-            writing_text('', 35, 'ESC = Exit', 'pure_red', 660, 570)
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
 
             statistic_window.statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
             statistic_window.statistics_buttons(250, 570, 110, 20, '', 25, f'DRINK = {player1.drink}', 'needs', player1.drink)

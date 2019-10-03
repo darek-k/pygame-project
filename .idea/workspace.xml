@@ -32,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="1872" lean-forward="true" selection-start-line="1872" selection-end-line="1872" />
+            <state relative-caret-position="129">
+              <caret line="598" lean-forward="true" selection-start-line="598" selection-end-line="598" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
@@ -41,12 +41,15 @@
                 <element signature="e#1923#5751#0" />
                 <element signature="e#8064#11346#0" />
                 <element signature="e#11409#18707#0" />
-                <element signature="e#18776#29592#0" />
+                <element signature="e#19335#20595#0" />
                 <element signature="e#31522#39698#0" />
                 <element signature="e#39983#54550#0" />
                 <element signature="e#54659#58914#0" />
-                <element signature="e#64958#69700#0" />
-                <element signature="e#69751#75411#0" />
+                <element signature="e#60473#62087#0" />
+                <element signature="e#60803#61064#0" />
+                <element signature="e#61167#61426#0" />
+                <element signature="e#61528#61784#0" />
+                <element signature="e#61883#62087#0" />
                 <element signature="e#75517#78876#0" />
                 <element signature="e#79395#79650#0" />
                 <element signature="e#79757#80013#0" />
@@ -94,10 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>statistics</find>
-      <find>open_equip_item_window</find>
-      <find>esc =</find>
-      <find>do you want to eq</find>
       <find>food</find>
       <find>class in</find>
       <find>search</find>
@@ -124,6 +123,10 @@
       <find>class sta</find>
       <find>print</find>
       <find>next</find>
+      <find>exp</find>
+      <find>player1.sea</find>
+      <find>class barr</find>
+      <find>used_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -456,8 +459,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="1872" lean-forward="true" selection-start-line="1872" selection-end-line="1872" />
+        <state relative-caret-position="129">
+          <caret line="598" lean-forward="true" selection-start-line="598" selection-end-line="598" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
@@ -465,12 +468,15 @@
             <element signature="e#1923#5751#0" />
             <element signature="e#8064#11346#0" />
             <element signature="e#11409#18707#0" />
-            <element signature="e#18776#29592#0" />
+            <element signature="e#19335#20595#0" />
             <element signature="e#31522#39698#0" />
             <element signature="e#39983#54550#0" />
             <element signature="e#54659#58914#0" />
-            <element signature="e#64958#69700#0" />
-            <element signature="e#69751#75411#0" />
+            <element signature="e#60473#62087#0" />
+            <element signature="e#60803#61064#0" />
+            <element signature="e#61167#61426#0" />
+            <element signature="e#61528#61784#0" />
+            <element signature="e#61883#62087#0" />
             <element signature="e#75517#78876#0" />
             <element signature="e#79395#79650#0" />
             <element signature="e#79757#80013#0" />

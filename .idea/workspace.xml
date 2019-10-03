@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="195" column="12" lean-forward="true" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="12" />
+            <state relative-caret-position="290">
+              <caret line="1872" lean-forward="true" selection-start-line="1872" selection-end-line="1872" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
@@ -47,10 +45,22 @@
                 <element signature="e#31522#39698#0" />
                 <element signature="e#39983#54550#0" />
                 <element signature="e#54659#58914#0" />
-                <element signature="e#58986#64849#0" />
                 <element signature="e#64958#69700#0" />
                 <element signature="e#69751#75411#0" />
                 <element signature="e#75517#78876#0" />
+                <element signature="e#79395#79650#0" />
+                <element signature="e#79757#80013#0" />
+                <element signature="e#80124#80715#0" />
+                <element signature="e#80820#81313#0" />
+                <element signature="e#81417#81904#0" />
+                <element signature="e#82007#82488#0" />
+                <element signature="e#82593#83089#0" />
+                <element signature="e#83193#83681#0" />
+                <element signature="e#83786#84279#0" />
+                <element signature="e#84389#84883#0" />
+                <element signature="e#84992#85509#0" />
+                <element signature="e#85614#86110#0" />
+                <element signature="e#86228#86744#0" />
                 <element signature="e#86854#87378#0" />
                 <element signature="e#90636#91995#0" />
                 <element signature="e#92107#93854#0" />
@@ -84,10 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class play</find>
-      <find>button_m</find>
-      <find>equip</find>
-      <find>weapon</find>
       <find>statistics</find>
       <find>open_equip_item_window</find>
       <find>esc =</find>
@@ -114,6 +120,10 @@
       <find>esc = exit</find>
       <find>inventor</find>
       <find>player</find>
+      <find>stast`</find>
+      <find>class sta</find>
+      <find>print</find>
+      <find>next</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -327,12 +337,12 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.06300115" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.20838323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49942726" weight="0.32934132" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934132" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49942726" weight="0.32934132" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50057274" side_tool="true" weight="0.20598802" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49942726" weight="0.20598802" />
@@ -446,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="195" column="12" lean-forward="true" selection-start-line="195" selection-start-column="12" selection-end-line="195" selection-end-column="12" />
+        <state relative-caret-position="290">
+          <caret line="1872" lean-forward="true" selection-start-line="1872" selection-end-line="1872" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
@@ -459,10 +469,22 @@
             <element signature="e#31522#39698#0" />
             <element signature="e#39983#54550#0" />
             <element signature="e#54659#58914#0" />
-            <element signature="e#58986#64849#0" />
             <element signature="e#64958#69700#0" />
             <element signature="e#69751#75411#0" />
             <element signature="e#75517#78876#0" />
+            <element signature="e#79395#79650#0" />
+            <element signature="e#79757#80013#0" />
+            <element signature="e#80124#80715#0" />
+            <element signature="e#80820#81313#0" />
+            <element signature="e#81417#81904#0" />
+            <element signature="e#82007#82488#0" />
+            <element signature="e#82593#83089#0" />
+            <element signature="e#83193#83681#0" />
+            <element signature="e#83786#84279#0" />
+            <element signature="e#84389#84883#0" />
+            <element signature="e#84992#85509#0" />
+            <element signature="e#85614#86110#0" />
+            <element signature="e#86228#86744#0" />
             <element signature="e#86854#87378#0" />
             <element signature="e#90636#91995#0" />
             <element signature="e#92107#93854#0" />

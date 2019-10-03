@@ -163,8 +163,17 @@ class Player:
         self.stamina = 30
         self.health = 30
 
-        self.exp = 0
+        self.exp = 40
+        self.exp_to_next_level = 50
         self.level = 1
+        self.leveled_up = 0
+
+    def level_up(self):
+        print('LEVELED UP!!!')
+        self.level += 1
+        self.exp = 0
+        self.exp_to_next_level += 50
+        self.leveled_up += 1
 
     def update_attributes(self):
         #######   Z tych dwóch linii zrób jedną ###########################
@@ -184,16 +193,6 @@ class Player:
         elif type == 'legs':
             player_equipment.equipped_legs_name = ''
 
-    def level_up(self):
-        exp_need = 50
-        self.leveled_up = 0
-
-        if self.exp == exp_need:
-            self.level += 1
-            self.exp = 0
-            exp_need += 50
-            self.leveled_up += 1
-            
 
     def search(self):
         self.food -= 10
@@ -204,6 +203,8 @@ class Player:
             self.stamina = 0
             # MECHANIZM OMDLENIA TUTAJ PÓŹNIEJ DODAM
         self.exp += 10
+        if self.exp >= self.exp_to_next_level:
+            self.level_up()
 
     def food_and_drink(self):
         if self.food < 0:
@@ -257,11 +258,6 @@ class Player:
                                 player1.health += (attribute * 10)
                                 if player1.health > 100:
                                     player1.health = 100
-
-                            print('player food = ', player1.food)
-                            print('player drink = ', player1.drink)
-                            print('player stamina = ', player1.stamina)
-                            print('player health = ', player1.health)
 
                             inventory_window.open_inventory_window()
 
@@ -1329,6 +1325,8 @@ class StatisticsWindow:
                          text_on=True, )
 
     def open_statistics_window(self):
+        print('exp: ', player1.exp)
+        print('level: ', player1.level)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -1863,7 +1861,13 @@ class MapWindow:
 
 
             if player1.health <= 20 or player1.food == 0 or player1.drink == 0 or player1.stamina <= 10:
-                button_maker(760, 10, 25, 25, 'black', 'black', '', 30, '!'.center(3, ' '), 'pure_red', transparent_on=False,
+                button_maker(760, 10, 25, 25, 'black', 'black', '', 30, '!'.center(3, ' '), 'pure_red',
+                             transparent_on=False,
+                             transparent_off=False)
+
+            if player1.leveled_up > 0:
+                button_maker(20, 10, 130, 25, 'black', 'black', '', 30, 'NEW LEVEL!'.center(3, ' '), 'green',
+                             transparent_on=False,
                              transparent_off=False)
 
 

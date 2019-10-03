@@ -158,10 +158,10 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 50
+        self.food = 10
         self.drink = 50
-        self.stamina = 100
-        self.health = 100
+        self.stamina = 30
+        self.health = 30
 
         self.exp = 0
         self.level = 1
@@ -183,6 +183,17 @@ class Player:
             player_equipment.equipped_torso_name = ''
         elif type == 'legs':
             player_equipment.equipped_legs_name = ''
+
+    def level_up(self):
+        exp_need = 50
+        self.leveled_up = 0
+
+        if self.exp == exp_need:
+            self.level += 1
+            self.exp = 0
+            exp_need += 50
+            self.leveled_up += 1
+            
 
     def search(self):
         self.food -= 10
@@ -1849,6 +1860,12 @@ class MapWindow:
             pygame.display.set_caption("Map")
             map_image = pygame.image.load('map.jpg')
             display.blit(map_image, (0, 0))
+
+
+            if player1.health <= 20 or player1.food == 0 or player1.drink == 0 or player1.stamina <= 10:
+                button_maker(760, 10, 25, 25, 'black', 'black', '', 30, '!'.center(3, ' '), 'pure_red', transparent_on=False,
+                             transparent_off=False)
+
 
             # Locations on the Map
             button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',

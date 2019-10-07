@@ -158,13 +158,21 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 50
+        self.food = 10
         self.drink = 50
-        self.stamina = 100
-        self.health = 100
+        self.stamina = 30
+        self.health = 30
 
-        self.exp = 0
+        self.exp = 40
+        self.exp_to_next_level = 50
         self.level = 1
+        self.leveled_up = 0
+
+    def level_up(self):
+        print('LEVELED UP!!!')
+        self.level += 1
+        self.exp_to_next_level += self.exp + 20
+        self.leveled_up += 1
 
     def update_attributes(self):
         #######   Z tych dwóch linii zrób jedną ###########################
@@ -184,15 +192,8 @@ class Player:
         elif type == 'legs':
             player_equipment.equipped_legs_name = ''
 
-    def search(self):
-        self.food -= 10
-        self.drink -= 10
-        if self.stamina > 0:
-            self.stamina -= 10
-        elif self.stamina <= 0:
-            self.stamina = 0
-            # MECHANIZM OMDLENIA TUTAJ PÓŹNIEJ DODAM
-        self.exp += 10
+
+
 
     def food_and_drink(self):
         if self.food < 0:
@@ -246,11 +247,6 @@ class Player:
                                 player1.health += (attribute * 10)
                                 if player1.health > 100:
                                     player1.health = 100
-
-                            print('player food = ', player1.food)
-                            print('player drink = ', player1.drink)
-                            print('player stamina = ', player1.stamina)
-                            print('player health = ', player1.health)
 
                             inventory_window.open_inventory_window()
 
@@ -601,17 +597,20 @@ class Barricade:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
+                            # Remove used Boards
+                            used_boards_number = boards_number_on_begin - boards_number
+                            print('liczba usunietych desek: ', used_boards_number)
+                            print('liczba pozostałych desek: ', boards_number)
+
                             # Update statistics
                             new_defence = defence
                             player1.stamina = stamina
                             player1.health = health
                             player1.food = food
                             player1.drink = drink
-
-                            # Remove used Boards
-                            used_boards_number = boards_number_on_begin - boards_number
-                            print('liczba usunietych desek: ', used_boards_number)
-                            print('liczba pozostałych desek: ', boards_number)
+                            player1.exp += used_boards_number * 10
+                            if player1.exp >= player1.exp_to_next_level:
+                                player1.level_up()
 
                             # Create list of items names
                             names_list = [item.name for item in inventory.inventory]
@@ -622,7 +621,6 @@ class Barricade:
                                 print(names_list.index("Board", start_index))
                                 index = names_list.index("Board", start_index)
                                 start_index += 1
-
                                 del inventory.inventory[index]
                                 names_list = [item.name for item in inventory.inventory]
                                 print('Usunięto przedmiot z indeksem: ', index)
@@ -1281,7 +1279,7 @@ equip_item_window = EquipItemWindow()
 
 class StatisticsWindow:
 
-    def statistics_buttons(self, x, y, w, h, font, font_size, text_input, stat_group, stat_points):
+    def statistics_buttons(self, x, y, w, h, font, font_size, text_input, stat_group, stat_points, *args):
         text_color = colors['black']
 
         if stat_group == 'needs':
@@ -1318,6 +1316,8 @@ class StatisticsWindow:
                          text_on=True, )
 
     def open_statistics_window(self):
+        print('exp: ', player1.exp)
+        print('level: ', player1.level)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -1379,8 +1379,10 @@ class StatisticsWindow:
             self.statistics_buttons(0, 460, 245, 40, '', 36, 'HEALTH:   ' + str(player1.health), 'needs',
                                     player1.health)
 
-            self.statistics_buttons(0, 500, 245, 50, '', 36, 'EXP:   ' + str(player1.exp), 'exp', player1.exp)
+            self.statistics_buttons(0, 500, 245, 50, '', 36, 'EXP:    ' + str(player1.exp) + ' / ' + str(player1.exp_to_next_level),
+                                    'exp', player1.exp)
             self.statistics_buttons(0, 550, 245, 50, '', 36, 'LEVEL:   ' + str(player1.level), 'exp', player1.level)
+
 
             # Equipment buttons
             self.equipment_buttons(380, 420, 100, 50, player_equipment.equipped_weapon_name, 'Weapon')  # Weapon
@@ -1445,7 +1447,18 @@ class SearchItem:
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)
             chest_location.remove(found_item)
-            player1.search()
+
+            player1.food -= 10
+            player1.drink -= 10
+            if player1.stamina > 0:
+                player1.stamina -= 10
+            elif player1.stamina <= 0:
+                player1.stamina = 0
+                print('You are too tired to search') # todo: Zmień żeby nie dało się wtedy szukać
+            player1.exp += 10
+            if player1.exp >= player1.exp_to_next_level:
+                player1.level_up()
+
             player1.food_and_drink()
 
         except ValueError:
@@ -1849,6 +1862,18 @@ class MapWindow:
             pygame.display.set_caption("Map")
             map_image = pygame.image.load('map.jpg')
             display.blit(map_image, (0, 0))
+
+
+            if player1.health <= 20 or player1.food == 0 or player1.drink == 0 or player1.stamina <= 10:
+                button_maker(760, 10, 25, 25, 'black', 'black', '', 30, '!'.center(3, ' '), 'pure_red',
+                             transparent_on=False,
+                             transparent_off=False)
+
+            if player1.leveled_up > 0:
+                button_maker(20, 10, 130, 25, 'black', 'black', '', 30, 'NEW LEVEL!'.center(3, ' '), 'green',
+                             transparent_on=False,
+                             transparent_off=False)
+
 
             # Locations on the Map
             button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',

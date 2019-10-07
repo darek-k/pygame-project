@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
@@ -22,39 +21,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="739">
-              <caret line="1951" column="27" selection-start-line="1951" selection-start-column="27" selection-end-line="1951" selection-end-column="27" />
+            <state relative-caret-position="163">
+              <caret line="2062" column="28" lean-forward="true" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
                 <element signature="e#1130#1833#0" />
                 <element signature="e#1923#5751#0" />
-                <element signature="e#8018#11023#0" />
-                <element signature="e#11086#18384#0" />
-                <element signature="e#19012#20272#0" />
-                <element signature="e#31389#39565#0" />
-                <element signature="e#39850#54417#0" />
-                <element signature="e#54526#58781#0" />
-                <element signature="e#60423#62037#0" />
-                <element signature="e#60753#61014#0" />
-                <element signature="e#61117#61376#0" />
-                <element signature="e#61478#61734#0" />
-                <element signature="e#61833#62037#0" />
-                <element signature="e#75951#79310#0" />
-                <element signature="e#79829#80084#0" />
-                <element signature="e#80191#80447#0" />
-                <element signature="e#80558#81149#0" />
-                <element signature="e#81254#81747#0" />
-                <element signature="e#81851#82338#0" />
-                <element signature="e#82441#82922#0" />
-                <element signature="e#83027#83523#0" />
-                <element signature="e#83627#84115#0" />
-                <element signature="e#84220#84713#0" />
-                <element signature="e#84823#85317#0" />
-                <element signature="e#85426#85943#0" />
-                <element signature="e#86048#86544#0" />
-                <element signature="e#86662#87178#0" />
-                <element signature="e#87288#87812#0" />
               </folding>
             </state>
           </provider>
@@ -63,13 +36,28 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="1320" column="8" selection-start-line="1320" selection-start-column="8" selection-end-line="1320" selection-end-column="8" />
+            <state relative-caret-position="355">
+              <caret line="2033" column="27" lean-forward="true" selection-start-line="2033" selection-start-column="27" selection-end-line="2033" selection-end-column="27" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
                 <element signature="e#1130#1833#0" />
                 <element signature="e#1923#5751#0" />
+                <element signature="e#5781#6077#0" />
+                <element signature="e#6155#11023#0" />
+                <element signature="e#11086#18384#0" />
+                <element signature="e#18453#29459#0" />
+                <element signature="e#29549#29759#0" />
+                <element signature="e#31389#39565#0" />
+                <element signature="e#39850#54417#0" />
+                <element signature="e#54526#58781#0" />
+                <element signature="e#58853#64994#0" />
+                <element signature="e#64987#70134#0" />
+                <element signature="e#70185#75845#0" />
+                <element signature="e#75951#79310#0" />
+                <element signature="e#79434#91543#0" />
+                <element signature="e#91638#92997#0" />
+                <element signature="e#93109#94856#0" />
               </folding>
             </state>
           </provider>
@@ -100,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class in</find>
-      <find>search</find>
       <find>searc</find>
       <find>stamina</find>
       <find>statistics_b</find>
@@ -130,6 +116,8 @@
       <find>used_</find>
       <find>!</find>
       <find>statistic</find>
+      <find>player1</find>
+      <find>class pl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -150,8 +138,8 @@
         <option value="$PROJECT_DIR$/things_to_do.txt" />
         <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/inventory.py" />
-        <option value="$PROJECT_DIR$/main_menu.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/main_menu.py" />
       </list>
     </option>
   </component>
@@ -440,45 +428,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="739">
-          <caret line="1951" column="27" selection-start-line="1951" selection-start-column="27" selection-end-line="1951" selection-end-column="27" />
-          <folding>
-            <element signature="e#93#513#0" />
-            <element signature="e#777#915#0" />
-            <element signature="e#1130#1833#0" />
-            <element signature="e#1923#5751#0" />
-            <element signature="e#8018#11023#0" />
-            <element signature="e#11086#18384#0" />
-            <element signature="e#19012#20272#0" />
-            <element signature="e#31389#39565#0" />
-            <element signature="e#39850#54417#0" />
-            <element signature="e#54526#58781#0" />
-            <element signature="e#60423#62037#0" />
-            <element signature="e#60753#61014#0" />
-            <element signature="e#61117#61376#0" />
-            <element signature="e#61478#61734#0" />
-            <element signature="e#61833#62037#0" />
-            <element signature="e#75951#79310#0" />
-            <element signature="e#79829#80084#0" />
-            <element signature="e#80191#80447#0" />
-            <element signature="e#80558#81149#0" />
-            <element signature="e#81254#81747#0" />
-            <element signature="e#81851#82338#0" />
-            <element signature="e#82441#82922#0" />
-            <element signature="e#83027#83523#0" />
-            <element signature="e#83627#84115#0" />
-            <element signature="e#84220#84713#0" />
-            <element signature="e#84823#85317#0" />
-            <element signature="e#85426#85943#0" />
-            <element signature="e#86048#86544#0" />
-            <element signature="e#86662#87178#0" />
-            <element signature="e#87288#87812#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -489,15 +438,43 @@
     <entry file="file://$PROJECT_DIR$/inventory.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="1320" column="8" selection-start-line="1320" selection-start-column="8" selection-end-line="1320" selection-end-column="8" />
+        <state relative-caret-position="163">
+          <caret line="2062" column="28" lean-forward="true" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
             <element signature="e#1130#1833#0" />
             <element signature="e#1923#5751#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="2033" column="27" lean-forward="true" selection-start-line="2033" selection-start-column="27" selection-end-line="2033" selection-end-column="27" />
+          <folding>
+            <element signature="e#93#513#0" />
+            <element signature="e#777#915#0" />
+            <element signature="e#1130#1833#0" />
+            <element signature="e#1923#5751#0" />
+            <element signature="e#5781#6077#0" />
+            <element signature="e#6155#11023#0" />
+            <element signature="e#11086#18384#0" />
+            <element signature="e#18453#29459#0" />
+            <element signature="e#29549#29759#0" />
+            <element signature="e#31389#39565#0" />
+            <element signature="e#39850#54417#0" />
+            <element signature="e#54526#58781#0" />
+            <element signature="e#58853#64994#0" />
+            <element signature="e#64987#70134#0" />
+            <element signature="e#70185#75845#0" />
+            <element signature="e#75951#79310#0" />
+            <element signature="e#79434#91543#0" />
+            <element signature="e#91638#92997#0" />
+            <element signature="e#93109#94856#0" />
           </folding>
         </state>
       </provider>

@@ -1352,6 +1352,42 @@ class StatisticsWindow:
                         if button.collidepoint(event.pos):
                             return map_window.open_map_window()
 
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click Strength + button
+                    button = pygame.Rect(250, 0, 35, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            player1.strength += 1
+                            player1.leveled_up -= 1
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click Speed + button
+                    button = pygame.Rect(250, 50, 35, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            player1.speed += 1
+                            player1.leveled_up -= 1
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click Dexterity + button
+                    button = pygame.Rect(250, 100, 35, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            player1.dexterity += 1
+                            player1.leveled_up -= 1
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click Intelligence + button
+                    button = pygame.Rect(250, 150, 35, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            player1.intelligence += 1
+                            player1.leveled_up -= 1
+
+                if event.type == pygame.MOUSEBUTTONDOWN: # click Charisma + button
+                    button = pygame.Rect(250, 200, 35, 35)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            player1.charisma += 1
+                            player1.leveled_up -= 1
+
             # Window settings
             pygame.display.set_caption('Statistics')
             stats_image = pygame.image.load('stats.jpg')
@@ -1393,6 +1429,23 @@ class StatisticsWindow:
             # ESC button
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                          transparent_on=False)  # Exit
+
+
+            if player1.leveled_up > 0:
+                # Remaining level points
+                writing_text('', 36, f'Level points = {player1.leveled_up}', 'white', 595, 15)
+
+                # Leveled up buttons
+                button_maker(250, 0, 35, 35, 'green', 'black', '', 40, " +", 'white', transparent_on=False,
+                             transparent_off=False)
+                button_maker(250, 50, 35, 35, 'green', 'black', '', 40, " +", 'white', transparent_on=False,
+                             transparent_off=False)
+                button_maker(250, 100, 35, 35, 'green', 'black', '', 40, " +", 'white', transparent_on=False,
+                             transparent_off=False)
+                button_maker(250, 150, 35, 35, 'green', 'black', '', 40, " +", 'white', transparent_on=False,
+                             transparent_off=False)
+                button_maker(250, 200, 35, 35, 'green', 'black', '', 40, " +", 'white', transparent_on=False,
+                             transparent_off=False)
 
             pygame.display.update()
             clock.tick(FPS)

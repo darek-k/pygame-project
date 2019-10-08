@@ -2,8 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/axe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backpack.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/barricade.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/basilica.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/black_pearl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crane.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crow.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flat.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forest.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_over.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legs.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/office.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opera.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/raven.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurant.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleep1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleep2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sleep3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/soldek.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stats.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supermarket.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torso.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/weapon.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="2062" column="28" lean-forward="true" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
+            <state relative-caret-position="47040">
+              <caret line="2062" column="28" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
@@ -36,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="2033" column="27" lean-forward="true" selection-start-line="2033" selection-start-column="27" selection-end-line="2033" selection-end-column="27" />
+            <state relative-caret-position="122">
+              <caret line="1784" column="54" selection-start-line="1784" selection-start-column="54" selection-end-line="1784" selection-end-column="54" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
@@ -45,19 +72,10 @@
                 <element signature="e#1923#5751#0" />
                 <element signature="e#5781#6077#0" />
                 <element signature="e#6155#11023#0" />
-                <element signature="e#11086#18384#0" />
                 <element signature="e#18453#29459#0" />
                 <element signature="e#29549#29759#0" />
                 <element signature="e#31389#39565#0" />
-                <element signature="e#39850#54417#0" />
                 <element signature="e#54526#58781#0" />
-                <element signature="e#58853#64994#0" />
-                <element signature="e#64987#70134#0" />
-                <element signature="e#70185#75845#0" />
-                <element signature="e#75951#79310#0" />
-                <element signature="e#79434#91543#0" />
-                <element signature="e#91638#92997#0" />
-                <element signature="e#93109#94856#0" />
               </folding>
             </state>
           </provider>
@@ -88,15 +106,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>searc</find>
-      <find>stamina</find>
-      <find>statistics_b</find>
-      <find>inventory_w</find>
-      <find>statistics_buttons</find>
-      <find>statist</find>
       <find>exit</find>
       <find>if event.butt</find>
-      <find>sleep</find>
       <find>esc = ex</find>
       <find>550, 500, 100, 50</find>
       <find>equip_item_window</find>
@@ -118,6 +129,13 @@
       <find>statistic</find>
       <find>player1</find>
       <find>class pl</find>
+      <find>backpack</find>
+      <find>black_pear</find>
+      <find>game_over</find>
+      <find>sleep.</find>
+      <find>sleep</find>
+      <find>map.</find>
+      <find>wav</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,8 +156,8 @@
         <option value="$PROJECT_DIR$/things_to_do.txt" />
         <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/inventory.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/main_menu.py" />
+        <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
   </component>
@@ -154,8 +172,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,7 +349,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.06300115" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.20838323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -374,13 +392,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_menu01.py" />
-    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko2.py" />
     <entry file="file://$PROJECT_DIR$/things_to_do.txt" />
     <entry file="file://$PROJECT_DIR$/../PYGAME_example/run.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -414,17 +426,24 @@
     <entry file="file://$PROJECT_DIR$/bridge.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/1173598587/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="4724" column="8" selection-start-line="4724" selection-start-column="8" selection-end-line="4724" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_menu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47040">
+          <caret line="2062" column="28" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
+          <folding>
+            <element signature="e#93#513#0" />
+            <element signature="e#777#915#0" />
+            <element signature="e#1130#1833#0" />
+            <element signature="e#1923#5751#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -438,23 +457,10 @@
     <entry file="file://$PROJECT_DIR$/inventory.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="2062" column="28" lean-forward="true" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
-          <folding>
-            <element signature="e#93#513#0" />
-            <element signature="e#777#915#0" />
-            <element signature="e#1130#1833#0" />
-            <element signature="e#1923#5751#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="2033" column="27" lean-forward="true" selection-start-line="2033" selection-start-column="27" selection-end-line="2033" selection-end-column="27" />
+        <state relative-caret-position="122">
+          <caret line="1784" column="54" selection-start-line="1784" selection-start-column="54" selection-end-line="1784" selection-end-column="54" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
@@ -462,19 +468,10 @@
             <element signature="e#1923#5751#0" />
             <element signature="e#5781#6077#0" />
             <element signature="e#6155#11023#0" />
-            <element signature="e#11086#18384#0" />
             <element signature="e#18453#29459#0" />
             <element signature="e#29549#29759#0" />
             <element signature="e#31389#39565#0" />
-            <element signature="e#39850#54417#0" />
             <element signature="e#54526#58781#0" />
-            <element signature="e#58853#64994#0" />
-            <element signature="e#64987#70134#0" />
-            <element signature="e#70185#75845#0" />
-            <element signature="e#75951#79310#0" />
-            <element signature="e#79434#91543#0" />
-            <element signature="e#91638#92997#0" />
-            <element signature="e#93109#94856#0" />
           </folding>
         </state>
       </provider>

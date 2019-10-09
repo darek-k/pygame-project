@@ -444,6 +444,7 @@ class Barricade:
         self.crane_defense = 50
         self.flat_defense = 50
         self.forest_defense = 50
+        self.gate_defense = 50
         self.hotel_defense = 50
         self.office_defense = 50
         self.opera_defense = 50
@@ -465,6 +466,8 @@ class Barricade:
             barricade.flat_defense = new_defence
         if location_name == 'forest':
             barricade.forest_defense = new_defence
+        if location_name == 'gate':
+            barricade.gate_defense = new_defence
         if location_name == 'hotel':
             barricade.hotel_defense = new_defence
         if location_name == 'office':
@@ -724,11 +727,12 @@ cooked_fish = Item('Bread', 8, 'food', '')
 cooked_meat = Item('Cooked meat', 10, 'food', '')
 
 # Create drink instances
-soda = Item('Soda', 5, 'drink', '')
-juice = Item('Soda', 8, 'drink', '')
-water = Item('Water', 10, 'drink', '')
+soda = Item('Soda', 3, 'drink', '')
+juice = Item('Soda', 5, 'drink', '')
+water = Item('Water', 7, 'drink', '')
 
 # Create health instances
+vodka = Item('Vodka', 2, 'health', '')
 painkillers = Item('Painkillers', 3, 'health', '')
 bandage = Item('Bandage', 6, 'health', '')
 
@@ -940,6 +944,7 @@ inventory.add_to_inventory(vest)
 inventory.add_to_inventory(cocaine)
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(water)
+inventory.add_to_inventory(key)
 
 
 class InventoryWindow:
@@ -1472,6 +1477,9 @@ class SearchItem:
         self.chest_forest = [apple]
         self.found_items_forest = []
 
+        self.chest_gate = [apple]
+        self.found_items_gate = []
+
         self.chest_hotel = [water]
         self.found_items_hotel = []
 
@@ -1848,6 +1856,52 @@ class MapWindow:
                                                                  chest.found_items_forest, barricade.forest_defense,
                                                                  'forest')
 
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Gate" window
+                    button = pygame.Rect(610, 160, 60, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            if key in inventory.inventory:
+                                door_sound.play()
+                                location_window.open_location_window('images/open_gate.jpg', 'Gate',
+                                                                     chest.chest_gate,
+                                                                     chest.found_items_gate,
+                                                                     barricade.gate_defense,
+                                                                     'open_gate')
+
+                            elif key not in inventory.inventory:
+                                while True:
+
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.QUIT:
+                                            pygame.quit()
+                                            sys.exit()
+
+                                        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                                            map_window.open_map_window()
+
+                                        if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
+                                            button = pygame.Rect(600, 550, 200, 40)
+                                            if event.button == 1:
+                                                if button.collidepoint(event.pos):
+                                                    map_window.open_map_window()
+
+                                    # Window name
+                                    pygame.display.set_caption("Closed Gate")
+
+                                    # Add screen image
+                                    location_image = pygame.image.load('images/closed_gate.jpg')
+                                    display.blit(location_image, (0, 0))
+
+                                    # Add menu buttons
+                                    button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
+                                                 '          Exit', 'white',
+                                                 transparent_on=False, transparent_off=False)  # Exit
+
+                                    pygame.display.update()
+                                    clock.tick(FPS)
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Hotel" window
                     button = pygame.Rect(450, 265, 70, 50)
                     if event.button == 1:
@@ -1958,6 +2012,10 @@ class MapWindow:
                          transparent_on=False, text_on=False)  # Flat
             button_maker(450, 25, 75, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Forest', 'white',
                          transparent_on=False, text_on=False)  # Forest
+
+            button_maker(610, 160, 60, 40, 'grey', 'yellow', 'Comic Sans MS', 23, 'Gate', 'white',
+                         transparent_on=False, text_on=False)  # Gate
+
             button_maker(450, 265, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Hotel', 'white',
                          transparent_on=False, text_on=False)  # Hotel
             button_maker(650, 270, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Office', 'white',
@@ -2073,4 +2131,5 @@ class GameOverWindow:
 
 game_over_window = GameOverWindow()  # Instance of GameOverWindow Class
 
-main_menu_window.open_main_menu_window()
+# main_menu_window.open_main_menu_window()
+map_window.open_map_window()

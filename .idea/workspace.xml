@@ -3,34 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/axe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backpack.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/barricade.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/basilica.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/black_pearl.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crane.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crow.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forest.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_over.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gun.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/legs.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/office.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opera.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/raven.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/restaurant.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sleep1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sleep2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sleep3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/soldek.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/supermarket.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torso.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weapon.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="1784" column="54" selection-start-line="1784" selection-start-column="54" selection-end-line="1784" selection-end-column="54" />
+            <state relative-caret-position="205">
+              <caret line="949" column="4" selection-start-line="949" selection-start-column="3" selection-end-line="949" selection-end-column="4" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
@@ -72,10 +45,6 @@
                 <element signature="e#1923#5751#0" />
                 <element signature="e#5781#6077#0" />
                 <element signature="e#6155#11023#0" />
-                <element signature="e#18453#29459#0" />
-                <element signature="e#29549#29759#0" />
-                <element signature="e#31389#39565#0" />
-                <element signature="e#54526#58781#0" />
               </folding>
             </state>
           </provider>
@@ -106,17 +75,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>exit</find>
-      <find>if event.butt</find>
-      <find>esc = ex</find>
-      <find>550, 500, 100, 50</find>
-      <find>equip_item_window</find>
-      <find>size</find>
-      <find>invento</find>
-      <find>invent</find>
-      <find>esc = exit</find>
-      <find>inventor</find>
-      <find>player</find>
       <find>stast`</find>
       <find>class sta</find>
       <find>print</find>
@@ -136,6 +94,17 @@
       <find>sleep</find>
       <find>map.</find>
       <find>wav</find>
+      <find>mp3</find>
+      <find>chest.chest</find>
+      <find>ches</find>
+      <find>chest_location</find>
+      <find>chest_fore</find>
+      <find>forest_defe</find>
+      <find>open_location_window</find>
+      <find>open_loca</find>
+      <find>untitl</find>
+      <find>key</find>
+      <find>add_to</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,8 +141,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pygame_zombiegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pygame_zombiegame" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -346,10 +325,10 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24968314" />
       <window_info id="Favorites" order="1" sideWeight="0.50201887" side_tool="true" weight="0.4334601" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.06300115" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.20838323" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.16766468" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -411,21 +390,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gun.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sleep3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sleep1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sleep2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bridge.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/gun.jpg" />
+    <entry file="file://$PROJECT_DIR$/sleep3.jpg" />
+    <entry file="file://$PROJECT_DIR$/sleep1.jpg" />
+    <entry file="file://$PROJECT_DIR$/sleep2.jpg" />
+    <entry file="file://$PROJECT_DIR$/bridge.jpg" />
     <entry file="file://$PROJECT_DIR$/../cwiczonko/venv/cwiczonko1.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/1173598587/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -459,8 +428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="1784" column="54" selection-start-line="1784" selection-start-column="54" selection-end-line="1784" selection-end-column="54" />
+        <state relative-caret-position="205">
+          <caret line="949" column="4" selection-start-line="949" selection-start-column="3" selection-end-line="949" selection-end-column="4" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
@@ -468,10 +437,6 @@
             <element signature="e#1923#5751#0" />
             <element signature="e#5781#6077#0" />
             <element signature="e#6155#11023#0" />
-            <element signature="e#18453#29459#0" />
-            <element signature="e#29549#29759#0" />
-            <element signature="e#31389#39565#0" />
-            <element signature="e#54526#58781#0" />
           </folding>
         </state>
       </provider>

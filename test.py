@@ -1,4 +1,5 @@
 # Initialization
+import operator
 import pygame
 import random
 import sys
@@ -50,7 +51,7 @@ def button_maker(x, y, w, h, color_on, color_off, font, font_size, text_input, t
 
 # Function that deletes item from inventory
 def delete_item_from_inventory(index):
-    item_index = list(inventory.inventory)[index]
+    item_index = list(inventory.sorted_inventory)[index]
     items_names = []
 
     for item in inventory.inventory:  # Create a list of items names
@@ -192,9 +193,6 @@ class Player:
         elif type == 'legs':
             player_equipment.equipped_legs_name = ''
 
-
-
-
     def food_and_drink(self):
         if self.food < 0:
             self.health -= 5
@@ -206,7 +204,7 @@ class Player:
             game_over_window.open_game_over_window()
 
     def use_item(self, index, type, attribute):   ######## Przenieś tę metodę do klasy PlayerEquipment ##########
-        item_index = list(inventory.inventory)[index]
+        item_index = list(inventory.sorted_inventory)[index]
         items_names = []
 
         for item in inventory.inventory:  # Create a list of items names
@@ -229,7 +227,6 @@ class Player:
 
                             inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
                             items_names.remove(item_index.name)  # Remove Item from items_names[]
-
 
                             if type == 'food':
                                 player1.food += (attribute * 10)
@@ -489,7 +486,6 @@ class Barricade:
 
     def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location, found_item_location):
                                                             # It's used in open_location_window()
-
         defence_on_begin = defence
         new_defence = 0
 
@@ -746,8 +742,11 @@ board = Item("Board", '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
+
 class Inventory:
     def __init__(self):
+
+        # sorted_x = sorted(x, key=operator.attrgetter('score'))
         self.inventory = []
 
     def add_to_inventory(self, item):
@@ -757,7 +756,10 @@ class Inventory:
         x = 0
         y = 0
 
-        for item in self.inventory:
+        self.sorted_inventory = sorted(self.inventory, key=operator.attrgetter('type', 'name'))
+
+        # for item in self.inventory:
+        for item in self.sorted_inventory:
 
             # icon = pygame.image.load(item.icon)     ###### Wyświetlanie grafiki #######
             # display.blit(icon, (300,120))
@@ -835,8 +837,6 @@ class Inventory:
 
         for item in self.inventory:
             index = inventory.inventory.index(item)
-
-            # print(item.name, index)
 
             if item.type == type:
 
@@ -987,7 +987,7 @@ class InventoryWindow:
                                 try:
                                     if x == 200 and y == 0:
                                         index = 0
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                             item_index.type == 'stamina' or item_index.type == 'health':
                                                 player1.use_item(index, item_index.type, item_index.attribute)
@@ -998,7 +998,7 @@ class InventoryWindow:
 
                                     if x == 400 and y == 0:
                                         index = 1
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1008,7 +1008,7 @@ class InventoryWindow:
 
                                     if x == 600 and y == 0:
                                         index = 2
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1018,7 +1018,7 @@ class InventoryWindow:
 
                                     if x == 0 and y == 150:
                                         index = 3
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1028,7 +1028,7 @@ class InventoryWindow:
 
                                     if x == 200 and y == 150:
                                         index = 4
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1038,7 +1038,7 @@ class InventoryWindow:
 
                                     if x == 400 and y == 150:
                                         index = 5
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1048,7 +1048,7 @@ class InventoryWindow:
 
                                     if x == 600 and y == 150:
                                         index = 6
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1058,7 +1058,7 @@ class InventoryWindow:
 
                                     if x == 0 and y == 300:
                                         index = 7
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1068,7 +1068,7 @@ class InventoryWindow:
 
                                     if x == 200 and y == 300:
                                         index = 8
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1078,7 +1078,7 @@ class InventoryWindow:
 
                                     if x == 400 and y == 300:
                                         index = 9
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1088,7 +1088,7 @@ class InventoryWindow:
 
                                     if x == 600 and y == 300:
                                         index = 10
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)
@@ -1098,7 +1098,7 @@ class InventoryWindow:
 
                                     if x == 0 and y == 450:
                                         index = 11
-                                        item_index = list(inventory.inventory)[index]
+                                        item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
                                             player1.use_item(index, item_index.type, item_index.attribute)

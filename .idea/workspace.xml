@@ -36,15 +36,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="949" column="4" selection-start-line="949" selection-start-column="3" selection-end-line="949" selection-end-column="4" />
+            <state relative-caret-position="331">
+              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="e#93#513#0" />
                 <element signature="e#777#915#0" />
                 <element signature="e#1130#1833#0" />
-                <element signature="e#1923#5751#0" />
                 <element signature="e#5781#6077#0" />
-                <element signature="e#6155#11023#0" />
               </folding>
             </state>
           </provider>
@@ -75,15 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>stast`</find>
-      <find>class sta</find>
-      <find>print</find>
-      <find>next</find>
-      <find>exp</find>
-      <find>player1.sea</find>
-      <find>class barr</find>
-      <find>used_</find>
-      <find>!</find>
       <find>statistic</find>
       <find>player1</find>
       <find>class pl</find>
@@ -105,6 +94,15 @@
       <find>untitl</find>
       <find>key</find>
       <find>add_to</find>
+      <find>s</find>
+      <find>show_item</find>
+      <find>show_inv</find>
+      <find>inventory</find>
+      <find>delete_item</find>
+      <find>sorted_in</find>
+      <find>player</find>
+      <find>class pla</find>
+      <find>inventory.inve</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,6 +139,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,7 +151,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -328,7 +326,7 @@
       <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.16766468" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.26586828" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,15 +426,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="949" column="4" selection-start-line="949" selection-start-column="3" selection-end-line="949" selection-end-column="4" />
+        <state relative-caret-position="331">
+          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="e#93#513#0" />
             <element signature="e#777#915#0" />
             <element signature="e#1130#1833#0" />
-            <element signature="e#1923#5751#0" />
             <element signature="e#5781#6077#0" />
-            <element signature="e#6155#11023#0" />
           </folding>
         </state>
       </provider>

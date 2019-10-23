@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Create/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Create/buttons_etc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,43 +20,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_menu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47040">
-              <caret line="2062" column="28" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
-              <folding>
-                <element signature="e#93#513#0" />
-                <element signature="e#777#915#0" />
-                <element signature="e#1130#1833#0" />
-                <element signature="e#1923#5751#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="21" column="20" lean-forward="true" selection-end-line="2145" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="2145" column="28" lean-forward="true" selection-start-line="2145" selection-start-column="28" selection-end-line="2145" selection-end-column="28" />
+            <state relative-caret-position="48">
+              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+            <state relative-caret-position="336">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Create/buttons_etc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,9 +116,10 @@
         <option value="$PROJECT_DIR$/map.py" />
         <option value="$PROJECT_DIR$/inventory.py" />
         <option value="$PROJECT_DIR$/main_menu.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Create/buttons_etc.py" />
       </list>
     </option>
   </component>
@@ -139,6 +128,9 @@
     <option name="y" value="8" />
     <option name="width" value="824" />
     <option name="height" value="867" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -152,6 +144,11 @@
             <path>
               <item name="pygame_zombiegame" type="b2602c69:ProjectViewProjectNode" />
               <item name="pygame_zombiegame" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pygame_zombiegame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pygame_zombiegame" type="462c0819:PsiDirectoryNode" />
+              <item name="Create" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -312,6 +309,28 @@
       <option name="presentableId" value="Default" />
       <updated>1557844280587</updated>
     </task>
+    <task id="LOCAL-00001" summary="Change test.py into main.py">
+      <created>1571822801779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571822801779</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Deleted inventory.py and map.py">
+      <created>1571822855121</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571822855121</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Deleted main_menu.py">
+      <created>1571822901388</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571822901388</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -329,10 +348,10 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24968314" />
       <window_info id="Favorites" order="1" sideWeight="0.50201887" side_tool="true" weight="0.4334601" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.26586828" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49942726" visible="true" weight="0.26586828" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -364,6 +383,12 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Change test.py into main.py" />
+    <MESSAGE value="Deleted inventory.py and map.py" />
+    <MESSAGE value="Deleted main_menu.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted main_menu.py" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/colors.py" />
@@ -407,19 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47040">
-          <caret line="2062" column="28" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
-          <folding>
-            <element signature="e#93#513#0" />
-            <element signature="e#777#915#0" />
-            <element signature="e#1130#1833#0" />
-            <element signature="e#1923#5751#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -430,17 +442,16 @@
     <entry file="file://$PROJECT_DIR$/inventory.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/main_menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="21" column="20" lean-forward="true" selection-end-line="2145" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="2145" column="28" lean-forward="true" selection-start-line="2145" selection-start-column="28" selection-end-line="2145" selection-end-column="28" />
+        <state relative-caret-position="3115">
+          <caret line="2062" column="28" selection-start-line="2062" selection-start-column="28" selection-end-line="2062" selection-end-column="28" />
+          <folding>
+            <element signature="e#93#513#0" />
+            <element signature="e#777#915#0" />
+            <element signature="e#1130#1833#0" />
+            <element signature="e#1923#5751#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -448,6 +459,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Create/buttons_etc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>

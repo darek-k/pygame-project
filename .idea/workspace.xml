@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ed5376-f13d-4330-affd-59e21024a32b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
@@ -33,17 +34,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-              <folding>
-                <element signature="e#93#513#0" />
-                <element signature="e#777#915#0" />
-                <element signature="e#1130#1833#0" />
-                <element signature="e#5781#6077#0" />
-              </folding>
+            <state relative-caret-position="39072">
+              <caret line="1632" lean-forward="true" selection-start-line="1632" selection-end-line="1632" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="130" column="28" lean-forward="true" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -73,25 +77,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>statistic</find>
-      <find>player1</find>
-      <find>class pl</find>
-      <find>backpack</find>
-      <find>black_pear</find>
-      <find>game_over</find>
-      <find>sleep.</find>
-      <find>sleep</find>
-      <find>map.</find>
-      <find>wav</find>
-      <find>mp3</find>
-      <find>chest.chest</find>
-      <find>ches</find>
-      <find>chest_location</find>
-      <find>chest_fore</find>
-      <find>forest_defe</find>
-      <find>open_location_window</find>
-      <find>open_loca</find>
-      <find>untitl</find>
       <find>key</find>
       <find>add_to</find>
       <find>s</find>
@@ -103,10 +88,34 @@
       <find>player</find>
       <find>class pla</find>
       <find>inventory.inve</find>
+      <find>chest</find>
+      <find>chest_crane</find>
+      <find>open_location_window</find>
+      <find>class play</find>
+      <find>defen</find>
+      <find>set</find>
+      <find>set_</find>
+      <find>set_de</find>
+      <find>locations</find>
+      <find>open_loca</find>
+      <find>black_pea</find>
+      <find>set_nu</find>
+      <find>location</find>
+      <find>bridge_</find>
+      <find>open_loc</find>
+      <find>number_of_ite</find>
+      <find>open_lo</find>
+      <find>chest.searc</find>
+      <find>search</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -125,6 +134,7 @@
         <option value="$PROJECT_DIR$/inventory.py" />
         <option value="$PROJECT_DIR$/main_menu.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -323,7 +333,7 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24968314" />
       <window_info id="Favorites" order="1" sideWeight="0.50201887" side_tool="true" weight="0.4334601" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.49798116" visible="true" weight="0.101374574" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49942726" weight="0.26586828" />
@@ -426,14 +436,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#93#513#0" />
-            <element signature="e#777#915#0" />
-            <element signature="e#1130#1833#0" />
-            <element signature="e#5781#6077#0" />
-          </folding>
+        <state relative-caret-position="39072">
+          <caret line="1632" lean-forward="true" selection-start-line="1632" selection-end-line="1632" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="130" column="28" lean-forward="true" selection-start-line="130" selection-start-column="28" selection-end-line="130" selection-end-column="28" />
         </state>
       </provider>
     </entry>

@@ -1462,70 +1462,56 @@ statistic_window = StatisticsWindow()
 
 class SearchItem:
     def __init__(self):
-        self.black_pearl_number_of_items = 0
+
         self.chest_black_pearl = [axe]
         self.found_items_black_pearl = []
         self.entered_the_black_pearl = False
         self.in_location_black_pearl = False
 
 
-        self.bridge_number_of_items = 0
         self.chest_bridge = []
         self.found_items_bridge = []
 
-        self.crane_number_of_items = 0
         self.chest_crane = [armor]
         self.found_items_crane = []
 
-        self.flat_number_of_items = 0
         self.chest_flat = [apple, bread]
         self.found_items_flat = []
 
-        self.forest_number_of_items = 0
         self.chest_forest = [apple]
         self.found_items_forest = []
 
-        self.gate_number_of_items = 0
         self.chest_gate = [apple]
         self.found_items_gate = []
 
-        self.hotel_number_of_items = 0
         self.chest_hotel = [water]
         self.found_items_hotel = []
 
-        self.office_number_of_items = 0
         self.chest_office = [axe]
         self.found_items_office = []
 
-        self.opera_number_of_items = 0
         self.chest_opera = [sword]
         self.found_items_opera = []
 
-        self.restaurant_number_of_items = 0
         self.chest_restaurant = [raw_meat, raw_fish]
         self.found_items_restaurant = []
 
-        self.soldek_number_of_items = 0
         self.chest_soldek = [fishing_trouser]
         self.found_items_soldek = []
 
-        self.basilica_number_of_items = 0
         self.chest_basilica = [vest, sweatpants]
         self.found_items_basilica = []
 
-        self.supermarket_number_of_items = 0
         self.chest_supermarket = [apple, apple, apple, potato, potato, potato, bread, bread, raw_fish, raw_fish,
                                   raw_meat]
         self.found_items_supermarket = []
 
 
-    def search(self, chest_location, found_item_location, number_of_items):
+    def search(self, chest_location, found_item_location):
         try:
             random_index = random.randint(0, len(chest_location) - 1)  # Searching for random item
             found_item = chest_location[random_index]
 
-            number_of_items -= 1
-            print('number_of_items = ', number_of_items)
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)
             # chest_location.remove(found_item)
@@ -1620,7 +1606,7 @@ chest = SearchItem()
 
 class SearchWindow:
 
-    def open_search_window(self, image, previous_window, chest_location, found_item_location, number_of_items):  # Create Chest Window
+    def open_search_window(self, image, previous_window, chest_location, found_item_location):  # Create Chest Window
         while True:
             # Handle events
             for event in pygame.event.get():
@@ -1635,7 +1621,7 @@ class SearchWindow:
                     button = pygame.Rect(0, 550, 100, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            chest.search(chest_location, found_item_location, number_of_items)  # Add items to the "found items" chest
+                            chest.search(chest_location, found_item_location)  # Add items to the "found items" chest
                             # chest_inventory.open_search_window(image, location_window.open_location_window,
                             #                                    chest_location, found_item_location)
                             pygame.display.update()
@@ -1740,14 +1726,7 @@ class LocationWindow:
                           'restaurant', 'soldek', 'basilica', 'supermarket']
 
 
-    def open_location_window(self, image, window_name, chest_location, found_item_location, defence, location_name,
-                             number_of_items, entered_the_location, in_location):
-
-        entered_the_location = True
-        in_location = True
-
-        if number_of_items < 1:
-            number_of_items = random.randint(1,12)
+    def open_location_window(self, image, window_name, chest_location, found_item_location, defence, location_name):
 
         while True:
             # Handle events
@@ -1763,9 +1742,9 @@ class LocationWindow:
                     button = pygame.Rect(0, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            chest.search(chest_location, found_item_location, number_of_items)
+                            chest.search(chest_location, found_item_location)
                             chest_inventory.open_search_window(image, location_window.open_location_window,
-                                                               chest_location, found_item_location, number_of_items)
+                                                               chest_location, found_item_location)
                             pygame.display.update()
                             clock.tick(FPS)
 
@@ -1851,9 +1830,7 @@ class MapWindow:
                             door_sound.play()
                             location_window.open_location_window('images/black_pearl.jpg', '"Black Pearl"',
                                                                  chest.chest_black_pearl, chest.found_items_black_pearl,
-                                                                 barricade.black_pearl_defense, 'black_pearl',
-                                                                 chest.black_pearl_number_of_items, chest.entered_the_black_pearl,
-                                                                 chest.in_location_black_pearl)
+                                                                 barricade.black_pearl_defense, 'black_pearl')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Bridge" window
                     button = pygame.Rect(170, 100, 80, 50)

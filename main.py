@@ -8,12 +8,22 @@ import time
 
 from create.colors import colors
 
+pygame.init()
 
+clock = pygame.time.Clock()
+FPS = 60
+
+# Display window settings
+display_width = 800
+display_height = 600
+display = pygame.display.set_mode((display_width, display_height))
+
+
+# Function that makes text
 def writing_text(font, font_size, text_input, color, x, y):
     my_font = pygame.font.SysFont(font, font_size)
     text = my_font.render(text_input, True, (colors[color]))
     display.blit(text, (x, y))
-
 
 # Function that makes interactive buttons
 def button_maker(x, y, w, h, color_on, color_off, font, font_size, text_input, text_color,
@@ -34,16 +44,6 @@ def button_maker(x, y, w, h, color_on, color_off, font, font_size, text_input, t
             my_font = pygame.font.SysFont(font, font_size)
             text = my_font.render(text_input, True, (colors[text_color]))
             display.blit(text, (x + 1, y + 2))
-
-pygame.init()
-
-clock = pygame.time.Clock()
-FPS = 60
-
-# Display window settings
-display_width = 800
-display_height = 600
-display = pygame.display.set_mode((display_width, display_height))
 
 # Function that deletes item from inventory
 def delete_item_from_inventory(index):
@@ -71,9 +71,9 @@ def delete_item_from_inventory(index):
                         inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
                         items_names.remove(item_index.name)  # Remove Item from items_names[]
 
-                        if item_index.name == player_equipment.equipped_weapon_name or \
-                                item_index.name == player_equipment.equipped_torso_name or \
-                                item_index.name == player_equipment.equipped_legs_name:
+                        if item_index.name == PlayerEquipment().equipped_weapon_name or \
+                                item_index.name == PlayerEquipment().equipped_torso_name or \
+                                item_index.name == PlayerEquipment().equipped_legs_name:
 
                             # If deleted item is still in inventory.inventory[] -> equip this item
                             if item_index.name in items_names:
@@ -89,14 +89,14 @@ def delete_item_from_inventory(index):
 
                                 if item_index.type == 'weapon':
                                     # player1.attack = player1.attack - item_index.attribute
-                                    player_equipment.equipped_weapon_attribute -= item_index.attribute
+                                    PlayerEquipment().equipped_weapon_attribute -= item_index.attribute
 
                                 if item_index.type == 'torso':
                                     # player1.defence = player1.defence - item_index.attribute
-                                    player_equipment.equipped_torso_attribute -= item_index.attribute
+                                    PlayerEquipment().equipped_torso_attribute -= item_index.attribute
 
                                 if item_index.type == 'legs':
-                                    player_equipment.equipped_legs_attribute -= item_index.attribute
+                                    PlayerEquipment().equipped_legs_attribute -= item_index.attribute
 
                                 player1.update_attributes()
 
@@ -137,9 +137,6 @@ class PlayerEquipment:
         self.equipped_legs_attribute = 0
 
 
-player_equipment = PlayerEquipment()
-
-
 # create a Player
 class Player:
     def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
@@ -173,21 +170,21 @@ class Player:
 
     def update_attributes(self):
         #######   Z tych dwóch linii zrób jedną ###########################
-        # self.attack += player_equipment.equipped_weapon_attribute
-        self.attack = 1 + player_equipment.equipped_weapon_attribute
+        # self.attack += PlayerEquipment().equipped_weapon_attribute
+        self.attack = 1 + PlayerEquipment().equipped_weapon_attribute
         self.attack = round(self.attack, 1)
 
-        self.defence = 1 + (player_equipment.equipped_torso_attribute + player_equipment.equipped_legs_attribute)
+        self.defence = 1 + (PlayerEquipment().equipped_torso_attribute + PlayerEquipment().equipped_legs_attribute)
         self.defence = round(self.defence, 1)
 
     def reset_attributes(self, type):
         if type == 'weapon':
-            player_equipment.equipped_weapon_name = ''
+            PlayerEquipment().equipped_weapon_name = ''
             self.attack = 1
         elif type == 'torso':
-            player_equipment.equipped_torso_name = ''
+            PlayerEquipment().equipped_torso_name = ''
         elif type == 'legs':
-            player_equipment.equipped_legs_name = ''
+            PlayerEquipment().equipped_legs_name = ''
 
     def food_and_drink(self):
         if self.food < 0:
@@ -797,17 +794,17 @@ class Inventory:
 
             # Make equipped items GREEN
             if count_weapon == 0:
-                if item.name == player_equipment.equipped_weapon_name:
+                if item.name == PlayerEquipment().equipped_weapon_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
                     writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
                     count_weapon += 1
             if count_torso == 0:
-                if item.name == player_equipment.equipped_torso_name:
+                if item.name == PlayerEquipment().equipped_torso_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
                     writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
                     count_torso += 1
             if count_legs == 0:
-                if item.name == player_equipment.equipped_legs_name:
+                if item.name == PlayerEquipment().equipped_legs_name:
                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
                     writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
                     count_legs += 1
@@ -891,18 +888,18 @@ class Inventory:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             if item.type == 'weapon':
-                                player_equipment.equipped_weapon_attribute = item.attribute
-                                player_equipment.equipped_weapon_name = item.name
+                                PlayerEquipment().equipped_weapon_attribute = item.attribute
+                                PlayerEquipment().equipped_weapon_name = item.name
                                 player1.update_attributes()
 
                             elif item.type == 'torso':
-                                player_equipment.equipped_torso_attribute = item.attribute
-                                player_equipment.equipped_torso_name = item.name
+                                PlayerEquipment().equipped_torso_attribute = item.attribute
+                                PlayerEquipment().equipped_torso_name = item.name
                                 player1.update_attributes()
 
                             elif item.type == 'legs':
-                                player_equipment.equipped_legs_attribute = item.attribute
-                                player_equipment.equipped_legs_name = item.name
+                                PlayerEquipment().equipped_legs_attribute = item.attribute
+                                PlayerEquipment().equipped_legs_name = item.name
                                 player1.update_attributes()
 
                             statistic_window.open_statistics_window()
@@ -1182,11 +1179,6 @@ class EquipItemWindow:
 
         while True:
             # Handle events
-
-            print(player_equipment.equipped_weapon_name, player_equipment.equipped_weapon_attribute)
-            print(player_equipment.equipped_torso_name, player_equipment.equipped_torso_attribute)
-            print(player_equipment.equipped_legs_name, player_equipment.equipped_legs_attribute)
-
             for event in pygame.event.get():
 
                 if event.type == pygame.QUIT:
@@ -1423,9 +1415,9 @@ class StatisticsWindow:
 
 
             # Equipment buttons
-            self.equipment_buttons(380, 420, 100, 50, player_equipment.equipped_weapon_name, 'Weapon')  # Weapon
-            self.equipment_buttons(500, 200, 100, 50, player_equipment.equipped_torso_name, '   Torso')  # Torso
-            self.equipment_buttons(530, 490, 100, 50, player_equipment.equipped_legs_name, '   Legs')  # Legs
+            self.equipment_buttons(380, 420, 100, 50, PlayerEquipment().equipped_weapon_name, 'Weapon')  # Weapon
+            self.equipment_buttons(500, 200, 100, 50, PlayerEquipment().equipped_torso_name, '   Torso')  # Torso
+            self.equipment_buttons(530, 490, 100, 50, PlayerEquipment().equipped_legs_name, '   Legs')  # Legs
 
             # ESC button
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',

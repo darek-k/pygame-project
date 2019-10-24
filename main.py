@@ -5,14 +5,13 @@ import random
 import sys
 import time
 
-
+from clock import clock, FPS
 from create.colors import colors
 from player import PlayerEquipment
 
 pygame.init()
 
-clock = pygame.time.Clock()
-FPS = 60
+
 
 # Display window settings
 display_width = 800
@@ -125,9 +124,6 @@ def delete_item_from_inventory(index):
 
         pygame.display.update()
         clock.tick(FPS)
-
-
-
 
 
 # create a Player

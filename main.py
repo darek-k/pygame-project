@@ -6,6 +6,7 @@ import sys
 import time
 
 from clock import clock, FPS
+from create import writing_text
 from create.colors import colors
 from display import display
 from player import PlayerEquipment
@@ -15,10 +16,10 @@ pygame.init()
 
 
 # Function that makes text
-def writing_text(font, font_size, text_input, color, x, y):
-    my_font = pygame.font.SysFont(font, font_size)
-    text = my_font.render(text_input, True, (colors[color]))
-    display.blit(text, (x, y))
+# def writing_text(font, font_size, text_input, color, x, y):
+#     my_font = pygame.font.SysFont(font, font_size)
+#     text = my_font.render(text_input, True, (colors[color]))
+#     display.blit(text, (x, y))
 
 # Function that makes interactive buttons
 def button_maker(x, y, w, h, color_on, color_off, font, font_size, text_input, text_color,

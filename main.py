@@ -7,16 +7,11 @@ import time
 
 from clock import clock, FPS
 from create.colors import colors
+from display import display
 from player import PlayerEquipment
 
 pygame.init()
 
-
-
-# Display window settings
-display_width = 800
-display_height = 600
-display = pygame.display.set_mode((display_width, display_height))
 
 
 # Function that makes text

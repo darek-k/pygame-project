@@ -5,6 +5,8 @@ import random
 import sys
 import time
 
+from create import button_maker, writing_text
+
 pygame.init()
 
 colors = {
@@ -27,7 +29,7 @@ def delete_item_from_inventory(index):
     item_index = list(inventory.sorted_inventory)[index]
     items_names = []
 
-    for item in inventory.inventory:  # Create a list of items names
+    for item in inventory.inventory:  # create a list of items names
         items_names.append(item.name)
 
     while True:
@@ -117,7 +119,7 @@ class PlayerEquipment:
 player_equipment = PlayerEquipment()
 
 
-# Create a Player
+# create a Player
 class Player:
     def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
 
@@ -180,7 +182,7 @@ class Player:
         item_index = list(inventory.sorted_inventory)[index]
         items_names = []
 
-        for item in inventory.inventory:  # Create a list of items names
+        for item in inventory.inventory:  # create a list of items names
             items_names.append(item.name)
 
         while True:
@@ -475,7 +477,7 @@ class Barricade:
         health = int(player1.health)
         count_health = 0
 
-        # Create list with items names
+        # create list with items names
         names_list = []
         for item in inventory.inventory:
             names_list.append(item.name.strip())
@@ -584,7 +586,7 @@ class Barricade:
                             if player1.exp >= player1.exp_to_next_level:
                                 player1.level_up()
 
-                            # Create list of items names
+                            # create list of items names
                             names_list = [item.name for item in inventory.inventory]
                             print(names_list)
 
@@ -663,7 +665,7 @@ class Item:
 
 
 
-# Create weapon instances
+# create weapon instances
 stone = Item('Stone', 2, 'weapon', '')
 rod = Item('Rod', 3, 'weapon', '')
 bat = Item('Bat', 4, 'weapon', '')
@@ -672,19 +674,19 @@ hammer = Item('Hammer', 6, 'weapon', '')
 axe = Item('Axe', 7, 'weapon', '')
 sword = Item('Sword', 8, 'weapon', '')
 
-# Create torso instances
+# create torso instances
 shirt = Item('Shirt', 2, 'torso', '')
 vest = Item('Vest', 4, 'torso', '')
 jacket = Item('Jacket', 7, 'torso', '')
 armor = Item('Armor', 10, 'torso', '')
 
-# Create legs instances
+# create legs instances
 sweatpants = Item('Sweatpants', 3, 'legs', '')
 jeans = Item('Jeans', 5, 'legs', '')
 fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
 military_trousers = Item('Military ts.', 9, 'legs', '')
 
-# Create food instances
+# create food instances
 apple = Item('Apple', 2, 'food', '')
 bread = Item('Bread', 3, 'food', '')
 raw_meat = Item('Raw meat', 4, 'food', '')
@@ -695,22 +697,22 @@ raw_fish = Item('Raw fish', 7, 'food', '')
 cooked_fish = Item('Bread', 8, 'food', '')
 cooked_meat = Item('Cooked meat', 10, 'food', '')
 
-# Create drink instances
+# create drink instances
 soda = Item('Soda', 3, 'drink', '')
 juice = Item('Soda', 5, 'drink', '')
 water = Item('Water', 7, 'drink', '')
 
-# Create health instances
+# create health instances
 vodka = Item('Vodka', 2, 'health', '')
 painkillers = Item('Painkillers', 3, 'health', '')
 bandage = Item('Bandage', 6, 'health', '')
 
-# Create stamina instances
+# create stamina instances
 energy_drink = Item('Energy Drink', 2, 'stamina', '')
 coffee = Item('Coffee', 3, 'stamina', '')
 cocaine = Item('Cocaine', 5,  'stamina', '')
 
-# Create other instances
+# create other instances
 board = Item("Board", '', 'other', '')
 key = Item('Key', '', 'other', '')
 
@@ -909,7 +911,7 @@ class Inventory:
             clock.tick(FPS)
 
 
-inventory = Inventory()  # Create instance - Inventory
+inventory = Inventory()  # create instance - Inventory
 
 # Add items to inventory
 inventory.add_to_inventory(board)
@@ -922,7 +924,7 @@ inventory.add_to_inventory(key)
 
 class InventoryWindow:
 
-    def open_inventory_window(self):  # Create Inventory Window
+    def open_inventory_window(self):  # create Inventory Window
         while True:
             # Handle events
             for event in pygame.event.get():
@@ -939,7 +941,7 @@ class InventoryWindow:
                         if button.collidepoint(event.pos):
                             return map_window.open_map_window()
 
-                # Create squares in Inventory
+                # create squares in Inventory
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     loop = True
                     x = 0
@@ -1186,7 +1188,7 @@ class EquipItemWindow:
                     w = 200
                     h = 150
 
-                    while loop == True:  # Create squares
+                    while loop == True:  # create squares
                         button = pygame.Rect(x, y, w, h)
                         x += 200
                         if x > 600:
@@ -1429,7 +1431,7 @@ class StatisticsWindow:
             clock.tick(FPS)
 
 
-# Create instance of Statistic Window class
+# create instance of Statistic Window class
 statistic_window = StatisticsWindow()
 
 
@@ -1579,7 +1581,7 @@ chest = SearchItem()
 
 class SearchWindow:
 
-    def open_search_window(self, image, previous_window, chest_location, found_item_location):  # Create Chest Window
+    def open_search_window(self, image, previous_window, chest_location, found_item_location):  # create Chest Window
         while True:
             # Handle events
             for event in pygame.event.get():

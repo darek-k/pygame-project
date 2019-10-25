@@ -1069,32 +1069,38 @@ class InventoryWindow:
                         if event.button == 3:
                             if button.collidepoint(event.pos):
                                 try:
-                                    delete = inventory.delete_item_from_inventory
+                                    delete_item_from_inventory = inventory.delete_item_from_inventory
+                                    
+                                    if y == 0:
+                                        if x == 200:
+                                            delete_item_from_inventory(0)
+                                        if x == 400:
+                                            delete_item_from_inventory(1)
+                                        if x == 600:
+                                            delete_item_from_inventory(2)
+                                        
+                                    if y == 150:
+                                        if x == 0:
+                                            delete_item_from_inventory(3)
+                                        if x == 200:
+                                            delete_item_from_inventory(4)
+                                        if x == 400:
+                                            delete_item_from_inventory(5)
+                                        if x == 600:
+                                            delete_item_from_inventory(6)
 
-                                    if x == 200 and y == 0:
-                                        delete(0)
-                                    if x == 400 and y == 0:
-                                        delete(1)
-                                    if x == 600 and y == 0:
-                                        delete(2)
-                                    if x == 0 and y == 150:
-                                        delete(3)
-                                    if x == 200 and y == 150:
-                                        delete(4)
-                                    if x == 400 and y == 150:
-                                        delete(5)
-                                    if x == 600 and y == 150:
-                                        delete(6)
-                                    if x == 0 and y == 300:
-                                        delete(7)
-                                    if x == 200 and y == 300:
-                                        delete(8)
-                                    if x == 400 and y == 300:
-                                        delete(9)
-                                    if x == 600 and y == 300:
-                                        delete(10)
-                                    if x == 0 and y == 450:
-                                        delete(11)
+                                    if y == 300:
+                                        if x == 0:
+                                            delete_item_from_inventory(7)
+                                        if x == 200:
+                                            delete_item_from_inventory(8)
+                                        if x == 400:
+                                            delete_item_from_inventory(9)
+                                        if x == 600:
+                                            delete_item_from_inventory(10)
+
+                                    if y == 450 and x == 0:
+                                        delete_item_from_inventory(11)
 
                                 except IndexError:
                                     break

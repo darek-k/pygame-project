@@ -8,11 +8,9 @@ import time
 from clock import clock, FPS
 from create import writing_text, button_maker, colors
 from display import display
-from player import PlayerEquipment
+from player import player1_equipment
 
 pygame.init()
-
-
 
 
 # create a Player
@@ -139,7 +137,6 @@ class Player:
 
 
 player1 = Player('John', 5, 5, 5, 5, 5)
-player1_equipment= PlayerEquipment()
 
 
 class Sleep:

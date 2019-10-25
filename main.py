@@ -6,8 +6,7 @@ import sys
 import time
 
 from clock import clock, FPS
-from create import writing_text, button_maker
-from create.colors import colors
+from create import writing_text, button_maker, colors
 from display import display
 from player import PlayerEquipment
 
@@ -696,8 +695,6 @@ key = Item('Key', '', 'other', '')
 
 class Inventory:
     def __init__(self):
-
-        # sorted_x = sorted(x, key=operator.attrgetter('score'))
         self.inventory = []
 
     def add_to_inventory(self, item):
@@ -811,21 +808,6 @@ class Inventory:
                 writing_text('', 35, attribute_text + str(item.attribute), 'white', x, y + 50)
                 button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                              transparent_on=False)  # Exit
-
-                # x += 200
-                # if x > 600:
-                #     x = 0
-                #     y += 200
-
-            # if len(self.inventory) < 12:  # Tworzy puste kwadraty ekwipunku, gdy przedmiotów jest mniej niż 12
-            #     length = 12 - len(self.inventory)
-            #     for i in range(length):
-            #         button_maker(x, y, 200, 200, 'red', 'blue', '', 40, '', 'ultra_green')
-            #
-            #         x += 200
-            #         if x > 600:
-            #             x = 0
-            #             y += 200
 
     def equip_item(self, index, type):
 
@@ -1536,17 +1518,6 @@ class SearchItem:
                 x = 0
                 y += 150
 
-        # if len(self.chest) < 12:
-        #     length = 12 - len(self.chest)
-        #     for i in range(length):
-        #         button_maker(x, y, 200, 200, 'red', 'blue', '', 40, '', 'ultra_green')
-        #
-        #         x += 200
-        #         if x > 600:
-        #             x = 0
-        #             y += 200
-
-
 chest = SearchItem()
 
 
@@ -1568,8 +1539,6 @@ class SearchWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             chest.search(chest_location, found_item_location)  # Add items to the "found items" chest
-                            # chest_inventory.open_search_window(image, location_window.open_location_window,
-                            #                                    chest_location, found_item_location)
                             pygame.display.update()
                             clock.tick(FPS)
 
@@ -2058,18 +2027,18 @@ class GameOverWindow:
                     pygame.quit()
                     sys.exit()
 
-                # if event.type == pygame.MOUSEBUTTONDOWN:
-                # button = pygame.Rect(270, 400, 100, 50)
-                # if event.button == 1:
-                # if button.collidepoint(event.pos):
-                # main_menu_window.open_main_menu_window()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    button = pygame.Rect(270, 400, 100, 50)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            main_menu_window.open_main_menu_window()
 
-                # if event.type == pygame.MOUSEBUTTONDOWN:
-                # button = pygame.Rect(430, 400, 100, 50)
-                # if event.button == 1:
-                # if button.collidepoint(event.pos):
-                # pygame.quit()
-                # sys.exit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    button = pygame.Rect(430, 400, 100, 50)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            pygame.quit()
+                            sys.exit()
 
             # Window settings, graphic and sound
             pygame.display.set_caption('GAME OVER')
@@ -2078,9 +2047,9 @@ class GameOverWindow:
 
             writing_text('', 70, 'GAME OVER', 'red', 250, 150)
             writing_text('', 50, 'Your level: ' + str(player1.level), 'white', 300, 300)
-            # writing_text('', 40, 'Again?', 'white', 350, 300)
-            # button_maker(270, 400, 100, 50, 'green', 'white', '', 35, 'YES', 'white', transparent_on=False, transparent_off=True)
-            # button_maker(430, 400, 100, 50, 'red', 'white', '', 35, 'NO', 'white', transparent_on=False, transparent_off=True)
+            writing_text('', 40, 'Again?', 'white', 350, 300)
+            button_maker(270, 400, 100, 50, 'green', 'white', '', 35, 'YES', 'white', transparent_on=False, transparent_off=True)
+            button_maker(430, 400, 100, 50, 'red', 'white', '', 35, 'NO', 'white', transparent_on=False, transparent_off=True)
 
             pygame.display.update()
             clock.tick(FPS)

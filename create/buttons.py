@@ -50,3 +50,14 @@ def statistics_buttons(x, y, w, h, font, font_size, text_input, stat_group, stat
     my_font = pygame.font.SysFont(font, font_size)
     text = my_font.render(text_input, True, (text_color))
     display.blit(text, (x + 1, y + 2))
+
+
+def equipment_buttons(x, y, w, h, item_name, item_type):
+    # item_name - name of the equipped item
+    if item_name == '':
+        button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item_type, 'white',
+                     text_on=False, )
+    else:
+        item = item_name
+        button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item, 'white',
+                     text_on=True, )

@@ -6,7 +6,7 @@ import sys
 import time
 
 from clock import clock, FPS
-from create import writing_text, button_maker, colors, statistics_buttons
+from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons
 from display import display
 from player import player1_equipment
 
@@ -70,7 +70,7 @@ class Player:
             self.health -= 10
             self.drink = 0
         if self.health <= 0:
-            game_over_window.open_game_over_window()
+            GameOverWindow().open_game_over_window()
 
     def use_item(self, index, type, attribute):   ######## Przenieś tę metodę do klasy PlayerEquipment ##########
         item_index = list(inventory.sorted_inventory)[index]
@@ -1229,17 +1229,6 @@ equip_item_window = EquipItemWindow()
 
 class StatisticsWindow:
 
-
-    def equipment_buttons(self, x, y, w, h, item_name, item_type):
-        # item_name - name of the equipped item
-        if item_name == '':
-            button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item_type, 'white',
-                         text_on=False, )
-        else:
-            item = item_name
-            button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item, 'white',
-                         text_on=True, )
-
     def open_statistics_window(self):
         while True:
             for event in pygame.event.get():
@@ -1344,9 +1333,9 @@ class StatisticsWindow:
 
 
             # Equipment buttons
-            self.equipment_buttons(380, 420, 100, 50, player1_equipment.equipped_weapon_name, 'Weapon')  # Weapon
-            self.equipment_buttons(500, 200, 100, 50, player1_equipment.equipped_torso_name, '   Torso')  # Torso
-            self.equipment_buttons(530, 490, 100, 50, player1_equipment.equipped_legs_name, '   Legs')  # Legs
+            equipment_buttons(380, 420, 100, 50, player1_equipment.equipped_weapon_name, 'Weapon')  # Weapon
+            equipment_buttons(500, 200, 100, 50, player1_equipment.equipped_torso_name, '   Torso')  # Torso
+            equipment_buttons(530, 490, 100, 50, player1_equipment.equipped_legs_name, '   Legs')  # Legs
 
             # ESC button
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
@@ -2043,8 +2032,6 @@ class GameOverWindow:
             pygame.display.update()
             clock.tick(FPS)
 
-
-game_over_window = GameOverWindow()  # Instance of GameOverWindow Class
-
 # main_menu_window.open_main_menu_window()
-map_window.open_map_window()
+if __name__ == '__main__':
+    map_window.open_map_window()

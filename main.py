@@ -6,7 +6,7 @@ import sys
 import time
 
 from clock import clock, FPS
-from create import writing_text, button_maker, colors
+from create import writing_text, button_maker, colors, statistics_buttons
 from display import display
 from player import player1_equipment
 
@@ -558,7 +558,6 @@ class Item:
         self.type = type
 
 
-
 # create weapon instances
 stone = Item('Stone', 2, 'weapon', '')
 rod = Item('Rod', 3, 'weapon', '')
@@ -609,7 +608,6 @@ cocaine = Item('Cocaine', 5,  'stamina', '')
 # create other instances
 board = Item("Board", '', 'other', '')
 key = Item('Key', '', 'other', '')
-
 
 
 class Inventory:
@@ -1231,31 +1229,6 @@ equip_item_window = EquipItemWindow()
 
 class StatisticsWindow:
 
-    def statistics_buttons(self, x, y, w, h, font, font_size, text_input, stat_group, stat_points, *args):
-        text_color = colors['black']
-
-        if stat_group == 'needs':
-            if stat_points >= 70:
-                color = colors['green']
-            elif stat_points < 70 and stat_points >= 30:
-                color = colors['yellow']
-            elif stat_points < 30:
-                color = colors['red']
-
-        elif stat_group == 'fight':
-            color = colors['light_cream']
-
-        elif stat_group == 'exp':
-            color = colors['black']
-            text_color = colors['white']
-
-        elif stat_group == 'attribute':
-            color = colors['dark_cream']
-
-        pygame.draw.rect(display, (color), (x, y, w, h))
-        my_font = pygame.font.SysFont(font, font_size)
-        text = my_font.render(text_input, True, (text_color))
-        display.blit(text, (x + 1, y + 2))
 
     def equipment_buttons(self, x, y, w, h, item_name, item_type):
         # item_name - name of the equipped item
@@ -1342,32 +1315,32 @@ class StatisticsWindow:
             stats_image = pygame.image.load('images/stats.jpg')
             display.blit(stats_image, (245, 0))
 
-            self.statistics_buttons(0, 0, 245, 50, '', 36, 'STRENGTH:   ' + str(player1.strength), 'attribute',
+            statistics_buttons(0, 0, 245, 50, '', 36, 'STRENGTH:   ' + str(player1.strength), 'attribute',
                                     player1.strength)
-            self.statistics_buttons(0, 50, 245, 50, '', 36, 'SPEED:   ' + str(player1.speed), 'attribute',
+            statistics_buttons(0, 50, 245, 50, '', 36, 'SPEED:   ' + str(player1.speed), 'attribute',
                                     player1.speed)
-            self.statistics_buttons(0, 100, 245, 50, '', 36, 'DEXTERITY:   ' + str(player1.dexterity), 'attribute',
+            statistics_buttons(0, 100, 245, 50, '', 36, 'DEXTERITY:   ' + str(player1.dexterity), 'attribute',
                                     player1.dexterity)
-            self.statistics_buttons(0, 150, 245, 50, '', 36, 'INTELLIGENCE:   ' + str(player1.intelligence),
+            statistics_buttons(0, 150, 245, 50, '', 36, 'INTELLIGENCE:   ' + str(player1.intelligence),
                                     'attribute', player1.intelligence)
-            self.statistics_buttons(0, 200, 245, 50, '', 36, 'CHARISMA:   ' + str(player1.charisma), 'attribute',
+            statistics_buttons(0, 200, 245, 50, '', 36, 'CHARISMA:   ' + str(player1.charisma), 'attribute',
                                     player1.charisma)
 
-            self.statistics_buttons(0, 250, 245, 45, '', 36, 'ATTACK:   ' + str(player1.attack), 'fight',
+            statistics_buttons(0, 250, 245, 45, '', 36, 'ATTACK:   ' + str(player1.attack), 'fight',
                                     player1.attack)
-            self.statistics_buttons(0, 295, 245, 45, '', 36, 'DEFENCE:   ' + str(player1.defence), 'fight',
+            statistics_buttons(0, 295, 245, 45, '', 36, 'DEFENCE:   ' + str(player1.defence), 'fight',
                                     player1.defence)
 
-            self.statistics_buttons(0, 340, 245, 40, '', 36, 'FOOD:   ' + str(player1.food), 'needs', player1.food)
-            self.statistics_buttons(0, 380, 245, 40, '', 36, 'DRINK:   ' + str(player1.drink), 'needs', player1.drink)
-            self.statistics_buttons(0, 420, 245, 40, '', 36, 'STAMINA:   ' + str(player1.stamina), 'needs',
+            statistics_buttons(0, 340, 245, 40, '', 36, 'FOOD:   ' + str(player1.food), 'needs', player1.food)
+            statistics_buttons(0, 380, 245, 40, '', 36, 'DRINK:   ' + str(player1.drink), 'needs', player1.drink)
+            statistics_buttons(0, 420, 245, 40, '', 36, 'STAMINA:   ' + str(player1.stamina), 'needs',
                                     player1.stamina)
-            self.statistics_buttons(0, 460, 245, 40, '', 36, 'HEALTH:   ' + str(player1.health), 'needs',
+            statistics_buttons(0, 460, 245, 40, '', 36, 'HEALTH:   ' + str(player1.health), 'needs',
                                     player1.health)
 
-            self.statistics_buttons(0, 500, 245, 50, '', 36, 'EXP:    ' + str(player1.exp) + ' / ' + str(player1.exp_to_next_level),
+            statistics_buttons(0, 500, 245, 50, '', 36, 'EXP:    ' + str(player1.exp) + ' / ' + str(player1.exp_to_next_level),
                                     'exp', player1.exp)
-            self.statistics_buttons(0, 550, 245, 50, '', 36, 'LEVEL:   ' + str(player1.level), 'exp', player1.level)
+            statistics_buttons(0, 550, 245, 50, '', 36, 'LEVEL:   ' + str(player1.level), 'exp', player1.level)
 
 
             # Equipment buttons

@@ -44,12 +44,10 @@ class Player:
         self.leveled_up += 1
 
     def update_attributes(self):
-        #######   Z tych dwóch linii zrób jedną ###########################
-        # self.attack += PlayerEquipment().equipped_weapon_attribute
         self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
 
-        self.defence = 1 + (player1_equipment.equipped_torso_attribute + player1_equipment.equipped_legs_attribute)
-        self.defence = round(self.defence, 1)
+        self.defence = round(1 + (player1_equipment.equipped_torso_attribute
+                                  + player1_equipment.equipped_legs_attribute), 1)
 
     def reset_attributes(self, type):
         if type == 'weapon':

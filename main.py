@@ -39,7 +39,6 @@ class Player:
         self.leveled_up = 0
 
     def level_up(self):
-        print('LEVELED UP!!!')
         self.level += 1
         self.exp_to_next_level += self.exp + 20
         self.leveled_up += 1
@@ -47,8 +46,7 @@ class Player:
     def update_attributes(self):
         #######   Z tych dwóch linii zrób jedną ###########################
         # self.attack += PlayerEquipment().equipped_weapon_attribute
-        self.attack = 1 + player1_equipment.equipped_weapon_attribute
-        self.attack = round(self.attack, 1)
+        self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
 
         self.defence = 1 + (player1_equipment.equipped_torso_attribute + player1_equipment.equipped_legs_attribute)
         self.defence = round(self.defence, 1)
@@ -1116,10 +1114,10 @@ class InventoryWindow:
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                          transparent_on=False)  # Exit
 
-            statistic_window.statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
-            statistic_window.statistics_buttons(250, 570, 110, 20, '', 25, f'DRINK = {player1.drink}', 'needs', player1.drink)
-            statistic_window.statistics_buttons(370, 570, 130, 20, '', 25, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
-            statistic_window.statistics_buttons(510, 570, 130, 20, '', 25, f'HEALTH = {player1.health}', 'needs', player1.health)
+            statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistics_buttons(250, 570, 110, 20, '', 25, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistics_buttons(370, 570, 130, 20, '', 25, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistics_buttons(510, 570, 130, 20, '', 25, f'HEALTH = {player1.health}', 'needs', player1.health)
 
             # Items in Inventory
             inventory.show_inventory(0, 0, 0)

@@ -389,7 +389,7 @@ class Barricade:
                             return previous_window
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "+" Button
-                    button = pygame.Rect(320, 200, 80, 45)
+                    button = pygame.Rect(320, 100, 80, 45)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             # Change DEFENCE stat
@@ -428,7 +428,7 @@ class Barricade:
 
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "-" Button
-                    button = pygame.Rect(400, 200, 80, 45)
+                    button = pygame.Rect(400, 100, 80, 45)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
@@ -453,7 +453,7 @@ class Barricade:
 
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click BARRICADE Button
-                    button = pygame.Rect(305, 540, 190, 35)
+                    button = pygame.Rect(305, 440, 190, 35)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
@@ -496,33 +496,33 @@ class Barricade:
             location_image = pygame.image.load(image)
             display.blit(location_image, (0, 0))
 
-            button_maker(330, 150, 135, 35, 'grey', 'grey', '', 35, "Barricade?", 'white',
+            button_maker(330, 50, 135, 35, 'grey', 'grey', '', 35, "Barricade?", 'white',
                          transparent_on=False, transparent_off=False)  # Barricade?
 
-            button_maker(320, 200, 80, 45, 'green', 'green', '', 40, '    +', 'white',  # +
+            button_maker(320, 100, 80, 45, 'green', 'green', '', 40, '    +', 'white',  # +
                          transparent_on=False, transparent_off=False)
-            button_maker(400, 200, 80, 45, 'red', 'red', '', 40, '     -', 'white',  # -
-                         transparent_on=False, transparent_off=False)
-
-
-            button_maker(310, 260, 180, 35, 'black', 'black', '', 35, 'DEFENCE = ' + str(defence), 'red',  # Defence
+            button_maker(400, 100, 80, 45, 'red', 'red', '', 40, '     -', 'white',  # -
                          transparent_on=False, transparent_off=False)
 
-            button_maker(310, 300, 180, 35, 'grey', 'grey', '', 35, 'BOARDS = ' + str(boards_number), 'gold',  # Boards
+
+            button_maker(310, 160, 180, 35, 'black', 'black', '', 35, 'DEFENCE = ' + str(defence), 'red',  # Defence
                          transparent_on=False, transparent_off=False)
 
-            pygame.draw.line(display, colors['red'], (310, 345), (490, 345), 4) # line
-
-            button_maker(310, 360, 180, 35, 'grey', 'grey', '', 35, 'STAMINA = ' + str(stamina), 'white',  # Stamina
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 400, 180, 35, 'grey', 'grey', '', 35, 'FOOD = ' + str(food), 'white',  # Food
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 440, 180, 35, 'grey', 'grey', '', 35, 'DRINK = ' + str(drink), 'white',  # Drink
-                         transparent_on=False, transparent_off=False)
-            button_maker(310, 480, 180, 35, 'grey', 'grey', '', 35, 'HEALTH = ' + str(health), 'green',  # Drink
+            button_maker(310, 200, 180, 35, 'grey', 'grey', '', 35, 'BOARDS = ' + str(boards_number), 'gold',  # Boards
                          transparent_on=False, transparent_off=False)
 
-            button_maker(305, 540, 190, 35, 'green', 'blue', '', 45, 'BARRICADE', 'white',  # BARRICADE
+            pygame.draw.line(display, colors['red'], (310, 245), (490, 245), 4) # line
+
+            button_maker(310, 260, 180, 35, 'grey', 'grey', '', 35, 'STAMINA = ' + str(stamina), 'white',  # Stamina
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 300, 180, 35, 'grey', 'grey', '', 35, 'FOOD = ' + str(food), 'white',  # Food
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 340, 180, 35, 'grey', 'grey', '', 35, 'DRINK = ' + str(drink), 'white',  # Drink
+                         transparent_on=False, transparent_off=False)
+            button_maker(310, 380, 180, 35, 'grey', 'grey', '', 35, 'HEALTH = ' + str(health), 'green',  # Drink
+                         transparent_on=False, transparent_off=False)
+
+            button_maker(305, 440, 190, 35, 'green', 'blue', '', 45, 'BARRICADE', 'white',  # BARRICADE
                          transparent_on=False, transparent_off=False)
 
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',

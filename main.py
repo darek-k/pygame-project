@@ -52,7 +52,6 @@ class Player:
     def reset_attributes(self, type):
         if type == 'weapon':
             player1_equipment.equipped_weapon_name = ''
-            self.attack = 1
         elif type == 'torso':
             player1_equipment.equipped_torso_name = ''
         elif type == 'legs':
@@ -276,13 +275,13 @@ class Sleep:
             button_maker(410, 265, 60, 25, 'red', 'red', '', 40, '   -', 'white',  # Less
                          transparent_on=False, transparent_off=False)
 
-            statistic_window.statistics_buttons(310, 300, 180, 35, '', 35, f'STAMINA = {stamina}', 'needs',
+            statistics_buttons(310, 300, 180, 35, '', 35, f'STAMINA = {stamina}', 'needs',
                                                 stamina)
-            statistic_window.statistics_buttons(310, 340, 180, 35, '', 35, f'HEALTH = {health}', 'needs',
+            statistics_buttons(310, 340, 180, 35, '', 35, f'HEALTH = {health}', 'needs',
                                                 health)
-            statistic_window.statistics_buttons(310, 380, 180, 35, '', 35, f'FOOD = {food}', 'needs',
+            statistics_buttons(310, 380, 180, 35, '', 35, f'FOOD = {food}', 'needs',
                                                 food)
-            statistic_window.statistics_buttons(310, 420, 180, 35, '', 35, f'DRINK = {drink}', 'needs',
+            statistics_buttons(310, 420, 180, 35, '', 35, f'DRINK = {drink}', 'needs',
                                                 drink)
 
             button_maker(350, 500, 100, 35, 'green', 'blue', '', 45, 'SLEEP', 'white',  # SLEEP
@@ -295,8 +294,6 @@ class Sleep:
             pygame.display.update()
             clock.tick(FPS)
 
-
-sleep = Sleep()  # Instance of Sleep class
 
 
 class Barricade:
@@ -352,7 +349,6 @@ class Barricade:
     def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location, found_item_location):
                                                             # It's used in open_location_window()
         defence_on_begin = defence
-        new_defence = 0
 
         stamina_on_begin = int(player1.stamina)
         stamina = int(player1.stamina)
@@ -463,8 +459,6 @@ class Barricade:
 
                             # Remove used Boards
                             used_boards_number = boards_number_on_begin - boards_number
-                            print('liczba usunietych desek: ', used_boards_number)
-                            print('liczba pozostałych desek: ', boards_number)
 
                             # Update statistics
                             new_defence = defence
@@ -478,16 +472,14 @@ class Barricade:
 
                             # create list of items names
                             names_list = [item.name for item in inventory.inventory]
-                            print(names_list)
 
                             start_index = 0
                             for item in range(used_boards_number):
-                                print(names_list.index("Board", start_index))
                                 index = names_list.index("Board", start_index)
                                 start_index += 1
                                 del inventory.inventory[index]
                                 names_list = [item.name for item in inventory.inventory]
-                                print('Usunięto przedmiot z indeksem: ', index)
+
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('images/barricade.jpg')
@@ -495,8 +487,8 @@ class Barricade:
                             pygame.display.update()
                             time.sleep(0.8)
 
-                            return barricade.set_defence(location_name, defence, new_defence, image, window_name, chest_location, found_item_location)
-                            # return barricade.set_defence(location_name, new_defence)
+                            return barricade.set_defence(location_name, defence, new_defence, image, window_name,
+                                                         chest_location, found_item_location)
 
 
             # Window settings and graphic
@@ -1367,9 +1359,6 @@ class SearchItem:
 
         self.chest_black_pearl = [axe]
         self.found_items_black_pearl = []
-        self.entered_the_black_pearl = False
-        self.in_location_black_pearl = False
-
 
         self.chest_bridge = []
         self.found_items_bridge = []
@@ -1641,7 +1630,7 @@ class LocationWindow:
                     button = pygame.Rect(200, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            sleep.open_sleep_window(image, location_window.open_location_window)
+                            Sleep().open_sleep_window(image, location_window.open_location_window)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Barricade
                     button = pygame.Rect(400, 550, 200, 40)

@@ -1885,7 +1885,7 @@ class MapWindow:
                              transparent_off=False)
 
             if player1.leveled_up > 0:
-                button_maker(20, 10, 130, 25, 'black', 'black', '', 30, 'NEW LEVEL!'.center(3, ' '), 'green',
+                button_maker(20, 10, 130, 25, 'red', 'black', '', 30, 'NEW LEVEL!'.center(3, ' '), 'green',
                              transparent_on=False,
                              transparent_off=False)
 

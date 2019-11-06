@@ -1577,10 +1577,10 @@ class SearchWindow:
             button_maker(0, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Search', 'white',
                          transparent_on=False)  # Search
 
-            statistic_window.statistics_buttons(100, 550, 150, 40, '', 30, f'FOOD = {player1.food}', 'needs', player1.food)
-            statistic_window.statistics_buttons(250, 550, 150, 40, '', 30, f'DRINK = {player1.drink}', 'needs', player1.drink)
-            statistic_window.statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
-            statistic_window.statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
+            statistics_buttons(100, 550, 150, 40, '', 30, f'FOOD = {player1.food}', 'needs', player1.food)
+            statistics_buttons(250, 550, 150, 40, '', 30, f'DRINK = {player1.drink}', 'needs', player1.drink)
+            statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
+            statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
 
             button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Exit', 'white',
                          transparent_on=False)  # Exit

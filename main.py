@@ -13,6 +13,10 @@ from player import player1_equipment
 pygame.init()
 
 
+def get_random_number(first_number, second_number):
+    return random.randint(first_number, second_number)
+
+
 # create a Player
 class Player:
     def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
@@ -1400,10 +1404,14 @@ class SearchItem:
         self.found_items_supermarket = []
 
 
+
+
+
     def search(self, chest_location, found_item_location):
         try:
             random_index = random.randint(0, len(chest_location) - 1)  # Searching for random item
             found_item = chest_location[random_index]
+            print(get_random_number(1,6))
 
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)

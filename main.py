@@ -1357,7 +1357,9 @@ statistic_window = StatisticsWindow()
 class SearchItem:
     def __init__(self):
 
-        self.chest_black_pearl = [axe]
+        self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
+                                  military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
+                                  water, vodka, bandage, energy_drink, coffee, board]
         self.found_items_black_pearl = []
 
         self.chest_bridge = []
@@ -1405,7 +1407,7 @@ class SearchItem:
 
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)
-            # chest_location.remove(found_item)
+            chest_location.remove(found_item)
 
             player1.food -= 10
             player1.drink -= 10

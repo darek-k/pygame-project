@@ -32,10 +32,10 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 70
-        self.drink = 70
-        self.stamina = 70
-        self.health = 70
+        self.food = 100
+        self.drink = 100
+        self.stamina = 100
+        self.health = 100
 
         self.exp = 40
         self.exp_to_next_level = 50
@@ -1364,6 +1364,7 @@ class SearchItem:
         self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
                                   military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
                                   water, vodka, bandage, energy_drink, coffee, board]
+        self.random_items_black_pearl = []
         self.found_items_black_pearl = []
 
         self.chest_bridge = []
@@ -1404,14 +1405,24 @@ class SearchItem:
         self.found_items_supermarket = []
 
 
+    def get_random_items(self, chest_location, random_items):
+        random_number = get_random_number(1,6)
+        print('random number = ', random_number)
+        n = 0
+        for i in range(random_number):
+            n += 1
+            print("pętla nr: ", n)
+            random_index = random.randint(0, len(chest_location) -1)
+            random_items.append(chest_location[random_index])
+            print(random_items)
 
+        return random_items
 
 
     def search(self, chest_location, found_item_location):
         try:
             random_index = random.randint(0, len(chest_location) - 1)  # Searching for random item
             found_item = chest_location[random_index]
-            print(get_random_number(1,6))
 
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)

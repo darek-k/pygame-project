@@ -1361,9 +1361,10 @@ statistic_window = StatisticsWindow()
 class SearchItem:
     def __init__(self):
 
-        self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
-                                  military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
-                                  water, vodka, bandage, energy_drink, coffee, board]
+        self.chest_black_pearl = [rod, bat, axe]
+        # self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
+        #                           military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
+        #                           water, vodka, bandage, energy_drink, coffee, board]
         self.random_items_black_pearl = []
         self.found_items_black_pearl = []
 
@@ -1407,26 +1408,20 @@ class SearchItem:
 
     def get_random_items(self, chest_location, random_items):
         random_number = get_random_number(1,6)
-        print('random number = ', random_number)
-        n = 0
         for i in range(random_number):
-            n += 1
-            print("pętla nr: ", n)
             random_index = random.randint(0, len(chest_location) -1)
             random_items.append(chest_location[random_index])
-            print(random_items)
-
-        return random_items
+        print('WYKONANO!')
 
 
-    def search(self, chest_location, found_item_location):
+    def search(self, random_items, found_item_location):
         try:
-            random_index = random.randint(0, len(chest_location) - 1)  # Searching for random item
-            found_item = chest_location[random_index]
+            random_index = random.randint(0, len(random_items) - 1)  # Searching for random item
+            found_item = random_items[random_index]
 
             # Add item to found items and remove from the chest
             found_item_location.append(found_item)
-            chest_location.remove(found_item)
+            random_items.remove(found_item)
 
             player1.food -= 10
             player1.drink -= 10
@@ -1625,7 +1620,7 @@ class LocationWindow:
                           'restaurant', 'soldek', 'basilica', 'supermarket']
 
 
-    def open_location_window(self, image, window_name, chest_location, found_item_location, defence, location_name):
+    def open_location_window(self, image, window_name, random_items, found_item_location, defence, location_name):
 
         while True:
             # Handle events
@@ -1641,9 +1636,9 @@ class LocationWindow:
                     button = pygame.Rect(0, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            chest.search(chest_location, found_item_location)
+                            chest.search(random_items, found_item_location)
                             chest_inventory.open_search_window(image, location_window.open_location_window,
-                                                               chest_location, found_item_location)
+                                                               random_items, found_item_location)
                             pygame.display.update()
                             clock.tick(FPS)
 
@@ -1723,12 +1718,13 @@ class MapWindow:
                             statistic_window.open_statistics_window()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
+                    print(chest.random_items_black_pearl)
                     button = pygame.Rect(575, 430, 135, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
                             location_window.open_location_window('images/black_pearl.jpg', '"Black Pearl"',
-                                                                 chest.chest_black_pearl, chest.found_items_black_pearl,
+                                                                 chest.random_items_black_pearl, chest.found_items_black_pearl,
                                                                  barricade.black_pearl_defense, 'black_pearl')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Bridge" window
@@ -2040,4 +2036,5 @@ class GameOverWindow:
 
 # main_menu_window.open_main_menu_window()
 if __name__ == '__main__':
+    chest.get_random_items(chest.chest_black_pearl, chest.random_items_black_pearl)
     map_window.open_map_window()

@@ -1355,12 +1355,17 @@ statistic_window = StatisticsWindow()
 
 
 class SearchItem:
+
+    itemsy = [stone, rod, bat, oar, hammer, axe, sword, shirt, vest, jacket, armor, sweatpants, jeans,
+              fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
+              vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
+
     def __init__(self):
 
-        self.chest_black_pearl = [rod]
-        # self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
-        #                           military_trousers, rat, fish, canned_food, insect, soda, juice, water, vodka,
-        #                           bandage, energy_drink, coffee, board]
+        # self.chest_black_pearl = [rod, stone, axe, bat, sword, shirt, vest, jacket, dog_food]
+        self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
+                                  military_trousers, rat, fish, canned_food, insect, soda, juice, water, vodka,
+                                  bandage, energy_drink, coffee, board]
         self.random_items_black_pearl = []
         self.found_items_black_pearl = []
 
@@ -1400,12 +1405,6 @@ class SearchItem:
                             soda, juice, water, vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
         self.random_items_hotel = []
         self.found_items_hotel = []
-
-
-
-        itemsy = [stone, rod, bat, oar, hammer, axe, sword, shirt, vest, jacket, armor, sweatpants, jeans,
-                  fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
-                  vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
 
 
         self.chest_office = [hammer, shirt, jeans, insect, rat, canned_food, soda, juice, water, painkillers, bandage,
@@ -1456,8 +1455,10 @@ class SearchItem:
 
     def get_random_items(self, chest_location, random_items):
         random_number = get_random_number(1,6)
+        print(random_number)
         for i in range(random_number):
             random_index = random.randint(0, len(chest_location) -1)
+            print(random_index)
             random_items.append(chest_location[random_index])
         print('WYKONANO!')
 
@@ -1765,6 +1766,7 @@ class MapWindow:
                             open_sound.play()
                             statistic_window.open_statistics_window()
 
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
                     button = pygame.Rect(575, 430, 135, 50)
@@ -1780,7 +1782,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/bridge.jpg', 'Bridge', chest.chest_bridge,
+                            location_window.open_location_window('images/bridge.jpg', 'Bridge', chest.random_items_bridge,
                                                                  chest.found_items_bridge, barricade.bridge_defense,
                                                                  'bridge')
 
@@ -1789,7 +1791,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/crane.jpg', 'Crane', chest.chest_crane,
+                            location_window.open_location_window('images/crane.jpg', 'Crane', chest.random_items_crane,
                                                                  chest.found_items_crane, barricade.crane_defense,
                                                                  'crane')
 
@@ -1798,7 +1800,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/flat.jpg', 'Flat', chest.chest_flat,
+                            location_window.open_location_window('images/flat.jpg', 'Flat', chest.random_items_flat,
                                                                  chest.found_items_flat, barricade.flat_defense, 'flat')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Forest" window
@@ -1806,11 +1808,9 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             raven_sound.play()
-                            location_window.open_location_window('images/forest.jpg', 'Forest', chest.chest_forest,
+                            location_window.open_location_window('images/forest.jpg', 'Forest', chest.random_items_forest,
                                                                  chest.found_items_forest, barricade.forest_defense,
                                                                  'forest')
-
-
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Gate" window
                     button = pygame.Rect(610, 160, 60, 40)
@@ -1819,7 +1819,7 @@ class MapWindow:
                             if key in inventory.inventory:
                                 door_sound.play()
                                 location_window.open_location_window('images/open_gate.jpg', 'Gate',
-                                                                     chest.chest_gate,
+                                                                     chest.random_items_gate,
                                                                      chest.found_items_gate,
                                                                      barricade.gate_defense,
                                                                      'open_gate')
@@ -1861,7 +1861,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/hotel.jpeg', 'Hotel', chest.chest_hotel,
+                            location_window.open_location_window('images/hotel.jpeg', 'Hotel', chest.random_items_hotel,
                                                                  chest.found_items_hotel, barricade.hotel_defense,
                                                                  'hotel')
 
@@ -1870,7 +1870,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/office.jpg', 'Office', chest.chest_office,
+                            location_window.open_location_window('images/office.jpg', 'Office', chest.random_items_office,
                                                                  chest.found_items_office, barricade.office_defense,
                                                                  'office')
 
@@ -1879,7 +1879,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/opera.jpg', 'Opera House', chest.chest_opera,
+                            location_window.open_location_window('images/opera.jpg', 'Opera House', chest.random_items_opera,
                                                                  chest.found_items_opera, barricade.opera_defense,
                                                                  'opera')
 
@@ -1888,7 +1888,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/restaurant.jpg', 'Restaurant', chest.chest_restaurant,
+                            location_window.open_location_window('images/restaurant.jpg', 'Restaurant', chest.random_items_restaurant,
                                                                  chest.found_items_restaurant,
                                                                  barricade.restaurant_defense, 'restaurant')
 
@@ -1897,7 +1897,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             door_sound.play()
-                            location_window.open_location_window('images/soldek.jpg', '"Sołdek"', chest.chest_soldek,
+                            location_window.open_location_window('images/soldek.jpg', '"Sołdek"', chest.random_items_soldek,
                                                                  chest.found_items_soldek, barricade.soldek_defense,
                                                                  'soldek')
 
@@ -1907,7 +1907,7 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             door_sound.play()
                             location_window.open_location_window('images/basilica.jpg', "St. Mary's Basilica",
-                                                                 chest.chest_basilica, chest.found_items_basilica,
+                                                                 chest.random_items_basilica, chest.found_items_basilica,
                                                                  barricade.basilica_defense, 'basilica')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Supermarket" window
@@ -1916,7 +1916,7 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             door_sound.play()
                             location_window.open_location_window('images/supermarket.jpg', '"Supermarket"',
-                                                                 chest.chest_supermarket, chest.found_items_supermarket,
+                                                                 chest.random_items_supermarket, chest.found_items_supermarket,
                                                                  barricade.supermarket_defense, 'supermarket')
 
                 # Open an Inventory window
@@ -2084,7 +2084,7 @@ class GameOverWindow:
 
 # main_menu_window.open_main_menu_window()
 if __name__ == '__main__':
-    # Put random number of ranoom items into locations
+    # Put random number of random items into locations
     for chest_location, random_items in chest.locations:
         chest.get_random_items(chest_location, random_items)
 

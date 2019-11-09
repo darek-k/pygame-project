@@ -1360,53 +1360,72 @@ statistic_window = StatisticsWindow()
 
 class SearchItem:
     def __init__(self):
-        self.chest_black_pearl = [rod, bat, axe]
-        # self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
-        #                           military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
-        #                           water, vodka, bandage, energy_drink, coffee, board]
+        self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
+                                  military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
+                                  water, vodka, bandage, energy_drink, coffee, board]
         self.random_items_black_pearl = []
         self.found_items_black_pearl = []
 
         self.chest_bridge = []
+        self.random_items_bridge = []
         self.found_items_bridge = []
 
         self.chest_crane = [armor]
+        self.random_items_crane = []
         self.found_items_crane = []
 
         self.chest_flat = [apple, bread]
+        self.random_items_flat = []
         self.found_items_flat = []
 
         self.chest_forest = [apple]
+        self.random_items_forest = []
         self.found_items_forest = []
 
         self.chest_gate = [apple]
+        self.random_items_gate = []
         self.found_items_gate = []
 
         self.chest_hotel = [water]
+        self.random_items_hotel = []
         self.found_items_hotel = []
 
         self.chest_office = [axe]
+        self.random_items_office = []
         self.found_items_office = []
 
         self.chest_opera = [sword]
+        self.random_items_opera = []
         self.found_items_opera = []
 
         self.chest_restaurant = [raw_meat, raw_fish]
+        self.random_items_restaurant = []
         self.found_items_restaurant = []
 
         self.chest_soldek = [fishing_trouser]
+        self.random_items_soldek = []
         self.found_items_soldek = []
 
         self.chest_basilica = [vest, sweatpants]
+        self.random_items_basilica = []
         self.found_items_basilica = []
 
         self.chest_supermarket = [apple, apple, apple, potato, potato, potato, bread, bread, raw_fish, raw_fish,
                                   raw_meat]
+        self.random_items_supermarket = []
         self.found_items_supermarket = []
 
-        self.locations = ((self.chest_black_pearl, self.random_items_black_pearl),
 
-                          )
+        self.locations = (
+            (self.chest_black_pearl, self.random_items_black_pearl), (self.chest_bridge, self.random_items_bridge),
+            (self.chest_crane, self.random_items_crane), (self.chest_flat, self.random_items_flat),
+            (self.chest_forest, self.random_items_forest), (self.chest_gate, self.random_items_gate),
+            (self.chest_hotel, self.random_items_hotel), (self.chest_office, self.random_items_office),
+            (self.chest_opera, self.random_items_opera), (self.chest_restaurant, self.random_items_restaurant),
+            (self.chest_soldek, self.random_items_soldek), (self.chest_basilica, self.random_items_basilica),
+            (self.chest_supermarket, self.random_items_supermarket),
+        )
+
 
     def get_random_items(self, chest_location, random_items):
         random_number = get_random_number(1,6)

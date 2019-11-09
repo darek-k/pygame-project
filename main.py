@@ -1360,7 +1360,6 @@ statistic_window = StatisticsWindow()
 
 class SearchItem:
     def __init__(self):
-
         self.chest_black_pearl = [rod, bat, axe]
         # self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
         #                           military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
@@ -1405,6 +1404,9 @@ class SearchItem:
                                   raw_meat]
         self.found_items_supermarket = []
 
+        self.locations = ((self.chest_black_pearl, self.random_items_black_pearl),
+
+                          )
 
     def get_random_items(self, chest_location, random_items):
         random_number = get_random_number(1,6)
@@ -2036,5 +2038,8 @@ class GameOverWindow:
 
 # main_menu_window.open_main_menu_window()
 if __name__ == '__main__':
-    chest.get_random_items(chest.chest_black_pearl, chest.random_items_black_pearl)
+    # Put random number of ranoom items into locations
+    for chest_location, random_items in chest.locations:
+        chest.get_random_items(chest_location, random_items)
+
     map_window.open_map_window()

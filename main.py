@@ -572,15 +572,11 @@ fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
 military_trousers = Item('Military ts.', 9, 'legs', '')
 
 # create food instances
-apple = Item('Apple', 2, 'food', '')
-bread = Item('Bread', 3, 'food', '')
-raw_meat = Item('Raw meat', 4, 'food', '')
-potato = Item('Potato', 4, 'food', '')
-dog_food = Item('Dog Food', 5, 'food', '')
-rat = Item('Rat', 6, 'food', '')
-raw_fish = Item('Raw fish', 7, 'food', '')
-cooked_fish = Item('Bread', 8, 'food', '')
-cooked_meat = Item('Cooked meat', 10, 'food', '')
+insect = Item('Apple', 2, 'food', '')
+dog_food = Item('Potato', 4, 'food', '')
+rat = Item('Dog Food', 5, 'food', '')
+fish = Item('Rat', 6, 'food', '')
+canned_food = Item('Raw fish', 7, 'food', '')
 
 # create drink instances
 soda = Item('Soda', 3, 'drink', '')
@@ -871,7 +867,7 @@ inventory = Inventory()  # create instance - Inventory
 
 # Add items to inventory
 inventory.add_to_inventory(board)
-inventory.add_to_inventory(axe)
+inventory.add_to_inventory(key)
 inventory.add_to_inventory(sword)
 inventory.add_to_inventory(sweatpants)
 inventory.add_to_inventory(vest)
@@ -1360,58 +1356,89 @@ statistic_window = StatisticsWindow()
 
 class SearchItem:
     def __init__(self):
-        self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
-                                  military_trousers, rat, raw_fish, raw_meat, cooked_fish, cooked_meat, soda, juice,
-                                  water, vodka, bandage, energy_drink, coffee, board]
+
+        self.chest_black_pearl = [rod]
+        # self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
+        #                           military_trousers, rat, fish, canned_food, insect, soda, juice, water, vodka,
+        #                           bandage, energy_drink, coffee, board]
         self.random_items_black_pearl = []
         self.found_items_black_pearl = []
 
-        self.chest_bridge = []
+
+        self.chest_bridge = [stone, rod, bat, shirt, vest, jeans, fishing_trouser, insect, rat, fish,water, vodka,
+                             cocaine, board, key]
         self.random_items_bridge = []
         self.found_items_bridge = []
 
-        self.chest_crane = [armor]
+
+        self.chest_crane = [stone, rod, bat, hammer, axe, sword, shirt, armor, jeans, military_trousers, insect, rat,
+                            fish, canned_food, soda, juice, water, vodka, painkillers, bandage, board, key]
         self.random_items_crane = []
         self.found_items_crane = []
 
-        self.chest_flat = [apple, bread]
+
+        self.chest_flat = [bat, hammer, axe, shirt, vest, jacket, sweatpants, jeans, insect, rat, canned_food,
+                           dog_food, soda, juice, water, vodka, painkillers, bandage, energy_drink, coffee, cocaine,
+                           board, key]
         self.random_items_flat = []
         self.found_items_flat = []
 
-        self.chest_forest = [apple]
+
+        self.chest_forest = [stone, axe, vest, military_trousers, insect, rat, canned_food, water, vodka, bandage,
+                            cocaine, board, key]
         self.random_items_forest = []
         self.found_items_forest = []
 
-        self.chest_gate = [apple]
+
+        self.chest_gate = [axe, sword, jacket, armor, military_trousers, canned_food, dog_food, juice, water,
+                  vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
         self.random_items_gate = []
         self.found_items_gate = []
 
-        self.chest_hotel = [water]
+
+        self.chest_hotel = [hammer, shirt, vest, jacket, sweatpants, jeans, insect, rat, dog_food, canned_food,
+                            soda, juice, water, vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
         self.random_items_hotel = []
         self.found_items_hotel = []
 
-        self.chest_office = [axe]
+
+
+        itemsy = [stone, rod, bat, oar, hammer, axe, sword, shirt, vest, jacket, armor, sweatpants, jeans,
+                  fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
+                  vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
+
+
+        self.chest_office = [hammer, shirt, jeans, insect, rat, canned_food, soda, juice, water, painkillers, bandage,
+                             energy_drink, coffee, cocaine, board, key]
         self.random_items_office = []
         self.found_items_office = []
 
-        self.chest_opera = [sword]
+
+        self.chest_opera = [rod, hammer, shirt, jeans, insect, rat, water, vodka, painkillers, bandage, energy_drink,
+                            coffee, board, key]
         self.random_items_opera = []
         self.found_items_opera = []
 
-        self.chest_restaurant = [raw_meat, raw_fish]
+
+        self.chest_restaurant = [hammer, insect, rat, fish, dog_food, canned_food, soda, juice, water, vodka,
+                                 painkillers, bandage, energy_drink, coffee, board, key]
         self.random_items_restaurant = []
         self.found_items_restaurant = []
 
-        self.chest_soldek = [fishing_trouser]
+
+        self.chest_soldek = [rod, bat, oar, hammer, axe, vest, jacket, fishing_trouser, military_trousers, insect, rat,
+                             fish, canned_food, soda, juice, water, vodka, painkillers, bandage, coffee, board, key]
         self.random_items_soldek = []
         self.found_items_soldek = []
 
-        self.chest_basilica = [vest, sweatpants]
+
+        self.chest_basilica = [stone, vest, jeans, insect, rat, fish, vodka, cocaine, board, key]
         self.random_items_basilica = []
         self.found_items_basilica = []
 
-        self.chest_supermarket = [apple, apple, apple, potato, potato, potato, bread, bread, raw_fish, raw_fish,
-                                  raw_meat]
+
+        self.chest_supermarket = [dog_food, canned_food, soda, juice, water, vodka, painkillers, bandage, energy_drink,
+                                  coffee, cocaine, board, key]
         self.random_items_supermarket = []
         self.found_items_supermarket = []
 

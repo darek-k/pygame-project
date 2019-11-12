@@ -556,8 +556,8 @@ rod = Item('Rod', 3, 'weapon', '')
 bat = Item('Bat', 4, 'weapon', '')
 oar = Item('Oar', 5, 'weapon', '')
 hammer = Item('Hammer', 6, 'weapon', '')
-axe = Item('Axe', 7, 'weapon', '')
-sword = Item('Sword', 8, 'weapon', '')
+knife = Item('Knife', 7, 'weapon', '')
+axe = Item('Axe', 8, 'weapon', '')
 
 # create torso instances
 shirt = Item('Shirt', 2, 'torso', '')
@@ -651,6 +651,7 @@ class Inventory:
                 text = ''
                 button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', 40, item.name, 'gold')
                 writing_text('', 35, text + str(item.attribute), 'gold', x, y + 50)
+
 
             # Make equipped items GREEN
             if count_weapon == 0:
@@ -868,7 +869,6 @@ inventory = Inventory()  # create instance - Inventory
 # Add items to inventory
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(key)
-inventory.add_to_inventory(sword)
 inventory.add_to_inventory(sweatpants)
 inventory.add_to_inventory(vest)
 inventory.add_to_inventory(cocaine)
@@ -1356,13 +1356,12 @@ statistic_window = StatisticsWindow()
 
 class SearchItem:
 
-    itemsy = [stone, rod, bat, oar, hammer, axe, sword, shirt, vest, jacket, armor, sweatpants, jeans,
+    itemsy = [stone, rod, bat, oar, hammer, knife, axe, shirt, vest, jacket, armor, sweatpants, jeans,
               fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
               vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
 
     def __init__(self):
 
-        # self.chest_black_pearl = [rod, stone, axe, bat, sword, shirt, vest, jacket, dog_food]
         self.chest_black_pearl = [rod, bat, oar, hammer, axe, shirt, vest, jacket, sweatpants, jeans, fishing_trouser,
                                   military_trousers, rat, fish, canned_food, insect, soda, juice, water, vodka,
                                   bandage, energy_drink, coffee, board]
@@ -1376,13 +1375,13 @@ class SearchItem:
         self.found_items_bridge = []
 
 
-        self.chest_crane = [stone, rod, bat, hammer, axe, sword, shirt, armor, jeans, military_trousers, insect, rat,
+        self.chest_crane = [stone, rod, bat, hammer, axe, shirt, armor, jeans, military_trousers, insect, rat,
                             fish, canned_food, soda, juice, water, vodka, painkillers, bandage, board, key]
         self.random_items_crane = []
         self.found_items_crane = []
 
 
-        self.chest_flat = [bat, hammer, axe, shirt, vest, jacket, sweatpants, jeans, insect, rat, canned_food,
+        self.chest_flat = [bat, hammer, knife, shirt, vest, jacket, sweatpants, jeans, insect, rat, canned_food,
                            dog_food, soda, juice, water, vodka, painkillers, bandage, energy_drink, coffee, cocaine,
                            board, key]
         self.random_items_flat = []
@@ -1395,13 +1394,13 @@ class SearchItem:
         self.found_items_forest = []
 
 
-        self.chest_gate = [axe, sword, jacket, armor, military_trousers, canned_food, dog_food, juice, water,
+        self.chest_gate = [axe, jacket, armor, military_trousers, canned_food, dog_food, juice, water,
                   vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
         self.random_items_gate = []
         self.found_items_gate = []
 
 
-        self.chest_hotel = [hammer, shirt, vest, jacket, sweatpants, jeans, insect, rat, dog_food, canned_food,
+        self.chest_hotel = [hammer, knife, axe, shirt, vest, jacket, sweatpants, jeans, insect, rat, dog_food, canned_food,
                             soda, juice, water, vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
         self.random_items_hotel = []
         self.found_items_hotel = []
@@ -1419,7 +1418,7 @@ class SearchItem:
         self.found_items_opera = []
 
 
-        self.chest_restaurant = [hammer, insect, rat, fish, dog_food, canned_food, soda, juice, water, vodka,
+        self.chest_restaurant = [knife, insect, rat, fish, dog_food, canned_food, soda, juice, water, vodka,
                                  painkillers, bandage, energy_drink, coffee, board, key]
         self.random_items_restaurant = []
         self.found_items_restaurant = []

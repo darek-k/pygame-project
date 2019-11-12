@@ -594,7 +594,7 @@ coffee = Item('Coffee', 3, 'stamina', '')
 cocaine = Item('Cocaine', 5,  'stamina', '')
 
 # create other instances
-board = Item("Board", '', 'other', '')
+board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
@@ -1513,7 +1513,7 @@ class SearchItem:
             if item.type == 'weapon':
                 text = 'Damage: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
-                writing_text('', 28, text + str(item.attribute), 'orange', x, y + 50)
+                writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
@@ -1539,6 +1539,10 @@ class SearchItem:
                 text = 'Stamina: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
+
+            if item.type == 'other':
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name.center(20), 'gold')
+
 
             x += 200
             if x > 600:

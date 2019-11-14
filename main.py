@@ -715,7 +715,7 @@ class Inventory:
                 button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                              transparent_on=False)  # Exit
 
-    def equip_item(self, index, type):
+    def equip_item(self, index):
 
         item = list(self.inventory)[index]
 
@@ -733,18 +733,12 @@ class Inventory:
                     button = pygame.Rect(225, 300, 175, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
+
+                            #todo zamień te ify na metodę:
                             if item.type == 'weapon':
                                 player1_equipment.equipped_weapon_attribute = item.attribute
-                                print('item atribute = ', item.attribute)
-                                print('equiped weapon atribute = ', player1_equipment.equipped_weapon_attribute)
-
                                 player1_equipment.equipped_weapon_name = item.name
-                                print('weapon name = ', item.name)
-                                print('equiped weapon name = ', player1_equipment.equipped_weapon_name)
-
                                 player1.update_attributes()
-                                print('atak = ', player1.attack)
-
 
                             elif item.type == 'torso':
                                 player1_equipment.equipped_torso_attribute = item.attribute
@@ -764,20 +758,18 @@ class Inventory:
                         if button.collidepoint(event.pos):
                             statistic_window.open_statistics_window()  ### Zmień to później na okno z wyborem itemu
 
-            if item.type == type:
 
-                # Window settings
-                pygame.display.set_caption('Equip item?')
 
-                button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this item?', 'white',
-                             transparent_on=False, transparent_off=False)
-                button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
-                             transparent_off=False)
-                button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white',
-                             transparent_on=False, transparent_off=False)
+            # Window settings
+            pygame.display.set_caption('Equip item?')
 
-            else:
-                break
+            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this item?', 'white',
+                         transparent_on=False, transparent_off=False)
+            button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
+                         transparent_off=False)
+            button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white',
+                         transparent_on=False, transparent_off=False)
+
 
             pygame.display.update()
             clock.tick(FPS)
@@ -866,14 +858,15 @@ class Inventory:
 
 inventory = Inventory()  # create instance - Inventory
 
+
+
 # Add items to inventory
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(key)
-inventory.add_to_inventory(sweatpants)
+inventory.add_to_inventory(axe)
+inventory.add_to_inventory(knife)
+inventory.add_to_inventory(armor)
 inventory.add_to_inventory(vest)
-inventory.add_to_inventory(cocaine)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(water)
+inventory.add_to_inventory(jeans)
+inventory.add_to_inventory(sweatpants)
 
 
 

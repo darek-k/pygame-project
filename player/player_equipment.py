@@ -1,5 +1,7 @@
 class PlayerEquipment():
     def __init__(self):
+        self.equipped_items = []
+
         self.equipped_weapon_name = ''
         self.equipped_weapon_ID = ''
         self.equipped_weapon_attribute = 0

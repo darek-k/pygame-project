@@ -734,11 +734,22 @@ class Inventory:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
 
+
+                            # musi przeszukać listę wyposażonych rzeczy czy jest w niej coś
+                            # I jeżeli item.type jest taki sam, to przedmiot z ekwipunku wrzuca do Inventory
+                            # a z Inventory do ekwipunku
+
+
+
                             #todo zamień te ify na metodę:
                             if item.type == 'weapon':
                                 player1_equipment.equipped_weapon_attribute = item.attribute
                                 player1_equipment.equipped_weapon_name = item.name
                                 player1.update_attributes()
+
+                                # Musi dodawać ten przedmiot do player1.equiped_items:
+                                # player1_equipment.equipped_items.append(item)
+                                player1_equipment.equipped_items.append(item.type)
 
                             elif item.type == 'torso':
                                 player1_equipment.equipped_torso_attribute = item.attribute
@@ -1156,29 +1167,29 @@ class EquipItemWindow:
                                 try:
 
                                     if x == 200 and y == 0:
-                                        inventory.equip_item(0, type)
+                                        inventory.equip_item(0)
                                     if x == 400 and y == 0:
-                                        inventory.equip_item(1, type)
+                                        inventory.equip_item(1)
                                     if x == 600 and y == 0:
-                                        inventory.equip_item(2, type)
+                                        inventory.equip_item(2)
                                     if x == 0 and y == 150:
-                                        inventory.equip_item(3, type)
+                                        inventory.equip_item(3)
                                     if x == 200 and y == 150:
-                                        inventory.equip_item(4, type)
+                                        inventory.equip_item(4)
                                     if x == 400 and y == 150:
-                                        inventory.equip_item(5, type)
+                                        inventory.equip_item(5)
                                     if x == 600 and y == 150:
-                                        inventory.equip_item(6, type)
+                                        inventory.equip_item(6)
                                     if x == 0 and y == 300:
-                                        inventory.equip_item(7, type)
+                                        inventory.equip_item(7)
                                     if x == 200 and y == 300:
-                                        inventory.equip_item(8, type)
+                                        inventory.equip_item(8)
                                     if x == 400 and y == 300:
-                                        inventory.equip_item(9, type)
+                                        inventory.equip_item(9)
                                     if x == 600 and y == 300:
-                                        inventory.equip_item(10, type)
+                                        inventory.equip_item(10)
                                     if x == 0 and y == 450:
-                                        inventory.equip_item(11, type)
+                                        inventory.equip_item(11)
 
                                 except IndexError:
                                     break
@@ -1447,12 +1458,9 @@ class SearchItem:
 
     def get_random_items(self, chest_location, random_items):
         random_number = get_random_number(1,6)
-        print(random_number)
         for i in range(random_number):
             random_index = random.randint(0, len(chest_location) -1)
-            print(random_index)
             random_items.append(chest_location[random_index])
-        print('WYKONANO!')
 
 
     def search(self, random_items, found_item_location):

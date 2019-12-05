@@ -1,6 +1,8 @@
 # main_menu_window.open_main_menu_window()
 from file import chest, map_window
 
+print(__name__)
+
 if __name__ == '__main__':
     # Put random number of random items into locations
     for chest_location, random_items in chest.locations:

@@ -15,7 +15,7 @@ class PlayerEquipment():
     def put_equipped_items_into_container(self, item):
         self.equipped_items.append(item)
         item_index = self.equipped_items.index(item)
-        del inventory.inventory[item_index]
+        # del inventory.inventory[item_index]
 
 
 

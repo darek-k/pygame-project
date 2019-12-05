@@ -8,7 +8,7 @@ import pygame
 
 from clock import clock, FPS
 from create import button_maker
-from main import inventory, inventory_window, player1_equipment, player1
+from file import inventory, inventory_window, player1_equipment, player1
 
 
 def delete_item_from_inventory(index):

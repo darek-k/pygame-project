@@ -3,7 +3,7 @@ import sys
 import pygame
 
 from create import button_maker
-from main import statistic_window, player1_equipment, player1, inventory_window, inventory
+from file import statistic_window, player1_equipment, player1, inventory_window, inventory
 
 
 class Inventory:

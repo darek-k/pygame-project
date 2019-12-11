@@ -17,10 +17,10 @@ class Inventory:
 
         self.sorted_inventory = sorted(self.inventory, key=operator.attrgetter('type', 'name'))
 
-        # for item in self.inventory:
+        # for items in self.inventory:
         for item in self.sorted_inventory:
 
-            # icon = pygame.image.load(item.icon)     ###### Wyświetlanie grafiki #######
+            # icon = pygame.image.load(items.icon)     ###### Wyświetlanie grafiki #######
             # display.blit(icon, (300,120))
 
             if item.type == 'weapon':

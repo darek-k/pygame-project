@@ -5,7 +5,7 @@ import pygame
 
 from create import button_maker, writing_text, get_random_number
 from inventory import inventory
-from item import Item
+from items import Item
 from player import player1
 
 # create weapon instances
@@ -149,10 +149,10 @@ class SearchItem:
 
     def search(self, random_items, found_item_location):
         try:
-            random_index = random.randint(0, len(random_items) - 1)  # Searching for random item
+            random_index = random.randint(0, len(random_items) - 1)  # Searching for random items
             found_item = random_items[random_index]
 
-            # Add item to found items and remove from the chest
+            # Add items to found items and remove from the chest
             found_item_location.append(found_item)
             random_items.remove(found_item)
 
@@ -192,7 +192,7 @@ class SearchItem:
         x = 0
         y = 0
         for item in found_item_location:
-            # icon = pygame.image.load(self.item.icon)     ###### Wyświetlanie grafiki #######
+            # icon = pygame.image.load(self.items.icon)     ###### Wyświetlanie grafiki #######
             # display.blit(icon, (300,120))
 
             if item.type == 'weapon':

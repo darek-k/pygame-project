@@ -8,7 +8,7 @@ from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons, get_random_number
 from display import display
 from inventory import inventory
-from item import Item
+from items import Item
 from player import player1_equipment, player1
 from search.search_item import chest
 from sleep import Sleep
@@ -299,8 +299,6 @@ board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
-
-
 # Add items to inventory
 inventory.add_to_inventory(axe)
 inventory.add_to_inventory(armor)
@@ -332,7 +330,7 @@ class InventoryWindow:
                         if button.collidepoint(event.pos):
 
                             # musi przeszukać listę wyposażonych rzeczy czy jest w niej coś
-                            # I jeżeli item.type jest taki sam, to przedmiot z ekwipunku wrzuca do Inventory
+                            # I jeżeli items.type jest taki sam, to przedmiot z ekwipunku wrzuca do Inventory
                             # a z Inventory do ekwipunku
 
                             # todo zamień te ify na metodę:
@@ -363,9 +361,9 @@ class InventoryWindow:
                             statistic_window.open_statistics_window()  ### Zmień to później na okno z wyborem itemu
 
             # Window settings
-            pygame.display.set_caption('Equip item?')
+            pygame.display.set_caption('Equip items?')
 
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this item?', 'white',
+            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this items?', 'white',
                          transparent_on=False, transparent_off=False)
             button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
                          transparent_off=False)
@@ -376,7 +374,7 @@ class InventoryWindow:
             clock.tick(FPS)
 
     def delete_item_from_inventory(self, index):
-        """ Function that deletes item from inventory """
+        """ Function that deletes items from inventory """
         item_index = list(inventory.sorted_inventory)[index]
         items_names = []
 
@@ -405,7 +403,7 @@ class InventoryWindow:
                                     item_index.name == player1_equipment.equipped_torso_name or \
                                     item_index.name == player1_equipment.equipped_legs_name:
 
-                                # If deleted item is still in inventory.inventory[] -> equip this item
+                                # If deleted items is still in inventory.inventory[] -> equip this items
                                 if item_index.name in items_names:
                                     # player1.update_attributes()
 
@@ -413,7 +411,7 @@ class InventoryWindow:
                                     print('obrona: ', player1.defence)
                                     inventory.show_inventory(0, 0, 0)
 
-                                # If deleted item was the last one -> unequip this item
+                                # If deleted items was the last one -> unequip this items
                                 elif item_index.name not in items_names:
                                     player1.reset_attributes(item_index.type)
 
@@ -443,9 +441,9 @@ class InventoryWindow:
                             inventory_window.open_inventory_window()
 
             # Window settings
-            pygame.display.set_caption('Remove item?')
+            pygame.display.set_caption('Remove items?')
             ###### Niech się pyta o konkretny przedmiot ############
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to REMOVE this item?', 'white',
+            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to REMOVE this items?', 'white',
                          transparent_on=False, transparent_off=False)
             button_maker(225, 300, 175, 50, 'red', 'blue', '', 30, '         YES', 'white', transparent_on=False,
                          transparent_off=False)
@@ -507,9 +505,9 @@ class InventoryWindow:
                             self.open_inventory_window()
 
             # Window settings
-            pygame.display.set_caption('Use item?')
+            pygame.display.set_caption('Use items?')
             ###### Niech się pyta o konkretny przedmiot ############
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this item?', 'white',
+            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this items?', 'white',
                          transparent_on=False, transparent_off=False)
             button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
                          transparent_off=False)
@@ -566,7 +564,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
                                             ########   Możliwość wyposażenia przedmiotu dodaj
 
                                     if x == 400 and y == 0:
@@ -577,7 +575,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 600 and y == 0:
                                         index = 2
@@ -587,7 +585,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 0 and y == 150:
                                         index = 3
@@ -597,7 +595,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 200 and y == 150:
                                         index = 4
@@ -607,7 +605,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 400 and y == 150:
                                         index = 5
@@ -617,7 +615,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 600 and y == 150:
                                         index = 6
@@ -627,7 +625,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 0 and y == 300:
                                         index = 7
@@ -637,7 +635,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 200 and y == 300:
                                         index = 8
@@ -647,7 +645,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 400 and y == 300:
                                         index = 9
@@ -657,7 +655,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 600 and y == 300:
                                         index = 10
@@ -667,7 +665,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                     if x == 0 and y == 450:
                                         index = 11
@@ -677,7 +675,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this item in Statistics')
+                                            print('You can wear this items in Statistics')
 
                                 except IndexError:
                                     break
@@ -691,7 +689,7 @@ class InventoryWindow:
                         if event.button == 2:
                             break
 
-                        # Delete item
+                        # Delete items
                         if event.button == 3:
                             if button.collidepoint(event.pos):
                                 try:
@@ -763,7 +761,8 @@ inventory_window = InventoryWindow()  # Creates instance - Inventory Window
 
 class EquipItemWindow:
 
-    def open_equip_item_window(self, image, window_name, type, attribute_text):
+    @staticmethod
+    def open_equip_item_window(image, window_name, type, attribute_text):
 
         while True:
             # Handle events

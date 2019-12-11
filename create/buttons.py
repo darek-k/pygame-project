@@ -53,7 +53,7 @@ def statistics_buttons(x, y, w, h, font, font_size, text_input, stat_group, stat
 
 
 def equipment_buttons(x, y, w, h, item_name, item_type):
-    # item_name - name of the equipped item
+    # item_name - name of the equipped items
     if item_name == '':
         button_maker(x, y, w, h, 'black', 'pure_red', 'Comic Sans MS', 23, item_type, 'white',
                      text_on=False, )

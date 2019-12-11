@@ -1,10 +1,10 @@
 import sys
 
 import pygame
-from display import display
 
 from clock import clock, FPS
 from create import writing_text
+from display import display
 
 
 class GameOverWindow:

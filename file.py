@@ -1,9 +1,10 @@
 # Initialization
 import operator
-import pygame
 import random
 import sys
 import time
+
+import pygame
 
 from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons
@@ -1709,11 +1710,13 @@ location_window = LocationWindow()  # Creates an instance of Location class
 
 # Creates map window
 class MapWindow:
+    def __init__(self):
+        self.open_sound = pygame.mixer.Sound('audio/open_sound.wav')
+        self.door_sound = pygame.mixer.Sound('audio/door.wav')
+        self.raven_sound = pygame.mixer.Sound('audio/raven2.wav')
 
     def open_map_window(self):
-        open_sound = pygame.mixer.Sound('audio/open_sound.wav')
-        door_sound = pygame.mixer.Sound('audio/door.wav')
-        raven_sound = pygame.mixer.Sound('audio/raven2.wav')
+
         while True:
             # Handle events
             for event in pygame.event.get():
@@ -1725,14 +1728,14 @@ class MapWindow:
                     button = pygame.Rect(200, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            open_sound.play()
+                            self.open_sound.play()
                             inventory_window.open_inventory_window()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Statistics window
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            open_sound.play()
+                            self.open_sound.play()
                             statistic_window.open_statistics_window()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
@@ -1740,7 +1743,7 @@ class MapWindow:
                     button = pygame.Rect(575, 430, 135, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/black_pearl.jpg', '"Black Pearl"',
                                                                  chest.random_items_black_pearl,
                                                                  chest.found_items_black_pearl,
@@ -1750,7 +1753,7 @@ class MapWindow:
                     button = pygame.Rect(170, 100, 80, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/bridge.jpg', 'Bridge',
                                                                  chest.random_items_bridge,
                                                                  chest.found_items_bridge, barricade.bridge_defence,
@@ -1760,7 +1763,7 @@ class MapWindow:
                     button = pygame.Rect(280, 150, 70, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/crane.jpg', 'Crane', chest.random_items_crane,
                                                                  chest.found_items_crane, barricade.crane_defence,
                                                                  'crane')
@@ -1769,7 +1772,7 @@ class MapWindow:
                     button = pygame.Rect(500, 175, 50, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/flat.jpg', 'Flat', chest.random_items_flat,
                                                                  chest.found_items_flat, barricade.flat_defence, 'flat')
 
@@ -1777,7 +1780,7 @@ class MapWindow:
                     button = pygame.Rect(450, 25, 75, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            raven_sound.play()
+                            self.raven_sound.play()
                             location_window.open_location_window('images/forest.jpg', 'Forest',
                                                                  chest.random_items_forest,
                                                                  chest.found_items_forest, barricade.forest_defence,
@@ -1788,7 +1791,7 @@ class MapWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             if key in inventory.inventory:
-                                door_sound.play()
+                                self.door_sound.play()
                                 location_window.open_location_window('images/open_gate.jpg', 'Gate',
                                                                      chest.random_items_gate,
                                                                      chest.found_items_gate,
@@ -1831,7 +1834,7 @@ class MapWindow:
                     button = pygame.Rect(450, 265, 70, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/hotel.jpeg', 'Hotel', chest.random_items_hotel,
                                                                  chest.found_items_hotel, barricade.hotel_defence,
                                                                  'hotel')
@@ -1840,7 +1843,7 @@ class MapWindow:
                     button = pygame.Rect(650, 270, 80, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/office.jpg', 'Office',
                                                                  chest.random_items_office,
                                                                  chest.found_items_office, barricade.office_defence,
@@ -1850,7 +1853,7 @@ class MapWindow:
                     button = pygame.Rect(180, 450, 140, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/opera.jpg', 'Opera House',
                                                                  chest.random_items_opera,
                                                                  chest.found_items_opera, barricade.opera_defence,
@@ -1860,7 +1863,7 @@ class MapWindow:
                     button = pygame.Rect(30, 230, 115, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/restaurant.jpg', 'Restaurant',
                                                                  chest.random_items_restaurant,
                                                                  chest.found_items_restaurant,
@@ -1870,7 +1873,7 @@ class MapWindow:
                     button = pygame.Rect(200, 310, 100, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/soldek.jpg', '"Sołdek"',
                                                                  chest.random_items_soldek,
                                                                  chest.found_items_soldek, barricade.soldek_defence,
@@ -1880,7 +1883,7 @@ class MapWindow:
                     button = pygame.Rect(540, 70, 180, 45)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/basilica.jpg', "St. Mary's Basilica",
                                                                  chest.random_items_basilica,
                                                                  chest.found_items_basilica,
@@ -1890,7 +1893,7 @@ class MapWindow:
                     button = pygame.Rect(10, 50, 135, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            door_sound.play()
+                            self.door_sound.play()
                             location_window.open_location_window('images/supermarket.jpg', '"Supermarket"',
                                                                  chest.random_items_supermarket,
                                                                  chest.found_items_supermarket,
@@ -1902,7 +1905,7 @@ class MapWindow:
                         button = pygame.Rect(760, 10, 25, 25)
                         if event.button == 1:
                             if button.collidepoint(event.pos):
-                                open_sound.play()
+                                self.open_sound.play()
                                 inventory_window.open_inventory_window()
 
                 # Open an Statistics window
@@ -1911,7 +1914,7 @@ class MapWindow:
                         button = pygame.Rect(20, 10, 130, 25)
                         if event.button == 1:
                             if button.collidepoint(event.pos):
-                                open_sound.play()
+                                self.open_sound.play()
                                 statistic_window.open_statistics_window()
 
             # Screen settings and graphic

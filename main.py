@@ -1,7 +1,3 @@
-"""
-main_menu_window.open_main_menu_window()
-"""
-
 from file import chest, map_window
 
 if __name__ == '__main__':

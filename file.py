@@ -9,6 +9,7 @@ import pygame
 from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons
 from display import display
+from inventory import inventory
 from player import player1_equipment, player1
 
 pygame.init()
@@ -534,267 +535,269 @@ board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
-class Inventory:
-    def __init__(self):
-        self.inventory = []
+# class Inventory:
+#     def __init__(self):
+#         self.inventory = []
+#
+#     def add_to_inventory(self, item):
+#         self.inventory.append(item)
+#
+#     def show_inventory(self, count_weapon, count_torso, count_legs):
+#         x = 0
+#         y = 0
+#
+#         self.sorted_inventory = sorted(self.inventory, key=operator.attrgetter('type', 'name'))
+#
+#         # for item in self.inventory:
+#         for item in self.sorted_inventory:
+#
+#             # icon = pygame.image.load(item.icon)     ###### Wyświetlanie grafiki #######
+#             # display.blit(icon, (300,120))
+#
+#             if item.type == 'weapon':
+#                 text = 'Damage: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+#
+#             if item.type == 'torso' or item.type == 'legs':
+#                 text = 'Defence: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+#
+#             if item.type == 'food':
+#                 text = 'Food: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
+#
+#             if item.type == 'drink':
+#                 text = 'Drink: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
+#
+#             if item.type == 'health':
+#                 text = 'Health: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
+#
+#             if item.type == 'stamina':
+#                 text = 'Stamina: '
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
+#                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
+#
+#             if item.type == 'other':
+#                 text = ''
+#                 button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', 40, item.name, 'gold')
+#                 writing_text('', 35, text + str(item.attribute), 'gold', x, y + 50)
+#
+#             # Make equipped items GREEN
+#             if count_weapon == 0:
+#                 if item.name == player1_equipment.equipped_weapon_name:
+#                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
+#                     writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+#                     count_weapon += 1
+#
+#             if count_torso == 0:
+#                 if item.name == player1_equipment.equipped_torso_name:
+#                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
+#                     writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+#                     count_torso += 1
+#
+#             if count_legs == 0:
+#                 if item.name == player1_equipment.equipped_legs_name:
+#                     button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
+#                     writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+#                     count_legs += 1
+#
+#             x += 200
+#             if x > 600:
+#                 x = 0
+#                 y += 150
+#
+#         if len(self.inventory) < 12:
+#             length = 12 - len(self.inventory)
+#             for i in range(length):
+#                 button_maker(x, y, 200, 150, 'red', 'blue', '', 40, '', 'ultra_green')
+#
+#                 x += 200
+#                 if x > 600:
+#                     x = 0
+#                     y += 150
+#
+#     def show_items_to_equip(self, type, attribute_text):
+#         x = 0
+#         y = 0
+#
+#         for item in self.inventory:
+#             index = self.inventory.index(item)
+#
+#             if item.type == type:
+#
+#                 if index <= 3:
+#                     y = 0
+#                 elif index <= 7:
+#                     y = 150
+#                 elif index <= 11:
+#                     y = 300
+#
+#                 if index == 0 or index == 4 or index == 8:
+#                     x = 0
+#                 elif index == 1 or index == 5 or index == 9:
+#                     x = 200
+#                 elif index == 2 or index == 6 or index == 10:
+#                     x = 400
+#                 elif index == 3 or index == 7 or index == 11:
+#                     x = 600
+#
+#                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'red')
+#                 writing_text('', 35, attribute_text + str(item.attribute), 'white', x, y + 50)
+#                 button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+#                              transparent_on=False)  # Exit
 
-    def add_to_inventory(self, item):
-        self.inventory.append(item)
+def equip_item(index):
 
-    def show_inventory(self, count_weapon, count_torso, count_legs):
-        x = 0
-        y = 0
+    item = list(inventory.inventory)[index]
 
-        self.sorted_inventory = sorted(self.inventory, key=operator.attrgetter('type', 'name'))
+    while True:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-        # for item in self.inventory:
-        for item in self.sorted_inventory:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                inventory_window.open_inventory_window()
 
-            # icon = pygame.image.load(item.icon)     ###### Wyświetlanie grafiki #######
-            # display.blit(icon, (300,120))
+            if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Equip Item
+                button = pygame.Rect(225, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
 
-            if item.type == 'weapon':
-                text = 'Damage: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+                        # musi przeszukać listę wyposażonych rzeczy czy jest w niej coś
+                        # I jeżeli item.type jest taki sam, to przedmiot z ekwipunku wrzuca do Inventory
+                        # a z Inventory do ekwipunku
 
-            if item.type == 'torso' or item.type == 'legs':
-                text = 'Defence: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                        # todo zamień te ify na metodę:
+                        if item.type == 'weapon':
+                            player1_equipment.equipped_weapon_attribute = item.attribute
+                            player1_equipment.equipped_weapon_name = item.name
+                            player1.update_attributes()
+                            player1_equipment.put_equipped_items_into_container(item)
+                            print(player1_equipment.equipped_items)
 
-            if item.type == 'food':
-                text = 'Food: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
 
-            if item.type == 'drink':
-                text = 'Drink: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
+                        elif item.type == 'torso':
+                            player1_equipment.equipped_torso_attribute = item.attribute
+                            player1_equipment.equipped_torso_name = item.name
+                            player1.update_attributes()
 
-            if item.type == 'health':
-                text = 'Health: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
+                        elif item.type == 'legs':
+                            player1_equipment.equipped_legs_attribute = item.attribute
+                            player1_equipment.equipped_legs_name = item.name
+                            player1.update_attributes()
 
-            if item.type == 'stamina':
-                text = 'Stamina: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
+                        statistic_window.open_statistics_window()
 
-            if item.type == 'other':
-                text = ''
-                button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', 40, item.name, 'gold')
-                writing_text('', 35, text + str(item.attribute), 'gold', x, y + 50)
+            if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't equip Item
+                button = pygame.Rect(400, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
+                        statistic_window.open_statistics_window()  ### Zmień to później na okno z wyborem itemu
 
-            # Make equipped items GREEN
-            if count_weapon == 0:
-                if item.name == player1_equipment.equipped_weapon_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
-                    count_weapon += 1
-            if count_torso == 0:
-                if item.name == player1_equipment.equipped_torso_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
-                    count_torso += 1
-            if count_legs == 0:
-                if item.name == player1_equipment.equipped_legs_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
-                    count_legs += 1
+        # Window settings
+        pygame.display.set_caption('Equip item?')
 
-            x += 200
-            if x > 600:
-                x = 0
-                y += 150
+        button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this item?', 'white',
+                     transparent_on=False, transparent_off=False)
+        button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
+                     transparent_off=False)
+        button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white',
+                     transparent_on=False, transparent_off=False)
 
-        if len(self.inventory) < 12:
-            length = 12 - len(self.inventory)
-            for i in range(length):
-                button_maker(x, y, 200, 150, 'red', 'blue', '', 40, '', 'ultra_green')
+        pygame.display.update()
+        clock.tick(FPS)
 
-                x += 200
-                if x > 600:
-                    x = 0
-                    y += 150
+def delete_item_from_inventory(index):
+    """ Function that deletes item from inventory """
+    item_index = list(inventory.sorted_inventory)[index]
+    items_names = []
 
-    def show_items_to_equip(self, type, attribute_text):
-        x = 0
-        y = 0
+    for item in inventory.inventory:  # create a list of items names
+        items_names.append(item.name)
 
-        for item in self.inventory:
-            index = self.inventory.index(item)
+    while True:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-            if item.type == type:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                inventory_window.open_inventory_window()
 
-                if index <= 3:
-                    y = 0
-                elif index <= 7:
-                    y = 150
-                elif index <= 11:
-                    y = 300
+            if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Remove Item
+                button = pygame.Rect(225, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
 
-                if index == 0 or index == 4 or index == 8:
-                    x = 0
-                elif index == 1 or index == 5 or index == 9:
-                    x = 200
-                elif index == 2 or index == 6 or index == 10:
-                    x = 400
-                elif index == 3 or index == 7 or index == 11:
-                    x = 600
+                        inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
+                        items_names.remove(item_index.name)  # Remove Item from items_names[]
 
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'red')
-                writing_text('', 35, attribute_text + str(item.attribute), 'white', x, y + 50)
-                button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
-                             transparent_on=False)  # Exit
+                        if item_index.name == player1_equipment.equipped_weapon_name or \
+                                item_index.name == player1_equipment.equipped_torso_name or \
+                                item_index.name == player1_equipment.equipped_legs_name:
 
-    def equip_item(self, index):
+                            # If deleted item is still in inventory.inventory[] -> equip this item
+                            if item_index.name in items_names:
+                                # player1.update_attributes()
 
-        item = list(self.inventory)[index]
+                                print('atak: ', player1.attack)
+                                print('obrona: ', player1.defence)
+                                inventory.show_inventory(0, 0, 0)
 
-        while True:
-            # Handle events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
+                            # If deleted item was the last one -> unequip this item
+                            elif item_index.name not in items_names:
+                                player1.reset_attributes(item_index.type)
 
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    inventory_window.open_inventory_window()
+                                if item_index.type == 'weapon':
+                                    # player1.attack = player1.attack - item_index.attribute
+                                    player1_equipment.equipped_weapon_attribute -= item_index.attribute
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Equip Item
-                    button = pygame.Rect(225, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
+                                if item_index.type == 'torso':
+                                    # player1.defence = player1.defence - item_index.attribute
+                                    player1_equipment.equipped_torso_attribute -= item_index.attribute
 
-                            # musi przeszukać listę wyposażonych rzeczy czy jest w niej coś
-                            # I jeżeli item.type jest taki sam, to przedmiot z ekwipunku wrzuca do Inventory
-                            # a z Inventory do ekwipunku
+                                if item_index.type == 'legs':
+                                    player1_equipment.equipped_legs_attribute -= item_index.attribute
 
-                            # todo zamień te ify na metodę:
-                            if item.type == 'weapon':
-                                player1_equipment.equipped_weapon_attribute = item.attribute
-                                player1_equipment.equipped_weapon_name = item.name
                                 player1.update_attributes()
-                                player1_equipment.put_equipped_items_into_container(item)
-                                print(player1_equipment.equipped_items)
+
+                                print('atak: ', player1.attack)
+                                print('obrona: ', player1.defence)
+                                inventory.show_inventory(0, 0, 0)
+
+                        inventory_window.open_inventory_window()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't remove Item
+                button = pygame.Rect(400, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
+                        inventory_window.open_inventory_window()
+
+        # Window settings
+        pygame.display.set_caption('Remove item?')
+        ###### Niech się pyta o konkretny przedmiot ############
+        button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to REMOVE this item?', 'white',
+                     transparent_on=False, transparent_off=False)
+        button_maker(225, 300, 175, 50, 'red', 'blue', '', 30, '         YES', 'white', transparent_on=False,
+                     transparent_off=False)
+        button_maker(400, 300, 175, 50, 'green', 'blue', '', 30, '           NO', 'white', transparent_on=False,
+                     transparent_off=False)
+
+        pygame.display.update()
+        clock.tick(FPS)
 
 
-                            elif item.type == 'torso':
-                                player1_equipment.equipped_torso_attribute = item.attribute
-                                player1_equipment.equipped_torso_name = item.name
-                                player1.update_attributes()
-
-                            elif item.type == 'legs':
-                                player1_equipment.equipped_legs_attribute = item.attribute
-                                player1_equipment.equipped_legs_name = item.name
-                                player1.update_attributes()
-
-                            statistic_window.open_statistics_window()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't equip Item
-                    button = pygame.Rect(400, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            statistic_window.open_statistics_window()  ### Zmień to później na okno z wyborem itemu
-
-            # Window settings
-            pygame.display.set_caption('Equip item?')
-
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to equip this item?', 'white',
-                         transparent_on=False, transparent_off=False)
-            button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
-                         transparent_off=False)
-            button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white',
-                         transparent_on=False, transparent_off=False)
-
-            pygame.display.update()
-            clock.tick(FPS)
-
-    def delete_item_from_inventory(self, index):
-        """ Function that deletes item from inventory """
-        item_index = list(self.sorted_inventory)[index]
-        items_names = []
-
-        for item in self.inventory:  # create a list of items names
-            items_names.append(item.name)
-
-        while True:
-            # Handle events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    inventory_window.open_inventory_window()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Remove Item
-                    button = pygame.Rect(225, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-
-                            self.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
-                            items_names.remove(item_index.name)  # Remove Item from items_names[]
-
-                            if item_index.name == player1_equipment.equipped_weapon_name or \
-                                    item_index.name == player1_equipment.equipped_torso_name or \
-                                    item_index.name == player1_equipment.equipped_legs_name:
-
-                                # If deleted item is still in inventory.inventory[] -> equip this item
-                                if item_index.name in items_names:
-                                    # player1.update_attributes()
-
-                                    print('atak: ', player1.attack)
-                                    print('obrona: ', player1.defence)
-                                    self.show_inventory(0, 0, 0)
-
-                                # If deleted item was the last one -> unequip this item
-                                elif item_index.name not in items_names:
-                                    player1.reset_attributes(item_index.type)
-
-                                    if item_index.type == 'weapon':
-                                        # player1.attack = player1.attack - item_index.attribute
-                                        player1_equipment.equipped_weapon_attribute -= item_index.attribute
-
-                                    if item_index.type == 'torso':
-                                        # player1.defence = player1.defence - item_index.attribute
-                                        player1_equipment.equipped_torso_attribute -= item_index.attribute
-
-                                    if item_index.type == 'legs':
-                                        player1_equipment.equipped_legs_attribute -= item_index.attribute
-
-                                    player1.update_attributes()
-
-                                    print('atak: ', player1.attack)
-                                    print('obrona: ', player1.defence)
-                                    self.show_inventory(0, 0, 0)
-
-                            inventory_window.open_inventory_window()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't remove Item
-                    button = pygame.Rect(400, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            inventory_window.open_inventory_window()
-
-            # Window settings
-            pygame.display.set_caption('Remove item?')
-            ###### Niech się pyta o konkretny przedmiot ############
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to REMOVE this item?', 'white',
-                         transparent_on=False, transparent_off=False)
-            button_maker(225, 300, 175, 50, 'red', 'blue', '', 30, '         YES', 'white', transparent_on=False,
-                         transparent_off=False)
-            button_maker(400, 300, 175, 50, 'green', 'blue', '', 30, '           NO', 'white', transparent_on=False,
-                         transparent_off=False)
-
-            pygame.display.update()
-            clock.tick(FPS)
-
-
-inventory = Inventory()  # create instance - Inventory
+# inventory = Inventory()  # create instance - Inventory
 
 # Add items to inventory
 inventory.add_to_inventory(axe)
@@ -983,7 +986,7 @@ class InventoryWindow:
                         if event.button == 3:
                             if button.collidepoint(event.pos):
                                 try:
-                                    delete_item_from_inventory = inventory.delete_item_from_inventory
+                                    # delete_item_from_inventory = inventory.delete_item_from_inventory
 
                                     if y == 0:
                                         if x == 200:
@@ -1094,29 +1097,29 @@ class EquipItemWindow:
                                 try:
 
                                     if x == 200 and y == 0:
-                                        inventory.equip_item(0)
+                                        equip_item(0)
                                     if x == 400 and y == 0:
-                                        inventory.equip_item(1)
+                                        equip_item(1)
                                     if x == 600 and y == 0:
-                                        inventory.equip_item(2)
+                                        equip_item(2)
                                     if x == 0 and y == 150:
-                                        inventory.equip_item(3)
+                                        equip_item(3)
                                     if x == 200 and y == 150:
-                                        inventory.equip_item(4)
+                                        equip_item(4)
                                     if x == 400 and y == 150:
-                                        inventory.equip_item(5)
+                                        equip_item(5)
                                     if x == 600 and y == 150:
-                                        inventory.equip_item(6)
+                                        equip_item(6)
                                     if x == 0 and y == 300:
-                                        inventory.equip_item(7)
+                                        equip_item(7)
                                     if x == 200 and y == 300:
-                                        inventory.equip_item(8)
+                                        equip_item(8)
                                     if x == 400 and y == 300:
-                                        inventory.equip_item(9)
+                                        equip_item(9)
                                     if x == 600 and y == 300:
-                                        inventory.equip_item(10)
+                                        equip_item(10)
                                     if x == 0 and y == 450:
-                                        inventory.equip_item(11)
+                                        equip_item(11)
 
                                 except IndexError:
                                     break

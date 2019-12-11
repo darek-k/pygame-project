@@ -257,7 +257,7 @@ class Barricade:
         self.basilica_defence = 20
         self.supermarket_defence = 10
 
-    def set_defence(self, location_name, defence, new_defence, image, window_name, chest_location, found_item_location):
+    def set_defence(self, location_name, defence, new_defence, image, window_name, found_item_location):
 
         if location_name == 'black_pearl':
             barricade.black_pearl_defence = new_defence
@@ -287,8 +287,9 @@ class Barricade:
             barricade.supermarket_defence = new_defence
 
         # Open previous window and update 'Defence'
-        location_window.open_location_window(image, window_name, chest_location, found_item_location, defence,
+        location_window.open_location_window(image, window_name, 'random_items', found_item_location, defence,
                                              location_name)
+
 
     def open_barricade_window(self, image, previous_window, defence, location_name, window_name,
                               found_item_location):
@@ -429,7 +430,7 @@ class Barricade:
                             time.sleep(0.8)
 
                             return barricade.set_defence(location_name, defence, new_defence, image, window_name,
-                                                         chest_location, found_item_location)
+                                                         found_item_location)
 
             # Window settings and graphic
             pygame.display.set_caption("Barricade")
@@ -802,6 +803,9 @@ inventory.add_to_inventory(armor)
 inventory.add_to_inventory(vest)
 inventory.add_to_inventory(jeans)
 inventory.add_to_inventory(sweatpants)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
 
 
 class InventoryWindow:

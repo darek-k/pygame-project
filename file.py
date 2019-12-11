@@ -17,62 +17,8 @@ pygame.init()
 def get_random_number(first_number, second_number):
     return random.randint(first_number, second_number)
 
-#
-# # create a Player
-# class Player:
-#     def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
-#
-#         self.name = name
-#
-#         self.strength = strength
-#         self.speed = speed
-#         self.dexterity = dexterity
-#         self.intelligence = intelligence
-#         self.charisma = charisma
-#
-#         self.attack = 1
-#         self.defence = 1
-#
-#         self.food = 20
-#         self.drink = 20
-#         self.stamina = 20
-#         self.health = 5
-#
-#         self.exp = 40
-#         self.exp_to_next_level = 50
-#         self.level = 1
-#         self.leveled_up = 0
-#
-#     def level_up(self):
-#         self.level += 1
-#         self.exp_to_next_level += self.exp + 20
-#         self.leveled_up += 1
-#
-#     def update_attributes(self):
-#         self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
-#
-#         self.defence = round(1 + (player1_equipment.equipped_torso_attribute
-#                                   + player1_equipment.equipped_legs_attribute), 1)
-#
-#     def reset_attributes(self, type):
-#         if type == 'weapon':
-#             player1_equipment.equipped_weapon_name = ''
-#         elif type == 'torso':
-#             player1_equipment.equipped_torso_name = ''
-#         elif type == 'legs':
-#             player1_equipment.equipped_legs_name = ''
-#
-#     def food_and_drink(self):
-#         if self.food < 0:
-#             self.health -= 5
-#             self.food = 0
-#         if self.drink < 0:
-#             self.health -= 10
-#             self.drink = 0
-#         if self.health <= 0:
-#             GameOverWindow().open_game_over_window()
 
-def use_item(index, type, attribute):  ######## Przenieś tę metodę do klasy PlayerEquipment ##########
+def use_item(index, type, attribute):  #todo: przenieś tę metodę do klasy PlayerEquipment
     item_index = list(inventory.sorted_inventory)[index]
     items_names = []
 
@@ -134,9 +80,6 @@ def use_item(index, type, attribute):  ######## Przenieś tę metodę do klasy P
 
         pygame.display.update()
         clock.tick(FPS)
-
-
-# player1 = Player('John', 5, 5, 5, 5, 5)
 
 
 class Sleep:
@@ -347,7 +290,7 @@ class Barricade:
         location_window.open_location_window(image, window_name, chest_location, found_item_location, defence,
                                              location_name)
 
-    def open_barricade_window(self, image, previous_window, defence, location_name, window_name, chest_location,
+    def open_barricade_window(self, image, previous_window, defence, location_name, window_name,
                               found_item_location):
         # It's used in open_location_window()
         defence_on_begin = defence
@@ -1670,9 +1613,7 @@ class LocationWindow:
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             barricade.open_barricade_window(image, location_window.open_location_window, defence,
-                                                            location_name, window_name, chest_location,
-                                                            found_item_location)
-
+                                                            location_name, window_name, found_item_location)
 
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit

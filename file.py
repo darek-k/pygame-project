@@ -20,70 +20,6 @@ def get_random_number(first_number, second_number):
     return random.randint(first_number, second_number)
 
 
-def use_item(index, type, attribute):  #todo: przenieś tę metodę do klasy PlayerEquipment
-    item_index = list(inventory.sorted_inventory)[index]
-    items_names = []
-
-    for item in inventory.inventory:  # create a list of items names
-        items_names.append(item.name)
-
-    while True:
-        # Handle events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                inventory_window.open_inventory_window()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Use Item
-                button = pygame.Rect(225, 300, 175, 50)
-                if event.button == 1:
-                    if button.collidepoint(event.pos):
-
-                        inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
-                        items_names.remove(item_index.name)  # Remove Item from items_names[]
-
-                        if type == 'food':
-                            player1.food += (attribute * 10)
-                            if player1.food > 100:
-                                player1.food = 100
-                        elif type == 'drink':
-                            player1.drink += (attribute * 10)
-                            if player1.drink > 100:
-                                player1.drink = 100
-                        elif type == 'stamina':
-                            player1.stamina += (attribute * 10)
-                            if player1.stamina > 100:
-                                player1.stamina = 100
-                        elif type == 'health':
-                            player1.health += (attribute * 10)
-                            if player1.health > 100:
-                                player1.health = 100
-
-                        inventory_window.open_inventory_window()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't use Item
-                button = pygame.Rect(400, 300, 175, 50)
-                if event.button == 1:
-                    if button.collidepoint(event.pos):
-                        inventory_window.open_inventory_window()
-
-        # Window settings
-        pygame.display.set_caption('Use item?')
-        ###### Niech się pyta o konkretny przedmiot ############
-        button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this item?', 'white',
-                     transparent_on=False, transparent_off=False)
-        button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
-                     transparent_off=False)
-        button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white', transparent_on=False,
-                     transparent_off=False)
-
-        pygame.display.update()
-        clock.tick(FPS)
-
-
 class Sleep:
 
     def open_sleep_window(self, image, previous_window):
@@ -674,17 +610,78 @@ def delete_item_from_inventory(index):
 
 # Add items to inventory
 inventory.add_to_inventory(axe)
-inventory.add_to_inventory(knife)
 inventory.add_to_inventory(armor)
-inventory.add_to_inventory(vest)
-inventory.add_to_inventory(jeans)
 inventory.add_to_inventory(sweatpants)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
+inventory.add_to_inventory(vodka)
+inventory.add_to_inventory(dog_food)
 inventory.add_to_inventory(board)
 
 
 class InventoryWindow:
+
+    def use_item(self, index, type,
+                 attribute):
+        item_index = list(inventory.sorted_inventory)[index]
+        items_names = []
+
+        for item in inventory.inventory:  # create a list of items names
+            items_names.append(item.name)
+
+        while True:
+            # Handle events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    self.open_inventory_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Use Item
+                    button = pygame.Rect(225, 300, 175, 50)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+
+                            inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
+                            items_names.remove(item_index.name)  # Remove Item from items_names[]
+
+                            if type == 'food':
+                                player1.food += (attribute * 10)
+                                if player1.food > 100:
+                                    player1.food = 100
+                            elif type == 'drink':
+                                player1.drink += (attribute * 10)
+                                if player1.drink > 100:
+                                    player1.drink = 100
+                            elif type == 'stamina':
+                                player1.stamina += (attribute * 10)
+                                if player1.stamina > 100:
+                                    player1.stamina = 100
+                            elif type == 'health':
+                                player1.health += (attribute * 10)
+                                if player1.health > 100:
+                                    player1.health = 100
+
+                            self.open_inventory_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't use Item
+                    button = pygame.Rect(400, 300, 175, 50)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            self.open_inventory_window()
+
+            # Window settings
+            pygame.display.set_caption('Use item?')
+            ###### Niech się pyta o konkretny przedmiot ############
+            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this item?', 'white',
+                         transparent_on=False, transparent_off=False)
+            button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
+                         transparent_off=False)
+            button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white', transparent_on=False,
+                         transparent_off=False)
+
+            pygame.display.update()
+            clock.tick(FPS)
 
     def open_inventory_window(self):  # create Inventory Window
         while True:
@@ -722,6 +719,9 @@ class InventoryWindow:
                         if event.button == 1:
                             if button.collidepoint(event.pos):
                                 try:
+
+                                    use_item = inventory_window.use_item
+
                                     if x == 200 and y == 0:
                                         index = 0
                                         item_index = list(inventory.sorted_inventory)[index]

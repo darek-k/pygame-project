@@ -9,8 +9,7 @@ import pygame
 from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons
 from display import display
-from game_over import GameOverWindow
-from player import player1_equipment
+from player import player1_equipment, player1
 
 pygame.init()
 
@@ -18,126 +17,126 @@ pygame.init()
 def get_random_number(first_number, second_number):
     return random.randint(first_number, second_number)
 
+#
+# # create a Player
+# class Player:
+#     def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
+#
+#         self.name = name
+#
+#         self.strength = strength
+#         self.speed = speed
+#         self.dexterity = dexterity
+#         self.intelligence = intelligence
+#         self.charisma = charisma
+#
+#         self.attack = 1
+#         self.defence = 1
+#
+#         self.food = 20
+#         self.drink = 20
+#         self.stamina = 20
+#         self.health = 5
+#
+#         self.exp = 40
+#         self.exp_to_next_level = 50
+#         self.level = 1
+#         self.leveled_up = 0
+#
+#     def level_up(self):
+#         self.level += 1
+#         self.exp_to_next_level += self.exp + 20
+#         self.leveled_up += 1
+#
+#     def update_attributes(self):
+#         self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
+#
+#         self.defence = round(1 + (player1_equipment.equipped_torso_attribute
+#                                   + player1_equipment.equipped_legs_attribute), 1)
+#
+#     def reset_attributes(self, type):
+#         if type == 'weapon':
+#             player1_equipment.equipped_weapon_name = ''
+#         elif type == 'torso':
+#             player1_equipment.equipped_torso_name = ''
+#         elif type == 'legs':
+#             player1_equipment.equipped_legs_name = ''
+#
+#     def food_and_drink(self):
+#         if self.food < 0:
+#             self.health -= 5
+#             self.food = 0
+#         if self.drink < 0:
+#             self.health -= 10
+#             self.drink = 0
+#         if self.health <= 0:
+#             GameOverWindow().open_game_over_window()
 
-# create a Player
-class Player:
-    def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
+def use_item(index, type, attribute):  ######## Przenieś tę metodę do klasy PlayerEquipment ##########
+    item_index = list(inventory.sorted_inventory)[index]
+    items_names = []
 
-        self.name = name
+    for item in inventory.inventory:  # create a list of items names
+        items_names.append(item.name)
 
-        self.strength = strength
-        self.speed = speed
-        self.dexterity = dexterity
-        self.intelligence = intelligence
-        self.charisma = charisma
+    while True:
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-        self.attack = 1
-        self.defence = 1
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                inventory_window.open_inventory_window()
 
-        self.food = 20
-        self.drink = 20
-        self.stamina = 20
-        self.health = 5
+            if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Use Item
+                button = pygame.Rect(225, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
 
-        self.exp = 40
-        self.exp_to_next_level = 50
-        self.level = 1
-        self.leveled_up = 0
+                        inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
+                        items_names.remove(item_index.name)  # Remove Item from items_names[]
 
-    def level_up(self):
-        self.level += 1
-        self.exp_to_next_level += self.exp + 20
-        self.leveled_up += 1
+                        if type == 'food':
+                            player1.food += (attribute * 10)
+                            if player1.food > 100:
+                                player1.food = 100
+                        elif type == 'drink':
+                            player1.drink += (attribute * 10)
+                            if player1.drink > 100:
+                                player1.drink = 100
+                        elif type == 'stamina':
+                            player1.stamina += (attribute * 10)
+                            if player1.stamina > 100:
+                                player1.stamina = 100
+                        elif type == 'health':
+                            player1.health += (attribute * 10)
+                            if player1.health > 100:
+                                player1.health = 100
 
-    def update_attributes(self):
-        self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
+                        inventory_window.open_inventory_window()
 
-        self.defence = round(1 + (player1_equipment.equipped_torso_attribute
-                                  + player1_equipment.equipped_legs_attribute), 1)
+            if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't use Item
+                button = pygame.Rect(400, 300, 175, 50)
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
+                        inventory_window.open_inventory_window()
 
-    def reset_attributes(self, type):
-        if type == 'weapon':
-            player1_equipment.equipped_weapon_name = ''
-        elif type == 'torso':
-            player1_equipment.equipped_torso_name = ''
-        elif type == 'legs':
-            player1_equipment.equipped_legs_name = ''
+        # Window settings
+        pygame.display.set_caption('Use item?')
+        ###### Niech się pyta o konkretny przedmiot ############
+        button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this item?', 'white',
+                     transparent_on=False, transparent_off=False)
+        button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
+                     transparent_off=False)
+        button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white', transparent_on=False,
+                     transparent_off=False)
 
-    def food_and_drink(self):
-        if self.food < 0:
-            self.health -= 5
-            self.food = 0
-        if self.drink < 0:
-            self.health -= 10
-            self.drink = 0
-        if self.health <= 0:
-            GameOverWindow().open_game_over_window()
-
-    def use_item(self, index, type, attribute):  ######## Przenieś tę metodę do klasy PlayerEquipment ##########
-        item_index = list(inventory.sorted_inventory)[index]
-        items_names = []
-
-        for item in inventory.inventory:  # create a list of items names
-            items_names.append(item.name)
-
-        while True:
-            # Handle events
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    inventory_window.open_inventory_window()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:  # YES - Use Item
-                    button = pygame.Rect(225, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-
-                            inventory.inventory.remove(item_index)  # Remove Item from inventory.inventory[]
-                            items_names.remove(item_index.name)  # Remove Item from items_names[]
-
-                            if type == 'food':
-                                player1.food += (attribute * 10)
-                                if player1.food > 100:
-                                    player1.food = 100
-                            elif type == 'drink':
-                                player1.drink += (attribute * 10)
-                                if player1.drink > 100:
-                                    player1.drink = 100
-                            elif type == 'stamina':
-                                player1.stamina += (attribute * 10)
-                                if player1.stamina > 100:
-                                    player1.stamina = 100
-                            elif type == 'health':
-                                player1.health += (attribute * 10)
-                                if player1.health > 100:
-                                    player1.health = 100
-
-                            inventory_window.open_inventory_window()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't use Item
-                    button = pygame.Rect(400, 300, 175, 50)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            inventory_window.open_inventory_window()
-
-            # Window settings
-            pygame.display.set_caption('Use item?')
-            ###### Niech się pyta o konkretny przedmiot ############
-            button_maker(225, 250, 350, 50, 'blue', 'blue', '', 30, 'Do you want to USE this item?', 'white',
-                         transparent_on=False, transparent_off=False)
-            button_maker(225, 300, 175, 50, 'green', 'blue', '', 30, '         YES', 'white', transparent_on=False,
-                         transparent_off=False)
-            button_maker(400, 300, 175, 50, 'red', 'blue', '', 30, '           NO', 'white', transparent_on=False,
-                         transparent_off=False)
-
-            pygame.display.update()
-            clock.tick(FPS)
+        pygame.display.update()
+        clock.tick(FPS)
 
 
-player1 = Player('John', 5, 5, 5, 5, 5)
+# player1 = Player('John', 5, 5, 5, 5, 5)
 
 
 class Sleep:
@@ -905,7 +904,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -916,7 +915,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -926,7 +925,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -936,7 +935,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -946,7 +945,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -956,7 +955,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -966,7 +965,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -976,7 +975,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -986,7 +985,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -996,7 +995,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -1006,7 +1005,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -1016,7 +1015,7 @@ class InventoryWindow:
                                         item_index = list(inventory.sorted_inventory)[index]
                                         if item_index.type == 'food' or item_index.type == 'drink' or \
                                                 item_index.type == 'stamina' or item_index.type == 'health':
-                                            player1.use_item(index, item_index.type, item_index.attribute)
+                                            use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
                                             print('You can wear this item in Statistics')
@@ -1340,6 +1339,7 @@ statistic_window = StatisticsWindow()
 
 
 class SearchItem:
+    """ Itemsy dodane są po to, żeby mieć wszystkie itemy w jednym miejscu, gdybym chciał pozmieniać coś """
     itemsy = [stone, rod, bat, oar, hammer, knife, axe, shirt, vest, jacket, armor, sweatpants, jeans,
               fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
               vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]
@@ -1673,6 +1673,8 @@ class LocationWindow:
                                                             location_name, window_name, chest_location,
                                                             found_item_location)
 
+
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
                     button = pygame.Rect(600, 550, 200, 40)
                     if event.button == 1:
@@ -1716,7 +1718,6 @@ class MapWindow:
         self.raven_sound = pygame.mixer.Sound('audio/raven2.wav')
 
     def open_map_window(self):
-
         while True:
             # Handle events
             for event in pygame.event.get():

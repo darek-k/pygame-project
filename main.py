@@ -1,4 +1,4 @@
-from file import map_window
+from file import map_window, main_menu_window
 from search import chest
 
 if __name__ == '__main__':
@@ -7,3 +7,4 @@ if __name__ == '__main__':
         chest.get_random_items(chest_location, random_items)
 
     map_window.open_map_window()
+    # main_menu_window.open_main_menu_window()

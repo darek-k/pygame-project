@@ -10,10 +10,20 @@ from display import display
 from inventory import inventory
 from items import Item
 from player import player1_equipment, player1
-from search.search_item import chest
+from search import chest
 from sleep import Sleep
 
 pygame.init()
+
+
+
+class ItemsNamesList:
+    def items_names_list(self):
+        """ Create list with items names """
+        names_list = []
+        for item in inventory.inventory:
+            names_list.append(item.name.strip())
+        return names_list
 
 
 class Barricade:
@@ -32,8 +42,8 @@ class Barricade:
         self.basilica_defence = 20
         self.supermarket_defence = 10
 
-    def set_defence(self, location_name, defence, new_defence, image, window_name, found_item_location):
 
+    def set_defence(self, location_name, new_defence):
         if location_name == 'black_pearl':
             barricade.black_pearl_defence = new_defence
         if location_name == 'bridge':
@@ -61,10 +71,11 @@ class Barricade:
         if location_name == 'supermarket':
             barricade.supermarket_defence = new_defence
 
+    def update_defence(self, image, window_name, found_item_location, defence,
+                                             location_name):
         # Open previous window and update 'Defence'
         location_window.open_location_window(image, window_name, 'random_items', found_item_location, defence,
                                              location_name)
-
 
     def open_barricade_window(self, image, previous_window, defence, location_name, window_name,
                               found_item_location):
@@ -84,14 +95,10 @@ class Barricade:
         health = int(player1.health)
         count_health = 0
 
-        # create list with items names
-        names_list = []
-        for item in inventory.inventory:
-            names_list.append(item.name.strip())
 
         # Count number of Boards in Inventory
-        boards_number_on_begin = names_list.count('Board')
-        boards_number = names_list.count('Board')
+        boards_number_on_begin = ItemsNamesList().items_names_list().count('Board')
+        boards_number = ItemsNamesList().items_names_list().count('Board')
 
         while True:
             for event in pygame.event.get():
@@ -204,8 +211,9 @@ class Barricade:
                             pygame.display.update()
                             time.sleep(0.8)
 
-                            return barricade.set_defence(location_name, defence, new_defence, image, window_name,
-                                                         found_item_location)
+                            barricade.set_defence(location_name, defence)
+                            return barricade.update_defence(image, window_name, found_item_location, defence,
+                                             location_name)
 
             # Window settings and graphic
             pygame.display.set_caption("Barricade")
@@ -1116,7 +1124,8 @@ class LocationWindow:
         self.locations = ['black_pearl', 'bridge', 'crane', 'flat', 'forest', 'gate', 'hotel', 'office', 'opera',
                           'restaurant', 'soldek', 'basilica', 'supermarket']
 
-    def open_location_window(self, image, window_name, random_items, found_item_location, defence, location_name):
+    @staticmethod
+    def open_location_window(image, window_name, random_items, found_item_location, defence, location_name):
 
         while True:
             # Handle events
@@ -1187,6 +1196,7 @@ class LocationWindow:
 location_window = LocationWindow()  # Creates an instance of Location class
 
 
+
 # Creates map window
 class MapWindow:
     def __init__(self):
@@ -1208,6 +1218,7 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.open_sound.play()
                             inventory_window.open_inventory_window()
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Statistics window
                     button = pygame.Rect(400, 550, 200, 40)
@@ -1474,6 +1485,7 @@ class MainMenuWindow:
                             # effect = pygame.mixer.Sound('zombie_sound.wav')
                             # effect.play()
                             # time.sleep(2)
+                            map_window.open_map_window()
                             map_window.open_map_window()
 
             # Window settings

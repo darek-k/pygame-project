@@ -5,7 +5,7 @@ import time
 import pygame
 
 from clock import clock, FPS
-from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons, get_random_number
+from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons, ItemsNamesList
 from display import display
 from inventory import inventory
 from items import Item
@@ -17,13 +17,10 @@ pygame.init()
 
 
 
-class ItemsNamesList:
-    def items_names_list(self):
-        """ Create list with items names """
-        names_list = []
-        for item in inventory.inventory:
-            names_list.append(item.name.strip())
-        return names_list
+# class ItemsNamesList:
+#     def items_names_list(self):
+#         """ Create list with items names """
+#         return [item.name for item in inventory.inventory]
 
 
 class Barricade:
@@ -94,7 +91,6 @@ class Barricade:
         health_on_begin = int(player1.health)
         health = int(player1.health)
         count_health = 0
-
 
         # Count number of Boards in Inventory
         boards_number_on_begin = ItemsNamesList().items_names_list().count('Board')
@@ -195,15 +191,13 @@ class Barricade:
                             if player1.exp >= player1.exp_to_next_level:
                                 player1.level_up()
 
-                            # create list of items names
-                            names_list = [item.name for item in inventory.inventory]
 
                             start_index = 0
                             for item in range(used_boards_number):
-                                index = names_list.index("Board", start_index)
+                                index = ItemsNamesList().items_names_list().index("Board", start_index)
                                 start_index += 1
                                 del inventory.inventory[index]
-                                names_list = [item.name for item in inventory.inventory]
+
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('images/barricade.jpg')
@@ -313,6 +307,9 @@ inventory.add_to_inventory(armor)
 inventory.add_to_inventory(sweatpants)
 inventory.add_to_inventory(vodka)
 inventory.add_to_inventory(dog_food)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
+inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
 
 

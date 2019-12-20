@@ -2,10 +2,10 @@ import sys
 import time
 
 import pygame
+from display import display
 
 from clock import clock, FPS
 from create import button_maker, statistics_buttons, writing_text
-from display import display
 from player import player1
 
 
@@ -118,23 +118,24 @@ class Sleep:
                             display.blit(sleep_image, (0, 0))
                             pygame.display.update()
                             time.sleep(0.8)
+
                             sleep_image = pygame.image.load('images/sleep2.jpg')
                             display.blit(sleep_image, (0, 0))
                             pygame.display.update()
                             time.sleep(0.8)
+
                             sleep_image = pygame.image.load('images/sleep3.jpg')
                             display.blit(sleep_image, (0, 0))
                             pygame.display.update()
-                            pygame.time.sleep(0.8)
+                            time.sleep(0.8)
 
                             return previous_window
 
-                if event.type == pygame.MOUSEBUTTONDOWN: # click EXIT button
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
                     button = pygame.Rect(650, 550, 150, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             return previous_window
-
 
             # Window settings and graphic
             pygame.display.set_caption("Sleep")
@@ -151,20 +152,19 @@ class Sleep:
                          transparent_on=False, transparent_off=False)
 
             statistics_buttons(310, 300, 180, 35, '', 35, f'STAMINA = {stamina}', 'needs',
-                                                stamina)
+                               stamina)
             statistics_buttons(310, 340, 180, 35, '', 35, f'HEALTH = {health}', 'needs',
-                                                health)
+                               health)
             statistics_buttons(310, 380, 180, 35, '', 35, f'FOOD = {food}', 'needs',
-                                                food)
+                               food)
             statistics_buttons(310, 420, 180, 35, '', 35, f'DRINK = {drink}', 'needs',
-                                                drink)
+                               drink)
 
             button_maker(350, 500, 100, 35, 'green', 'blue', '', 45, 'SLEEP', 'white',  # SLEEP
                          transparent_on=False, transparent_off=False)
 
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                          transparent_on=False)  # Exit
-
 
             pygame.display.update()
             clock.tick(FPS)

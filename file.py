@@ -16,13 +16,6 @@ from sleep import Sleep
 pygame.init()
 
 
-
-# class ItemsNamesList:
-#     def items_names_list(self):
-#         """ Create list with items names """
-#         return [item.name for item in inventory.inventory]
-
-
 class Barricade:
     def __init__(self):
         self.black_pearl_defence = 50

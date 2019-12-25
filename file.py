@@ -1108,6 +1108,38 @@ class SearchWindow:
 
 chest_inventory = SearchWindow()
 
+class TradeWindow:
+
+    def open_trade_window(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    map_window.open_map_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
+
+            # Window settings
+            pygame.display.set_caption('Trade')
+            trade_image = pygame.image.load('images/trade.jpg')
+            display.blit(trade_image, (0, 0))
+
+            # ESC button
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
+
+
+            pygame.display.update()
+            clock.tick(FPS)
+
+trade_window = TradeWindow()
 
 class LocationWindow:
     def __init__(self):
@@ -1215,6 +1247,15 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.open_sound.play()
                             statistic_window.open_statistics_window()
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Trade window
+                    button = pygame.Rect(600, 550, 200, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            self.open_sound.play()
+                            trade_window.open_trade_window()
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
@@ -1447,7 +1488,7 @@ class MapWindow:
                          transparent_on=False)  # Inventory
             button_maker(400, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Statistics', 'white',
                          transparent_on=False)  # Statistics
-            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Options', 'white',
+            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Trade', 'white',
                          transparent_on=False)  # Options
 
             pygame.display.update()

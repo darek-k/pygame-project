@@ -6,5 +6,6 @@ if __name__ == '__main__':
     for chest_location, random_items in chest.locations:
         chest.get_random_items(chest_location, random_items)
 
+    main_menu_window.open_main_menu_window()
     map_window.open_map_window()
-    # main_menu_window.open_main_menu_window()
+

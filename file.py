@@ -192,13 +192,11 @@ class OpenBarricadeWindow:
                             if player1.exp >= player1.exp_to_next_level:
                                 player1.level_up()
 
-
                             start_index = 0
                             for item in range(used_boards_number):
                                 index = ItemsNamesList().items_names_list().index("Board", start_index)
                                 start_index += 1
                                 del inventory.inventory[index]
-
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('images/barricade.jpg')
@@ -208,7 +206,7 @@ class OpenBarricadeWindow:
 
                             set_defence.set_defence(location_name, defence)
                             return UpdateDefence().update_defence(image, window_name, found_item_location, defence,
-                                             location_name)
+                                                                  location_name)
 
             # Window settings and graphic
             pygame.display.set_caption("Barricade")
@@ -297,7 +295,6 @@ cocaine = Item('Cocaine', 5, 'stamina', '')
 board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
-
 # Add items to inventory
 inventory.add_to_inventory(axe)
 inventory.add_to_inventory(armor)
@@ -344,11 +341,16 @@ class JournalWindow:
                             x = 0
                             y += 150
 
-
             # Window setting
             pygame.display.set_caption("Journal")
             journal_image = pygame.image.load('images/journal.jpg')
             display.blit(journal_image, (0, 0))
+
+            writing_text('', 35, "I need to find a way to get into this closed GATE in the city.", 'black', 5, 15)
+            writing_text('', 35, "I can do this in few ways:", 'black', 5, 55)
+            writing_text('', 35, "-Find 3 keys for the 3 padlocks in the GATE", 'black', 20, 120)
+            writing_text('', 35, "-Use my ATTACK to destroy the padlocks", 'black', 20, 180)
+            writing_text('', 35, "-Use my DEXTERITY to brake in", 'black', 20, 240)
 
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                          transparent_on=False)  # Exit
@@ -1158,6 +1160,7 @@ class SearchWindow:
 
 chest_inventory = SearchWindow()
 
+
 class TradeWindow:
 
     def open_trade_window(self):
@@ -1185,11 +1188,12 @@ class TradeWindow:
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
                          transparent_on=False)  # Exit
 
-
             pygame.display.update()
             clock.tick(FPS)
 
+
 trade_window = TradeWindow()
+
 
 class LocationWindow:
     def __init__(self):
@@ -1229,9 +1233,9 @@ class LocationWindow:
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            OpenBarricadeWindow().open_barricade_window(image, location_window.open_location_window, defence,
-                                                            location_name, window_name, found_item_location)
-
+                            OpenBarricadeWindow().open_barricade_window(image, location_window.open_location_window,
+                                                                        defence,
+                                                                        location_name, window_name, found_item_location)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
                     button = pygame.Rect(600, 550, 200, 40)
@@ -1276,7 +1280,6 @@ class MapWindow:
         self.raven_sound = pygame.mixer.Sound('audio/raven2.wav')
         self.open_book = pygame.mixer.Sound('audio/open_book.wav')
 
-
     def open_map_window(self):
         while True:
             # Handle events
@@ -1285,14 +1288,12 @@ class MapWindow:
                     pygame.quit()
                     sys.exit()
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Journal window !!!!!!!!!!!!!!!
                     button = pygame.Rect(0, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             self.open_book.play()
                             journal_window.open_journal_window()
-
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open an Inventory window
                     button = pygame.Rect(200, 550, 200, 40)
@@ -1301,7 +1302,6 @@ class MapWindow:
                             self.open_sound.play()
                             inventory_window.open_inventory_window()
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Statistics window
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
@@ -1309,14 +1309,12 @@ class MapWindow:
                             self.open_sound.play()
                             statistic_window.open_statistics_window()
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Trade window
                     button = pygame.Rect(600, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             self.open_sound.play()
                             trade_window.open_trade_window()
-
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
@@ -1354,7 +1352,8 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.door_sound.play()
                             location_window.open_location_window('images/flat.jpg', 'Flat', chest.random_items_flat,
-                                                                 chest.found_items_flat, set_defence.flat_defence, 'flat')
+                                                                 chest.found_items_flat, set_defence.flat_defence,
+                                                                 'flat')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Forest" window
                     button = pygame.Rect(450, 25, 75, 40)

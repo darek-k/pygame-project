@@ -352,7 +352,7 @@ class JournalWindow:
             writing_text('', 35, "-Use my ATTACK to destroy the padlocks", 'black', 20, 180)
             writing_text('', 35, "-Use my DEXTERITY to brake in", 'black', 20, 240)
 
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
             pygame.display.update()
             clock.tick(FPS)
@@ -793,7 +793,7 @@ class InventoryWindow:
 
             writing_text('', 18, 'LMB = Use Item', 'pure_red', 0, 555)
             writing_text('', 18, 'RMB = Delete Item', 'pure_red', 0, 580)
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
@@ -897,7 +897,7 @@ class EquipItemWindow:
             display.blit(set_image, (0, 0))
             writing_text('', 35, 'LMB = Equip Item', 'pure_red', 0, 570)
 
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             # Items in Inventory
@@ -1022,7 +1022,7 @@ class StatisticsWindow:
             equipment_buttons(530, 490, 100, 50, player1_equipment.equipped_legs_name, '   Legs')  # Legs
 
             # ESC button
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             if player1.leveled_up > 0:
@@ -1146,7 +1146,7 @@ class SearchWindow:
             statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
             statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
 
-            button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Exit', 'white',
+            button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Back', 'white',
                          transparent_on=False)  # Exit
 
             # Information
@@ -1185,7 +1185,7 @@ class TradeWindow:
             display.blit(trade_image, (0, 0))
 
             # ESC button
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             pygame.display.update()
@@ -1257,7 +1257,7 @@ class LocationWindow:
                          transparent_on=False, transparent_off=False)  # Sleep
             button_maker(400, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '      Barricade', 'white',
                          transparent_on=False, transparent_off=False)  # Barricade
-            button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '          Exit', 'white',
+            button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '          Back', 'white',
                          transparent_on=False, transparent_off=False)  # Exit
 
             # Show DEFENCE stat
@@ -1403,7 +1403,7 @@ class MapWindow:
 
                                     # Add menu buttons
                                     button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
-                                                 '          Exit', 'white',
+                                                 '          Back', 'white',
                                                  transparent_on=False, transparent_off=False)  # Exit
 
                                     pygame.display.update()

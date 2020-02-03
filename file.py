@@ -309,6 +309,56 @@ inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
 
 
+class JournalWindow:
+
+    def open_journal_window(self):
+
+        while True:
+            # Handle events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    map_window.open_map_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
+
+                # create squares in Inventory
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    loop = True
+                    x = 0
+                    y = 0
+                    w = 200
+                    h = 150
+
+                    while loop == True:
+                        button = pygame.Rect(x, y, w, h)
+                        x += 200
+                        if x > 600:
+                            x = 0
+                            y += 150
+
+
+            # Window setting
+            pygame.display.set_caption("Journal")
+            journal_image = pygame.image.load('images/journal.jpg')
+            display.blit(journal_image, (0, 0))
+
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+                         transparent_on=False)  # Exit
+            pygame.display.update()
+            clock.tick(FPS)
+
+
+journal_window = JournalWindow()
+
+
 class InventoryWindow:
 
     def equip_item(self, index):
@@ -1224,6 +1274,8 @@ class MapWindow:
         self.open_sound = pygame.mixer.Sound('audio/open_sound.wav')
         self.door_sound = pygame.mixer.Sound('audio/door.wav')
         self.raven_sound = pygame.mixer.Sound('audio/raven2.wav')
+        self.open_book = pygame.mixer.Sound('audio/open_book.wav')
+
 
     def open_map_window(self):
         while True:
@@ -1232,6 +1284,15 @@ class MapWindow:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Journal window !!!!!!!!!!!!!!!
+                    button = pygame.Rect(0, 550, 200, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            self.open_book.play()
+                            journal_window.open_journal_window()
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open an Inventory window
                     button = pygame.Rect(200, 550, 200, 40)

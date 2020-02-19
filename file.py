@@ -295,9 +295,8 @@ cocaine = Item('Cocaine', 5, 'stamina', '')
 
 # create other instances
 board = Item('Board', '', 'other', '')
-key1 = Item('Key 1', '', 'other', '')
-key2 = Item('Key 2', '', 'other', '')
-key3 = Item('Key 3', '', 'other', '')
+key = Item('Key', '', 'other', '')
+
 
 # Add items to inventory
 inventory.add_to_inventory(axe)
@@ -307,7 +306,6 @@ inventory.add_to_inventory(vodka)
 inventory.add_to_inventory(dog_food)
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
-inventory.add_to_inventory(key1)
 
 
 class JournalWindow:
@@ -1166,9 +1164,9 @@ class SearchWindow:
 chest_inventory = SearchWindow()
 
 
-class TradeWindow:
+class HelpWindow:
 
-    def open_trade_window(self):
+    def open_help_window(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -1185,19 +1183,28 @@ class TradeWindow:
                             return map_window.open_map_window()
 
             # Window settings
-            pygame.display.set_caption('Trade')
-            trade_image = pygame.image.load('images/trade.jpg')
-            display.blit(trade_image, (0, 0))
+            pygame.display.set_caption('Help')
+            help_image = pygame.image.load('images/help.jpg')
+            display.blit(help_image, (0, 0))
 
             # ESC button
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
+            # Tips
+            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5,140)
+            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5,180)
+            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5,220)
+            writing_text('', 25, '  - USE items', 'pure_red', 5,260)
+            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5,310)
+            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5,360)
+            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5,400)
+
             pygame.display.update()
             clock.tick(FPS)
 
 
-trade_window = TradeWindow()
+help_window = HelpWindow()
 
 
 class LocationWindow:
@@ -1293,7 +1300,7 @@ class MapWindow:
                     pygame.quit()
                     sys.exit()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Journal window !!!!!!!!!!!!!!!
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Journal window
                     button = pygame.Rect(0, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
@@ -1314,12 +1321,13 @@ class MapWindow:
                             self.open_sound.play()
                             statistic_window.open_statistics_window()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Trade window
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Help window
                     button = pygame.Rect(600, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             self.open_sound.play()
-                            trade_window.open_trade_window()
+                            help_window.open_help_window()
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
@@ -1374,14 +1382,7 @@ class MapWindow:
                     button = pygame.Rect(610, 160, 60, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            if (key1 and key2 and key3) in inventory.inventory or player1.attack == 15 \
-                                    or player1.dexterity == 10:
-                                self.door_sound.play()
-                                VictoryWindow().open_victory_window()
-
-                            else:
                                 while True:
-
                                     for event in pygame.event.get():
                                         if event.type == pygame.QUIT:
                                             pygame.quit()
@@ -1400,7 +1401,7 @@ class MapWindow:
                                             button = pygame.Rect(325, 275, 150, 50)
                                             if event.button == 1:
                                                 if button.collidepoint(event.pos):
-                                                    if (key1 and key2 and key3) in inventory.inventory or player1.attack >= 15 \
+                                                    if (key.count(3)) in inventory.inventory or player1.attack >= 15 \
                                                             or player1.dexterity >= 10:
                                                         self.door_sound.play()
                                                         VictoryWindow().open_victory_window()
@@ -1569,7 +1570,7 @@ class MapWindow:
                          transparent_on=False)  # Inventory
             button_maker(400, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Statistics', 'white',
                          transparent_on=False)  # Statistics
-            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Trade', 'white',
+            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Help', 'white',
                          transparent_on=False)  # Options
 
             pygame.display.update()

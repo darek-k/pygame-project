@@ -135,7 +135,7 @@ class OpenBarricadeWindow:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low")
+                                                print("Health too low") # todo change this into statement
                                         if drink > 0:
                                             drink -= 5
                                         else:
@@ -144,11 +144,11 @@ class OpenBarricadeWindow:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low")
+                                                print("Health too low") # todo change this into statement
                                     elif stamina <= 5:
-                                        print("Stamina too low")
+                                        print("Stamina too low") # todo change this into statement
                                 elif boards_number == 0:
-                                    print("You don't have boards")
+                                    print("You don't have boards") # todo change this into statement
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "-" Button
                     button = pygame.Rect(400, 100, 80, 45)
@@ -618,8 +618,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
-                                            ########   Możliwość wyposażenia przedmiotu dodaj
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 0:
                                         index = 1
@@ -629,7 +628,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 0:
                                         index = 2
@@ -639,7 +638,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 150:
                                         index = 3
@@ -649,7 +648,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 150:
                                         index = 4
@@ -659,7 +658,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 150:
                                         index = 5
@@ -669,7 +668,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 150:
                                         index = 6
@@ -679,7 +678,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 300:
                                         index = 7
@@ -689,7 +688,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 300:
                                         index = 8
@@ -699,7 +698,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 300:
                                         index = 9
@@ -709,7 +708,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 300:
                                         index = 10
@@ -719,7 +718,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 450:
                                         index = 11
@@ -729,7 +728,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass # todo Add possibillity of equip item from here
 
                                 except IndexError:
                                     break
@@ -1395,11 +1394,20 @@ class MapWindow:
                                                 if button.collidepoint(event.pos):
                                                     map_window.open_map_window()
 
-                                        # if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
-                                        #     button = pygame.Rect(600, 550, 200, 40)
-                                        #     if event.button == 1:
-                                        #         if button.collidepoint(event.pos):
-                                        #             map_window.open_map_window()
+                                        if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
+                                            button = pygame.Rect(325, 275, 150, 50)
+                                            if event.button == 1:
+                                                if button.collidepoint(event.pos):
+                                                    if (key1 and key2 and key3) in inventory.inventory or player1.attack == 15 \
+                                                            or player1.dexterity == 10:
+                                                        self.door_sound.play()
+                                                        VictoryWindow().open_victory_window()
+                                                    else:
+                                                        button_maker(250, 220, 300, 40, 'blue', 'blue', '', 36,
+                                                                     " You can't open this now", 'white',
+                                                                     transparent_on=False, transparent_off=False)
+                                                        pygame.display.update()
+                                                        time.sleep(1.5)
 
                                     # Window name
                                     pygame.display.set_caption("Gate")

@@ -21,7 +21,7 @@ class Player:
         self.food = 10
         self.drink = 10
         self.stamina = 10
-        self.health = 10
+        self.health = 1000
 
         self.exp = 0
         self.exp_to_next_level = 50

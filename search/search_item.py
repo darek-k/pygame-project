@@ -162,8 +162,7 @@ class SearchItem:
                 player1.stamina -= 10
             elif player1.stamina <= 0:
                 player1.stamina = 0
-                print('You are too tired to search')  # todo: Zmień żeby nie dało się wtedy szukać
-            player1.exp += 10
+            player1.exp += 20
             if player1.exp >= player1.exp_to_next_level:
                 player1.level_up()
 
@@ -171,17 +170,17 @@ class SearchItem:
 
         except ValueError:
             self.show_found_items(found_item_location)
-            button_maker(200, 275, 370, 40, 'blue', 'blue', '', 36, "There's nothing more", 'white',
+            button_maker(300, 275, 200, 40, 'blue', 'blue', '', 36, "    Nothing left", 'white',
                          transparent_on=False, transparent_off=False)
             pygame.display.update()
-            time.sleep(1)
+            time.sleep(0.5)
 
     def add_to_inventory_while_search(self, index, found_item_location):
         if len(inventory.inventory) >= 12:
-            button_maker(150, 275, 500, 40, 'blue', 'blue', '', 36, "You don't have a space in your Inventory", 'white',
+            button_maker(290, 275, 220, 40, 'blue', 'blue', '', 36, "    Full Inventory", 'white',
                          transparent_on=False, transparent_off=False)
             pygame.display.update()
-            time.sleep(1.5)
+            time.sleep(0.5)
         else:
             item = found_item_location[index]
             inventory.inventory.append(item)
@@ -192,8 +191,6 @@ class SearchItem:
         x = 0
         y = 0
         for item in found_item_location:
-            # icon = pygame.image.load(self.items.icon)     ###### Wyświetlanie grafiki #######
-            # display.blit(icon, (300,120))
 
             if item.type == 'weapon':
                 text = 'Damage: '

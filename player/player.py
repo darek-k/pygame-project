@@ -15,7 +15,7 @@ class Player:
         self.intelligence = intelligence
         self.charisma = charisma
 
-        self.attack = 1
+        self.attack = 1 + (self.strength / 2)
         self.defence = 1
 
         self.food = 10
@@ -34,7 +34,7 @@ class Player:
         self.leveled_up += 1
 
     def update_attributes(self):
-        self.attack = round(1 + player1_equipment.equipped_weapon_attribute, 1)
+        self.attack = round(1 + player1_equipment.equipped_weapon_attribute + (self.strength / 2), 1)
 
         self.defence = round(1 + (player1_equipment.equipped_torso_attribute
                                   + player1_equipment.equipped_legs_attribute), 1)

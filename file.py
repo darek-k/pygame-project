@@ -306,8 +306,6 @@ inventory.add_to_inventory(dog_food)
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(key1)
-inventory.add_to_inventory(key2)
-inventory.add_to_inventory(key3)
 
 
 class JournalWindow:
@@ -959,6 +957,7 @@ class StatisticsWindow:
                         if button.collidepoint(event.pos):
                             player1.strength += 1
                             player1.leveled_up -= 1
+                            player1.update_attributes()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click Speed + button
                     button = pygame.Rect(250, 50, 35, 35)
@@ -1396,8 +1395,14 @@ class MapWindow:
                                                 if button.collidepoint(event.pos):
                                                     map_window.open_map_window()
 
+                                        # if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
+                                        #     button = pygame.Rect(600, 550, 200, 40)
+                                        #     if event.button == 1:
+                                        #         if button.collidepoint(event.pos):
+                                        #             map_window.open_map_window()
+
                                     # Window name
-                                    pygame.display.set_caption("Closed Gate")
+                                    pygame.display.set_caption("Gate")
 
                                     # Add screen image
                                     location_image = pygame.image.load('images/closed_gate.jpg')
@@ -1407,6 +1412,10 @@ class MapWindow:
                                     button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
                                                  '          Back', 'white',
                                                  transparent_on=False, transparent_off=False)  # Exit
+
+                                    button_maker(325, 275, 150, 50, 'green', 'grey', 'Comic Sans MS', 23,
+                                                 '      OPEN', 'white',
+                                                 transparent_on=False, transparent_off=False)  # Open
 
                                     pygame.display.update()
                                     clock.tick(FPS)

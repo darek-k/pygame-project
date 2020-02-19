@@ -10,7 +10,7 @@ class VictoryWindow:
         pass
 
     def open_victory_window(self):
-        pygame.mixer.music.load('audio/the_end.mp3') # todo change the music
+        pygame.mixer.music.load('audio/victory_music.mp3') # todo change the music
         pygame.mixer.music.play()
 
         while True:

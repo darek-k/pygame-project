@@ -1,6 +1,6 @@
 
 # create a Player
-from game_over import GameOverWindow
+from end_windows import GameOverWindow
 from player import player1_equipment
 
 

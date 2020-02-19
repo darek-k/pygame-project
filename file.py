@@ -23,7 +23,6 @@ class SetDefence:
         self.crane_defence = 50
         self.flat_defence = 40
         self.forest_defence = 30
-        self.gate_defence = 100
         self.hotel_defence = 50
         self.office_defence = 40
         self.opera_defence = 30
@@ -43,8 +42,6 @@ class SetDefence:
             self.flat_defence = new_defence
         if location_name == 'forest':
             self.forest_defence = new_defence
-        if location_name == 'gate':
-            self.gate_defence = new_defence
         if location_name == 'hotel':
             self.hotel_defence = new_defence
         if location_name == 'office':
@@ -293,17 +290,21 @@ cocaine = Item('Cocaine', 5, 'stamina', '')
 
 # create other instances
 board = Item('Board', '', 'other', '')
-key = Item('Key', '', 'other', '')
+key1 = Item('Key 1', '', 'other', '')
+key2 = Item('Key 2', '', 'other', '')
+key3 = Item('Key 3', '', 'other', '')
 
 # Add items to inventory
 inventory.add_to_inventory(axe)
-inventory.add_to_inventory(armor)
-inventory.add_to_inventory(sweatpants)
+inventory.add_to_inventory(vodka)
+inventory.add_to_inventory(vodka)
 inventory.add_to_inventory(vodka)
 inventory.add_to_inventory(dog_food)
 inventory.add_to_inventory(board)
 inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
+inventory.add_to_inventory(key1)
+inventory.add_to_inventory(key2)
+inventory.add_to_inventory(key3)
 
 
 class JournalWindow:
@@ -347,13 +348,14 @@ class JournalWindow:
             display.blit(journal_image, (0, 0))
 
             writing_text('', 35, "I need to find a way to get into this closed GATE in the city.", 'black', 5, 15)
-            writing_text('', 35, "I can do this in few ways:", 'black', 5, 55)
+            writing_text('', 35, "I can do this in a few ways:", 'black', 5, 55)
             writing_text('', 35, "-Find 3 keys for the 3 padlocks in the GATE", 'black', 20, 120)
             writing_text('', 35, "-Use my ATTACK to destroy the padlocks", 'black', 20, 180)
             writing_text('', 35, "-Use my DEXTERITY to brake in", 'black', 20, 240)
 
             button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
+
             pygame.display.update()
             clock.tick(FPS)
 
@@ -1369,7 +1371,8 @@ class MapWindow:
                     button = pygame.Rect(610, 160, 60, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            if key in inventory.inventory:
+                            if (key1 and key2 and key3) in inventory.inventory or player1.attack == 30 \
+                                    or player1.dexterity == 10:
                                 self.door_sound.play()
                                 location_window.open_location_window('images/open_gate.jpg', 'Gate',
                                                                      chest.random_items_gate,
@@ -1377,7 +1380,7 @@ class MapWindow:
                                                                      set_defence.gate_defence,
                                                                      'open_gate')
 
-                            elif key not in inventory.inventory:
+                            else:
                                 while True:
 
                                     for event in pygame.event.get():

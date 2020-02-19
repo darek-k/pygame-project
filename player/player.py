@@ -15,7 +15,7 @@ class Player:
         self.intelligence = intelligence
         self.charisma = charisma
 
-        self.attack = 1 + (self.strength / 2)
+        self.attack = 100 + (self.strength / 2)
         self.defence = 1
 
         self.food = 10

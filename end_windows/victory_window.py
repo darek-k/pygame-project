@@ -5,6 +5,8 @@ from clock import clock, FPS
 from create import writing_text, button_maker
 from display import display
 
+
+
 class VictoryWindow:
     def __init__(self):
         pass

@@ -16,6 +16,8 @@ from sleep import Sleep
 
 pygame.init()
 
+def get_level():
+    return player1.level
 
 class SetDefence:
     def __init__(self):
@@ -1398,8 +1400,8 @@ class MapWindow:
                                             button = pygame.Rect(325, 275, 150, 50)
                                             if event.button == 1:
                                                 if button.collidepoint(event.pos):
-                                                    if (key1 and key2 and key3) in inventory.inventory or player1.attack == 15 \
-                                                            or player1.dexterity == 10:
+                                                    if (key1 and key2 and key3) in inventory.inventory or player1.attack >= 15 \
+                                                            or player1.dexterity >= 10:
                                                         self.door_sound.play()
                                                         VictoryWindow().open_victory_window()
                                                     else:

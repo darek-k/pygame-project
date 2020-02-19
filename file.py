@@ -298,16 +298,6 @@ board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
-# Add items to inventory
-inventory.add_to_inventory(axe)
-inventory.add_to_inventory(vodka)
-inventory.add_to_inventory(vodka)
-inventory.add_to_inventory(vodka)
-inventory.add_to_inventory(dog_food)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-
-
 class JournalWindow:
 
     def open_journal_window(self):

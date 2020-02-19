@@ -7,6 +7,7 @@ import pygame
 from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons, ItemsNamesList
 from display import display
+from end_windows import VictoryWindow
 from inventory import inventory
 from items import Item
 from player import player1_equipment, player1
@@ -42,6 +43,8 @@ class SetDefence:
             self.flat_defence = new_defence
         if location_name == 'forest':
             self.forest_defence = new_defence
+        if location_name == 'gate':
+            self.gate_defence = new_defence
         if location_name == 'hotel':
             self.hotel_defence = new_defence
         if location_name == 'office':
@@ -1371,14 +1374,10 @@ class MapWindow:
                     button = pygame.Rect(610, 160, 60, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            if (key1 and key2 and key3) in inventory.inventory or player1.attack == 30 \
+                            if (key1 and key2 and key3) in inventory.inventory or player1.attack == 15 \
                                     or player1.dexterity == 10:
                                 self.door_sound.play()
-                                location_window.open_location_window('images/open_gate.jpg', 'Gate',
-                                                                     chest.random_items_gate,
-                                                                     chest.found_items_gate,
-                                                                     set_defence.gate_defence,
-                                                                     'open_gate')
+                                VictoryWindow().open_victory_window()
 
                             else:
                                 while True:

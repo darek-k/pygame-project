@@ -18,12 +18,12 @@ class Player:
         self.attack = 1
         self.defence = 1
 
-        self.food = 80
-        self.drink = 80
-        self.stamina = 80
-        self.health = 80
+        self.food = 10
+        self.drink = 10
+        self.stamina = 10
+        self.health = 10
 
-        self.exp = 40
+        self.exp = 0
         self.exp_to_next_level = 50
         self.level = 1
         self.leveled_up = 0
@@ -54,6 +54,9 @@ class Player:
         if self.drink < 0:
             self.health -= 10
             self.drink = 0
+        if self.stamina < 0:
+            self.health -= 10
+            self.stamina = 0
         if self.health <= 0:
             GameOverWindow().open_game_over_window()
 

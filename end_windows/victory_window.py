@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from clock import clock, FPS
 from create import writing_text, button_maker
@@ -7,9 +9,8 @@ class VictoryWindow:
     def __init__(self):
         pass
 
-
-    def open_game_over_window(self):
-        pygame.mixer.music.load('audio/the_end.mp3')
+    def open_victory_window(self):
+        pygame.mixer.music.load('audio/the_end.mp3') # todo change the music
         pygame.mixer.music.play()
 
         while True:
@@ -36,11 +37,11 @@ class VictoryWindow:
                             sys.exit()
 
             # Window settings, graphic and sound
-            pygame.display.set_caption('GAME OVER')
-            game_over_image = pygame.image.load('images/game_over.jpg')
-            display.blit(game_over_image, (0, 0))
+            pygame.display.set_caption('CONGRATULATIONS!')
+            victory_image = pygame.image.load('images/victory_window.jpg')
+            display.blit(victory_image, (0, 0))
 
-            writing_text('', 70, 'GAME OVER', 'red', 250, 150)
+            writing_text('', 70, 'Congratulations!', 'red', 200, 150)
             # writing_text('', 50, 'Your level: ' + str(player1.level), 'white', 300, 300)
             writing_text('', 40, 'Again?', 'white', 350, 300)
             button_maker(270, 400, 100, 50, 'green', 'white', '', 35, 'YES', 'white', transparent_on=False,

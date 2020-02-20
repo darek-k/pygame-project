@@ -1,5 +1,7 @@
 
 # create a Player
+import random
+
 from end_windows import GameOverWindow
 from player import player1_equipment
 
@@ -18,15 +20,29 @@ class Player:
         self.attack = 1 + (self.strength / 2)
         self.defence = 1
 
-        self.food = 10
-        self.drink = 10
-        self.stamina = 10
-        self.health = 1000
+        self.food = 0
+        self.drink = 0
+        self.stamina = 0
+        self.health = 0
 
         self.exp = 0
         self.exp_to_next_level = 50
         self.level = 1
         self.leveled_up = 0
+
+    def random_statistics(self):
+        needs = [0,0]
+        # while sum(needs) < 1000:
+
+        while 200 > sum(needs): # todo napraw to jakoś sensownie
+            self.food = random.randrange(20, 120)
+            self.drink = random.randrange(20, 120)
+            self.stamina = random.randrange(20, 120)
+            self.health = random.randrange(20, 120)
+
+            print('test')
+            needs = (self.food, self.drink, self.stamina, self.health)
+            print(sum(needs))
 
     def level_up(self):
         self.level += 1

@@ -1675,8 +1675,3 @@ class MainMenuWindow:
 
 
 main_menu_window = MainMenuWindow()
-
-inventory.add_to_inventory(key)
-inventory.add_to_inventory(key)
-inventory.add_to_inventory(key)
-inventory.add_to_inventory(key)

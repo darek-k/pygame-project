@@ -532,11 +532,11 @@ class InventoryWindow:
                                 if player1.drink > 100:
                                     player1.drink = 100
                             elif type == 'stamina':
-                                player1.stamina += attribute * 10
+                                player1.stamina += attribute
                                 if player1.stamina > 100:
                                     player1.stamina = 100
                             elif type == 'health':
-                                player1.health += attribute * 10
+                                player1.health += attribute
                                 if player1.health > 100:
                                     player1.health = 100
 

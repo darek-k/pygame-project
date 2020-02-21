@@ -272,26 +272,26 @@ fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
 military_trousers = Item('Military ts.', 9, 'legs', '')
 
 # create food instances
-insect = Item('Apple', 2, 'food', '')
-dog_food = Item('Potato', 4, 'food', '')
-rat = Item('Dog Food', 5, 'food', '')
-fish = Item('Rat', 6, 'food', '')
-canned_food = Item('Raw fish', 7, 'food', '')
+insect = Item('Apple', 20, 'food', '')
+dog_food = Item('Potato', 40, 'food', '')
+rat = Item('Dog Food', 50, 'food', '')
+fish = Item('Rat', 60, 'food', '')
+canned_food = Item('Raw fish', 70, 'food', '')
 
 # create drink instances
-soda = Item('Soda', 3, 'drink', '')
-juice = Item('Soda', 5, 'drink', '')
-water = Item('Water', 7, 'drink', '')
+soda = Item('Soda', 30, 'drink', '')
+juice = Item('Soda', 50, 'drink', '')
+water = Item('Water', 70, 'drink', '')
 
 # create health instances
-vodka = Item('Vodka', 2, 'health', '')
-painkillers = Item('Painkillers', 3, 'health', '')
-bandage = Item('Bandage', 6, 'health', '')
+vodka = Item('Vodka', 20, 'health', '')
+painkillers = Item('Painkillers', 30, 'health', '')
+bandage = Item('Bandage', 60, 'health', '')
 
 # create stamina instances
-energy_drink = Item('Energy Drink', 2, 'stamina', '')
-coffee = Item('Coffee', 3, 'stamina', '')
-cocaine = Item('Cocaine', 5, 'stamina', '')
+energy_drink = Item('Energy Drink', 20, 'stamina', '')
+coffee = Item('Coffee', 30, 'stamina', '')
+cocaine = Item('Cocaine', 50, 'stamina', '')
 
 # create other instances
 board = Item('Board', '', 'other', '')
@@ -524,19 +524,19 @@ class InventoryWindow:
                             items_names.remove(item_index.name)  # Remove Item from items_names[]
 
                             if type == 'food':
-                                player1.food += (attribute * 10)
+                                player1.food += attribute
                                 if player1.food > 100:
                                     player1.food = 100
                             elif type == 'drink':
-                                player1.drink += (attribute * 10)
+                                player1.drink += attribute
                                 if player1.drink > 100:
                                     player1.drink = 100
                             elif type == 'stamina':
-                                player1.stamina += (attribute * 10)
+                                player1.stamina += attribute * 10
                                 if player1.stamina > 100:
                                     player1.stamina = 100
                             elif type == 'health':
-                                player1.health += (attribute * 10)
+                                player1.health += attribute * 10
                                 if player1.health > 100:
                                     player1.health = 100
 

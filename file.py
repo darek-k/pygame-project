@@ -1391,7 +1391,7 @@ class MapWindow:
                                             button = pygame.Rect(325, 275, 150, 50)
                                             if event.button == 1:
                                                 if button.collidepoint(event.pos):
-                                                    if (key.count(3)) in inventory.inventory or player1.attack >= 15 \
+                                                    if inventory.inventory.count(key)==3 or player1.attack >= 15 \
                                                             or player1.dexterity >= 10:
                                                         self.door_sound.play()
                                                         VictoryWindow().open_victory_window()

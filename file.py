@@ -16,8 +16,10 @@ from sleep import Sleep
 
 pygame.init()
 
+
 def get_level():
     return player1.level
+
 
 class SetDefence:
     def __init__(self):
@@ -137,7 +139,7 @@ class OpenBarricadeWindow:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low") # todo change this into statement
+                                                print("Health too low")  # todo change this into statement
                                         if drink > 0:
                                             drink -= 5
                                         else:
@@ -146,11 +148,11 @@ class OpenBarricadeWindow:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low") # todo change this into statement
+                                                print("Health too low")  # todo change this into statement
                                     elif stamina <= 5:
-                                        print("Stamina too low") # todo change this into statement
+                                        print("Stamina too low")  # todo change this into statement
                                 elif boards_number == 0:
-                                    print("You don't have boards") # todo change this into statement
+                                    print("You don't have boards")  # todo change this into statement
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "-" Button
                     button = pygame.Rect(400, 100, 80, 45)
@@ -608,7 +610,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 0:
                                         index = 1
@@ -618,7 +620,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 0:
                                         index = 2
@@ -628,7 +630,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 150:
                                         index = 3
@@ -638,7 +640,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 150:
                                         index = 4
@@ -648,7 +650,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 150:
                                         index = 5
@@ -658,7 +660,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 150:
                                         index = 6
@@ -668,7 +670,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 300:
                                         index = 7
@@ -678,7 +680,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 300:
                                         index = 8
@@ -688,7 +690,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 300:
                                         index = 9
@@ -698,7 +700,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 300:
                                         index = 10
@@ -718,7 +720,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            pass # todo Add possibillity of equip item from here
+                                            pass  # todo Add possibillity of equip item from here
 
                                 except IndexError:
                                     break
@@ -940,41 +942,43 @@ class StatisticsWindow:
                         if button.collidepoint(event.pos):
                             return map_window.open_map_window()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Strength + button
-                    button = pygame.Rect(250, 0, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.strength += 1
-                            player1.leveled_up -= 1
-                            player1.update_attributes()
+                if player1.leveled_up > 0:
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Speed + button
-                    button = pygame.Rect(250, 50, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.speed += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Strength + button
+                        button = pygame.Rect(250, 0, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.strength += 1
+                                player1.leveled_up -= 1
+                                player1.update_attributes()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Dexterity + button
-                    button = pygame.Rect(250, 100, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.dexterity += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Speed + button
+                        button = pygame.Rect(250, 50, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.speed += 1
+                                player1.leveled_up -= 1
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Intelligence + button
-                    button = pygame.Rect(250, 150, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.intelligence += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Dexterity + button
+                        button = pygame.Rect(250, 100, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.dexterity += 1
+                                player1.leveled_up -= 1
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Charisma + button
-                    button = pygame.Rect(250, 200, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.charisma += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Intelligence + button
+                        button = pygame.Rect(250, 150, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.intelligence += 1
+                                player1.leveled_up -= 1
+
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Charisma + button
+                        button = pygame.Rect(250, 200, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.charisma += 1
+                                player1.leveled_up -= 1
 
             # Window settings
             pygame.display.set_caption('Statistics')
@@ -1182,13 +1186,13 @@ class HelpWindow:
                          transparent_on=False)  # Exit
 
             # Tips
-            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5,140)
-            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5,180)
-            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5,220)
-            writing_text('', 25, '  - USE items', 'pure_red', 5,260)
-            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5,310)
-            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5,360)
-            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5,400)
+            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5, 140)
+            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5, 180)
+            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5, 220)
+            writing_text('', 25, '  - USE items', 'pure_red', 5, 260)
+            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5, 310)
+            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, 360)
+            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5, 400)
 
             pygame.display.update()
             clock.tick(FPS)
@@ -1318,7 +1322,6 @@ class MapWindow:
                             self.open_sound.play()
                             help_window.open_help_window()
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
                     button = pygame.Rect(575, 430, 135, 50)
@@ -1372,54 +1375,54 @@ class MapWindow:
                     button = pygame.Rect(610, 160, 60, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                                while True:
-                                    for event in pygame.event.get():
-                                        if event.type == pygame.QUIT:
-                                            pygame.quit()
-                                            sys.exit()
+                            while True:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.QUIT:
+                                        pygame.quit()
+                                        sys.exit()
 
-                                        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                                            map_window.open_map_window()
+                                    if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                                        map_window.open_map_window()
 
-                                        if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
-                                            button = pygame.Rect(600, 550, 200, 40)
-                                            if event.button == 1:
-                                                if button.collidepoint(event.pos):
-                                                    map_window.open_map_window()
+                                    if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
+                                        button = pygame.Rect(600, 550, 200, 40)
+                                        if event.button == 1:
+                                            if button.collidepoint(event.pos):
+                                                map_window.open_map_window()
 
-                                        if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
-                                            button = pygame.Rect(325, 275, 150, 50)
-                                            if event.button == 1:
-                                                if button.collidepoint(event.pos):
-                                                    if inventory.inventory.count(key)==3 or player1.attack >= 15 \
-                                                            or player1.dexterity >= 10:
-                                                        self.door_sound.play()
-                                                        VictoryWindow().open_victory_window()
-                                                    else:
-                                                        button_maker(250, 220, 300, 40, 'blue', 'blue', '', 36,
-                                                                     " You can't open this now", 'white',
-                                                                     transparent_on=False, transparent_off=False)
-                                                        pygame.display.update()
-                                                        time.sleep(1.5)
+                                    if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
+                                        button = pygame.Rect(325, 275, 150, 50)
+                                        if event.button == 1:
+                                            if button.collidepoint(event.pos):
+                                                if inventory.inventory.count(key) == 3 or player1.attack >= 15 \
+                                                        or player1.dexterity >= 10:
+                                                    self.door_sound.play()
+                                                    VictoryWindow().open_victory_window()
+                                                else:
+                                                    button_maker(250, 220, 300, 40, 'blue', 'blue', '', 36,
+                                                                 " You can't open this now", 'white',
+                                                                 transparent_on=False, transparent_off=False)
+                                                    pygame.display.update()
+                                                    time.sleep(1.5)
 
-                                    # Window name
-                                    pygame.display.set_caption("Gate")
+                                # Window name
+                                pygame.display.set_caption("Gate")
 
-                                    # Add screen image
-                                    location_image = pygame.image.load('images/closed_gate.jpg')
-                                    display.blit(location_image, (0, 0))
+                                # Add screen image
+                                location_image = pygame.image.load('images/closed_gate.jpg')
+                                display.blit(location_image, (0, 0))
 
-                                    # Add menu buttons
-                                    button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
-                                                 '          Back', 'white',
-                                                 transparent_on=False, transparent_off=False)  # Exit
+                                # Add menu buttons
+                                button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
+                                             '          Back', 'white',
+                                             transparent_on=False, transparent_off=False)  # Exit
 
-                                    button_maker(325, 275, 150, 50, 'green', 'grey', 'Comic Sans MS', 23,
-                                                 '      OPEN', 'white',
-                                                 transparent_on=False, transparent_off=False)  # Open
+                                button_maker(325, 275, 150, 50, 'green', 'grey', 'Comic Sans MS', 23,
+                                             '      OPEN', 'white',
+                                             transparent_on=False, transparent_off=False)  # Open
 
-                                    pygame.display.update()
-                                    clock.tick(FPS)
+                                pygame.display.update()
+                                clock.tick(FPS)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Hotel" window
                     button = pygame.Rect(450, 265, 70, 50)

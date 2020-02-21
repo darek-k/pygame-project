@@ -194,36 +194,43 @@ class SearchItem:
 
             if item.type == 'weapon':
                 text = 'Damage: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
 
             if item.type == 'food':
                 text = 'Food: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
 
             if item.type == 'drink':
                 text = 'Drink: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
 
             if item.type == 'health':
                 text = 'Health: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
 
             if item.type == 'stamina':
                 text = 'Stamina: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
             if item.type == 'other':
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name.center(20), 'gold')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name.center(20), 'gold',
+                             transparent_off=False, transparent_on=True)
 
             x += 200
             if x > 600:

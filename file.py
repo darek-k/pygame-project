@@ -1199,7 +1199,6 @@ class HelpWindow:
             writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, text_position_y + 310)
             writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5, text_position_y + 350)
 
-
             pygame.display.update()
             clock.tick(FPS)
 

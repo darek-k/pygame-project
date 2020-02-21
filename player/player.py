@@ -7,15 +7,13 @@ from player import player1_equipment
 
 
 class Player:
-    def __init__(self, name, strength, speed, dexterity, intelligence, charisma):
+    def __init__(self):
 
-        self.name = name
-
-        self.strength = strength
-        self.speed = speed
-        self.dexterity = dexterity
-        self.intelligence = intelligence
-        self.charisma = charisma
+        self.strength = 0
+        self.speed = 0
+        self.dexterity = 0
+        self.intelligence = 0
+        self.charisma = 0
 
         self.attack = 1 + (self.strength / 2)
         self.defence = 1
@@ -32,17 +30,22 @@ class Player:
 
     def random_statistics(self):
         needs = [0,0]
-        # while sum(needs) < 1000:
+        stats = [0,0]
 
-        while 200 > sum(needs): # todo napraw to jakoś sensownie
-            self.food = random.randrange(20, 120)
-            self.drink = random.randrange(20, 120)
-            self.stamina = random.randrange(20, 120)
-            self.health = random.randrange(20, 120)
-
-            print('test')
+        while sum(needs) < 200 or sum(needs) > 400:
+            self.food = random.randrange(50, 100)
+            self.drink = random.randrange(50, 100)
+            self.stamina = random.randrange(50, 100)
+            self.health = random.randrange(50, 100)
             needs = (self.food, self.drink, self.stamina, self.health)
-            print(sum(needs))
+
+        while sum(stats) < 20 or sum(stats) > 30:
+            self.strength = random.randrange(1, 7)
+            self.speed = random.randrange(1, 7)
+            self.dexterity = random.randrange(1, 7)
+            self.intelligence = random.randrange(1, 7)
+            self.charisma = random.randrange(1, 7)
+            stats = (self.strength, self.speed, self.dexterity, self.intelligence, self.charisma)
 
     def level_up(self):
         self.level += 1
@@ -76,4 +79,4 @@ class Player:
         if self.health <= 0:
             GameOverWindow().open_game_over_window()
 
-player1 = Player('John', 5, 5, 5, 5, 5)
+player1 = Player()

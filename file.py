@@ -1197,7 +1197,8 @@ class HelpWindow:
             writing_text('', 25, 'DRINK and STAMINA decrease', 'pure_red', 5, text_position_y + 260)
 
             writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, text_position_y + 310)
-            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5, text_position_y + 350)
+            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5,
+                         text_position_y + 350)
 
             pygame.display.update()
             clock.tick(FPS)
@@ -1532,34 +1533,92 @@ class MapWindow:
                              transparent_off=False)
 
             # Locations on the Map
-            button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
-                         transparent_on=False, text_on=False)  # Black Pearl
-            button_maker(170, 100, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Bridge', 'white',
-                         transparent_on=False, text_on=False)  # Bridge
-            button_maker(280, 150, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Crane', 'white',
-                         transparent_on=False, text_on=False)  # Crane
-            button_maker(500, 175, 50, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Flat', 'white',
-                         transparent_on=False, text_on=False)  # Flat
-            button_maker(450, 25, 75, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Forest', 'white',
-                         transparent_on=False, text_on=False)  # Forest
+            if len(chest.random_items_black_pearl) == 0:
+                button_maker(575, 430, 135, 50, 'grey', 'white', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
+                             transparent_on=False, text_on=False)  # Black Pearl
+            else:
+                button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
+                             transparent_on=False, text_on=False)  # Black Pearl
+
+            if len(chest.random_items_bridge) == 0:
+                button_maker(170, 100, 80, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Bridge', 'white',
+                             transparent_on=False, text_on=False)  # Bridge
+            else:
+                button_maker(170, 100, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Bridge', 'white',
+                             transparent_on=False, text_on=False)  # Bridge
+
+            if len(chest.random_items_crane) == 0:
+                button_maker(280, 150, 70, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Crane', 'white',
+                             transparent_on=False, text_on=False)  # Crane
+            else:
+                button_maker(280, 150, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Crane', 'white',
+                             transparent_on=False, text_on=False)  # Crane
+
+            if len(chest.random_items_flat) == 0:
+                button_maker(500, 175, 50, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Flat', 'white',
+                             transparent_on=False, text_on=False)  # Flat
+            else:
+                button_maker(500, 175, 50, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Flat', 'white',
+                             transparent_on=False, text_on=False)  # Flat
+
+            if len(chest.random_items_forest) == 0:
+                button_maker(450, 25, 75, 40, 'grey', 'white', 'Comic Sans MS', 23, 'Forest', 'white',
+                             transparent_on=False, text_on=False)  # Forest
+            else:
+                button_maker(450, 25, 75, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Forest', 'white',
+                             transparent_on=False, text_on=False)  # Forest
 
             button_maker(610, 160, 60, 40, 'grey', 'yellow', 'Comic Sans MS', 23, 'Gate', 'white',
                          transparent_on=False, text_on=False)  # Gate
 
-            button_maker(450, 265, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Hotel', 'white',
-                         transparent_on=False, text_on=False)  # Hotel
-            button_maker(650, 270, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Office', 'white',
-                         transparent_on=False, text_on=False)  # Office
-            button_maker(180, 450, 140, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Opera House', 'white',
-                         transparent_on=False, text_on=False)  # Opera
-            button_maker(30, 230, 115, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Restaurant', 'white',
-                         transparent_on=False, text_on=False)  # Restaurant
-            button_maker(200, 310, 100, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Sołdek"', 'white',
-                         transparent_on=False, text_on=False)  # Sołdek
-            button_maker(540, 70, 180, 45, 'grey', 'pure_red', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
-                         transparent_on=False, text_on=False)  # St. Mary's Basilica
-            button_maker(10, 50, 135, 40, 'grey', 'pure_red', 'Comic Sans MS', 21, 'Supermarket', 'white',
-                         transparent_on=False, text_on=False)  # Supermarket
+            if len(chest.random_items_hotel) == 0:
+                button_maker(450, 265, 70, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Hotel', 'white',
+                             transparent_on=False, text_on=False)  # Hotel
+            else:
+                button_maker(450, 265, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Hotel', 'white',
+                             transparent_on=False, text_on=False)  # Hotel
+
+            if len(chest.random_items_office) == 0:
+                button_maker(650, 270, 80, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Office', 'white',
+                             transparent_on=False, text_on=False)  # Office
+            else:
+                button_maker(650, 270, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Office', 'white',
+                             transparent_on=False, text_on=False)  # Office
+
+            if len(chest.random_items_opera) == 0:
+                button_maker(180, 450, 140, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Opera House', 'white',
+                             transparent_on=False, text_on=False)  # Opera
+            else:
+                button_maker(180, 450, 140, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Opera House', 'white',
+                             transparent_on=False, text_on=False)  # Opera
+
+            if len(chest.random_items_restaurant) == 0:
+                button_maker(30, 230, 115, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Restaurant', 'white',
+                             transparent_on=False, text_on=False)  # Restaurant
+            else:
+                button_maker(30, 230, 115, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Restaurant', 'white',
+                             transparent_on=False, text_on=False)  # Restaurant
+
+            if len(chest.random_items_soldek) == 0:
+                button_maker(200, 310, 100, 50, 'grey', 'white', 'Comic Sans MS', 23, '"Sołdek"', 'white',
+                             transparent_on=False, text_on=False)  # Sołdek
+            else:
+                button_maker(200, 310, 100, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Sołdek"', 'white',
+                             transparent_on=False, text_on=False)  # Sołdek
+
+            if len(chest.random_items_basilica) == 0:
+                button_maker(540, 70, 180, 45, 'grey', 'white', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
+                             transparent_on=False, text_on=False)  # St. Mary's Basilica
+            else:
+                button_maker(540, 70, 180, 45, 'grey', 'pure_red', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
+                             transparent_on=False, text_on=False)  # St. Mary's Basilica
+
+            if len(chest.random_items_supermarket) == 0:
+                button_maker(10, 50, 135, 40, 'grey', 'white', 'Comic Sans MS', 21, 'Supermarket', 'white',
+                             transparent_on=False, text_on=False)  # Supermarket
+            else:
+                button_maker(10, 50, 135, 40, 'grey', 'pure_red', 'Comic Sans MS', 21, 'Supermarket', 'white',
+                             transparent_on=False, text_on=False)  # Supermarket
 
             # Menu buttons
             button_maker(0, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Journal', 'white',

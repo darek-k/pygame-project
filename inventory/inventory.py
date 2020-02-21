@@ -14,67 +14,69 @@ class Inventory:
     def show_inventory(self, count_weapon, count_torso, count_legs):
         x = 0
         y = 0
+        font_size = 40
+        font_size_text = 35
 
         self.sorted_inventory = sorted(self.inventory, key=operator.attrgetter('type', 'name'))
 
-        # for items in self.inventory:
         for item in self.sorted_inventory:
 
             # icon = pygame.image.load(items.icon)     ###### Wyświetlanie grafiki #######
             # display.blit(icon, (300,120))
 
+
             if item.type == 'weapon':
                 text = 'Damage: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'violet', x, y + 50)
 
             if item.type == 'food':
                 text = 'Food: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'brown', x, y + 50)
 
             if item.type == 'drink':
                 text = 'Drink: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'blue', x, y + 50)
 
             if item.type == 'health':
                 text = 'Health: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'green', x, y + 50)
 
             if item.type == 'stamina':
                 text = 'Stamina: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'white')
-                writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')
+                writing_text('', font_size_text, text + str(item.attribute), 'yellow', x, y + 50)
 
             if item.type == 'other':
                 text = ''
-                button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', 40, item.name, 'gold')
-                writing_text('', 35, text + str(item.attribute), 'gold', x, y + 50)
+                button_maker(x, y, item.size_x, item.size_y, 'gold', 'blue', '', font_size, item.name, 'gold')
+                writing_text('', font_size_text, text + str(item.attribute), 'gold', x, y + 50)
 
             # Make equipped items GREEN
             if count_weapon == 0:
                 if item.name == player1_equipment.equipped_weapon_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
+                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'ultra_green')
+                    writing_text('', font_size_text, text + str(item.attribute), 'orange', x, y + 50)
                     count_weapon += 1
 
             if count_torso == 0:
                 if item.name == player1_equipment.equipped_torso_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'ultra_green')
+                    writing_text('', font_size_text, text + str(item.attribute), 'violet', x, y + 50)
                     count_torso += 1
 
             if count_legs == 0:
                 if item.name == player1_equipment.equipped_legs_name:
-                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_green')
-                    writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
+                    button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'ultra_green')
+                    writing_text('', font_size_text, text + str(item.attribute), 'violet', x, y + 50)
                     count_legs += 1
 
             x += 200

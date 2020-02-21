@@ -7,6 +7,7 @@ import pygame
 from clock import clock, FPS
 from create import writing_text, button_maker, colors, statistics_buttons, equipment_buttons, ItemsNamesList
 from display import display
+from end_windows import VictoryWindow
 from inventory import inventory
 from items import Item
 from player import player1_equipment, player1
@@ -16,14 +17,17 @@ from sleep import Sleep
 pygame.init()
 
 
-class Barricade:
+def get_level():
+    return player1.level
+
+
+class SetDefence:
     def __init__(self):
         self.black_pearl_defence = 50
         self.bridge_defence = 20
         self.crane_defence = 50
         self.flat_defence = 40
         self.forest_defence = 30
-        self.gate_defence = 100
         self.hotel_defence = 50
         self.office_defence = 40
         self.opera_defence = 30
@@ -32,42 +36,50 @@ class Barricade:
         self.basilica_defence = 20
         self.supermarket_defence = 10
 
-
     def set_defence(self, location_name, new_defence):
         if location_name == 'black_pearl':
-            barricade.black_pearl_defence = new_defence
+            self.black_pearl_defence = new_defence
         if location_name == 'bridge':
-            barricade.bridge_defence = new_defence
+            self.bridge_defence = new_defence
         if location_name == 'crane':
-            barricade.crane_defence = new_defence
+            self.crane_defence = new_defence
         if location_name == 'flat':
-            barricade.flat_defence = new_defence
+            self.flat_defence = new_defence
         if location_name == 'forest':
-            barricade.forest_defence = new_defence
+            self.forest_defence = new_defence
         if location_name == 'gate':
-            barricade.gate_defence = new_defence
+            self.gate_defence = new_defence
         if location_name == 'hotel':
-            barricade.hotel_defence = new_defence
+            self.hotel_defence = new_defence
         if location_name == 'office':
-            barricade.office_defence = new_defence
+            self.office_defence = new_defence
         if location_name == 'opera':
-            barricade.opera_defence = new_defence
+            self.opera_defence = new_defence
         if location_name == 'restaurant':
-            barricade.restaurant_defence = new_defence
+            self.restaurant_defence = new_defence
         if location_name == 'soldek':
-            barricade.soldek_defence = new_defence
+            self.soldek_defence = new_defence
         if location_name == 'basilica':
-            barricade.basilica_defence = new_defence
+            self.basilica_defence = new_defence
         if location_name == 'supermarket':
-            barricade.supermarket_defence = new_defence
+            self.supermarket_defence = new_defence
 
-    def update_defence(self, image, window_name, found_item_location, defence,
-                                             location_name):
+
+set_defence = SetDefence()  # Instance of Barricade class
+
+
+class UpdateDefence:
+    @staticmethod
+    def update_defence(image, window_name, found_item_location, defence,
+                       location_name):
         # Open previous window and update 'Defence'
         location_window.open_location_window(image, window_name, 'random_items', found_item_location, defence,
                                              location_name)
 
-    def open_barricade_window(self, image, previous_window, defence, location_name, window_name,
+
+class OpenBarricadeWindow:
+    @staticmethod
+    def open_barricade_window(image, previous_window, defence, location_name, window_name,
                               found_item_location):
         # It's used in open_location_window()
         defence_on_begin = defence
@@ -127,7 +139,7 @@ class Barricade:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low")
+                                                print("Health too low")  # todo change this into statement
                                         if drink > 0:
                                             drink -= 5
                                         else:
@@ -136,11 +148,11 @@ class Barricade:
                                                 health -= 5
                                                 count_health += 1
                                             else:
-                                                print("Health too low")
+                                                print("Health too low")  # todo change this into statement
                                     elif stamina <= 5:
-                                        print("Stamina too low")
+                                        print("Stamina too low")  # todo change this into statement
                                 elif boards_number == 0:
-                                    print("You don't have boards")
+                                    print("You don't have boards")  # todo change this into statement
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # click "-" Button
                     button = pygame.Rect(400, 100, 80, 45)
@@ -184,13 +196,11 @@ class Barricade:
                             if player1.exp >= player1.exp_to_next_level:
                                 player1.level_up()
 
-
                             start_index = 0
                             for item in range(used_boards_number):
                                 index = ItemsNamesList().items_names_list().index("Board", start_index)
                                 start_index += 1
                                 del inventory.inventory[index]
-
 
                             # Barricade "animation"
                             barricade_image = pygame.image.load('images/barricade.jpg')
@@ -198,9 +208,9 @@ class Barricade:
                             pygame.display.update()
                             time.sleep(0.8)
 
-                            barricade.set_defence(location_name, defence)
-                            return barricade.update_defence(image, window_name, found_item_location, defence,
-                                             location_name)
+                            set_defence.set_defence(location_name, defence)
+                            return UpdateDefence().update_defence(image, window_name, found_item_location, defence,
+                                                                  location_name)
 
             # Window settings and graphic
             pygame.display.set_caption("Barricade")
@@ -242,10 +252,6 @@ class Barricade:
             clock.tick(FPS)
 
 
-barricade = Barricade()  # Instance of Barricade class
-
-
-
 # create weapon instances
 stone = Item('Stone', 2, 'weapon', '')
 rod = Item('Rod', 3, 'weapon', '')
@@ -268,42 +274,86 @@ fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
 military_trousers = Item('Military ts.', 9, 'legs', '')
 
 # create food instances
-insect = Item('Apple', 2, 'food', '')
-dog_food = Item('Potato', 4, 'food', '')
-rat = Item('Dog Food', 5, 'food', '')
-fish = Item('Rat', 6, 'food', '')
-canned_food = Item('Raw fish', 7, 'food', '')
+insect = Item('Apple', 20, 'food', '')
+dog_food = Item('Potato', 40, 'food', '')
+rat = Item('Dog Food', 50, 'food', '')
+fish = Item('Rat', 60, 'food', '')
+canned_food = Item('Raw fish', 70, 'food', '')
 
 # create drink instances
-soda = Item('Soda', 3, 'drink', '')
-juice = Item('Soda', 5, 'drink', '')
-water = Item('Water', 7, 'drink', '')
+soda = Item('Soda', 30, 'drink', '')
+juice = Item('Soda', 50, 'drink', '')
+water = Item('Water', 70, 'drink', '')
 
 # create health instances
-vodka = Item('Vodka', 2, 'health', '')
-painkillers = Item('Painkillers', 3, 'health', '')
-bandage = Item('Bandage', 6, 'health', '')
+vodka = Item('Vodka', 20, 'health', '')
+painkillers = Item('Painkillers', 30, 'health', '')
+bandage = Item('Bandage', 60, 'health', '')
 
 # create stamina instances
-energy_drink = Item('Energy Drink', 2, 'stamina', '')
-coffee = Item('Coffee', 3, 'stamina', '')
-cocaine = Item('Cocaine', 5, 'stamina', '')
+energy_drink = Item('Energy Drink', 20, 'stamina', '')
+coffee = Item('Coffee', 30, 'stamina', '')
+cocaine = Item('Cocaine', 50, 'stamina', '')
 
 # create other instances
 board = Item('Board', '', 'other', '')
 key = Item('Key', '', 'other', '')
 
 
-# Add items to inventory
-inventory.add_to_inventory(axe)
-inventory.add_to_inventory(armor)
-inventory.add_to_inventory(sweatpants)
-inventory.add_to_inventory(vodka)
-inventory.add_to_inventory(dog_food)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
-inventory.add_to_inventory(board)
+class JournalWindow:
+
+    def open_journal_window(self):
+
+        while True:
+            # Handle events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    map_window.open_map_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
+
+                # create squares in Inventory
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    loop = True
+                    x = 0
+                    y = 0
+                    w = 200
+                    h = 150
+
+                    while loop == True:
+                        button = pygame.Rect(x, y, w, h)
+                        x += 200
+                        if x > 600:
+                            x = 0
+                            y += 150
+
+            # Window setting
+            pygame.display.set_caption("Journal")
+            journal_image = pygame.image.load('images/journal.jpg')
+            display.blit(journal_image, (0, 0))
+
+            writing_text('', 35, "I need to find a way to get into this closed GATE in the city.", 'black', 5, 15)
+            writing_text('', 35, "I can do this in a few ways:", 'black', 5, 55)
+            writing_text('', 35, "-Find 3 keys for the 3 padlocks in the GATE", 'black', 20, 120)
+            writing_text('', 35, "-Use my ATTACK to destroy the padlocks", 'black', 20, 180)
+            writing_text('', 35, "-Use my DEXTERITY to brake in", 'black', 20, 240)
+
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
+                         transparent_on=False)  # Exit
+
+            pygame.display.update()
+            clock.tick(FPS)
+
+
+journal_window = JournalWindow()
 
 
 class InventoryWindow:
@@ -372,7 +422,6 @@ class InventoryWindow:
             clock.tick(FPS)
 
     def delete_item_from_inventory(self, index):
-        """ Function that deletes items from inventory """
         item_index = list(inventory.sorted_inventory)[index]
         items_names = []
 
@@ -430,13 +479,13 @@ class InventoryWindow:
                                     print('obrona: ', player1.defence)
                                     inventory.show_inventory(0, 0, 0)
 
-                            inventory_window.open_inventory_window()
+                            self.open_inventory_window()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # NO - Don't remove Item
                     button = pygame.Rect(400, 300, 175, 50)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            inventory_window.open_inventory_window()
+                            self.open_inventory_window()
 
             # Window settings
             pygame.display.set_caption('Remove items?')
@@ -451,8 +500,7 @@ class InventoryWindow:
             pygame.display.update()
             clock.tick(FPS)
 
-    def use_item(self, index, type,
-                 attribute):
+    def use_item(self, index, type, attribute):
         item_index = list(inventory.sorted_inventory)[index]
         items_names = []
 
@@ -478,19 +526,19 @@ class InventoryWindow:
                             items_names.remove(item_index.name)  # Remove Item from items_names[]
 
                             if type == 'food':
-                                player1.food += (attribute * 10)
+                                player1.food += attribute
                                 if player1.food > 100:
                                     player1.food = 100
                             elif type == 'drink':
-                                player1.drink += (attribute * 10)
+                                player1.drink += attribute
                                 if player1.drink > 100:
                                     player1.drink = 100
                             elif type == 'stamina':
-                                player1.stamina += (attribute * 10)
+                                player1.stamina += attribute
                                 if player1.stamina > 100:
                                     player1.stamina = 100
                             elif type == 'health':
-                                player1.health += (attribute * 10)
+                                player1.health += attribute
                                 if player1.health > 100:
                                     player1.health = 100
 
@@ -562,8 +610,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
-                                            ########   Możliwość wyposażenia przedmiotu dodaj
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 0:
                                         index = 1
@@ -573,7 +620,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 0:
                                         index = 2
@@ -583,7 +630,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 150:
                                         index = 3
@@ -593,7 +640,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 150:
                                         index = 4
@@ -603,7 +650,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 150:
                                         index = 5
@@ -613,7 +660,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 150:
                                         index = 6
@@ -623,7 +670,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 300:
                                         index = 7
@@ -633,7 +680,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 200 and y == 300:
                                         index = 8
@@ -643,7 +690,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 400 and y == 300:
                                         index = 9
@@ -653,7 +700,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 600 and y == 300:
                                         index = 10
@@ -663,7 +710,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                     if x == 0 and y == 450:
                                         index = 11
@@ -673,7 +720,7 @@ class InventoryWindow:
                                             use_item(index, item_index.type, item_index.attribute)
                                         elif item_index.type == 'weapon' or item_index.type == 'torso' or \
                                                 item_index.type == 'legs':
-                                            print('You can wear this items in Statistics')
+                                            pass  # todo Add possibillity of equip item from here
 
                                 except IndexError:
                                     break
@@ -740,7 +787,7 @@ class InventoryWindow:
 
             writing_text('', 18, 'LMB = Use Item', 'pure_red', 0, 555)
             writing_text('', 18, 'RMB = Delete Item', 'pure_red', 0, 580)
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             statistics_buttons(130, 570, 110, 20, '', 25, f'FOOD = {player1.food}', 'needs', player1.food)
@@ -754,7 +801,7 @@ class InventoryWindow:
             clock.tick(FPS)
 
 
-inventory_window = InventoryWindow()  # Creates instance - Inventory Window
+inventory_window = InventoryWindow()
 
 
 class EquipItemWindow:
@@ -844,7 +891,7 @@ class EquipItemWindow:
             display.blit(set_image, (0, 0))
             writing_text('', 35, 'LMB = Equip Item', 'pure_red', 0, 570)
 
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             # Items in Inventory
@@ -895,40 +942,43 @@ class StatisticsWindow:
                         if button.collidepoint(event.pos):
                             return map_window.open_map_window()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Strength + button
-                    button = pygame.Rect(250, 0, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.strength += 1
-                            player1.leveled_up -= 1
+                if player1.leveled_up > 0:
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Speed + button
-                    button = pygame.Rect(250, 50, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.speed += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Strength + button
+                        button = pygame.Rect(250, 0, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.strength += 1
+                                player1.leveled_up -= 1
+                                player1.update_attributes()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Dexterity + button
-                    button = pygame.Rect(250, 100, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.dexterity += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Speed + button
+                        button = pygame.Rect(250, 50, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.speed += 1
+                                player1.leveled_up -= 1
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Intelligence + button
-                    button = pygame.Rect(250, 150, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.intelligence += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Dexterity + button
+                        button = pygame.Rect(250, 100, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.dexterity += 1
+                                player1.leveled_up -= 1
 
-                if event.type == pygame.MOUSEBUTTONDOWN:  # click Charisma + button
-                    button = pygame.Rect(250, 200, 35, 35)
-                    if event.button == 1:
-                        if button.collidepoint(event.pos):
-                            player1.charisma += 1
-                            player1.leveled_up -= 1
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Intelligence + button
+                        button = pygame.Rect(250, 150, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.intelligence += 1
+                                player1.leveled_up -= 1
+
+                    if event.type == pygame.MOUSEBUTTONDOWN:  # click Charisma + button
+                        button = pygame.Rect(250, 200, 35, 35)
+                        if event.button == 1:
+                            if button.collidepoint(event.pos):
+                                player1.charisma += 1
+                                player1.leveled_up -= 1
 
             # Window settings
             pygame.display.set_caption('Statistics')
@@ -969,7 +1019,7 @@ class StatisticsWindow:
             equipment_buttons(530, 490, 100, 50, player1_equipment.equipped_legs_name, '   Legs')  # Legs
 
             # ESC button
-            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Exit', 'white',
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
                          transparent_on=False)  # Exit
 
             if player1.leveled_up > 0:
@@ -992,7 +1042,6 @@ class StatisticsWindow:
             clock.tick(FPS)
 
 
-# create instance of Statistic Window class
 statistic_window = StatisticsWindow()
 
 
@@ -1094,7 +1143,7 @@ class SearchWindow:
             statistics_buttons(400, 550, 150, 40, '', 30, f'STAMINA = {player1.stamina}', 'needs', player1.stamina)
             statistics_buttons(550, 550, 150, 40, '', 30, f'HEALTH = {player1.health}', 'needs', player1.health)
 
-            button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Exit', 'white',
+            button_maker(700, 550, 100, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  Back', 'white',
                          transparent_on=False)  # Exit
 
             # Information
@@ -1106,7 +1155,56 @@ class SearchWindow:
             clock.tick(FPS)
 
 
-chest_inventory = SearchWindow()  # Creates instance of SearchWindow class
+chest_inventory = SearchWindow()
+
+
+class HelpWindow:
+
+    def open_help_window(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    map_window.open_map_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # click EXIT button
+                    button = pygame.Rect(650, 550, 150, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            return map_window.open_map_window()
+
+            # Window settings
+            pygame.display.set_caption('Help')
+            help_image = pygame.image.load('images/help.jpg')
+            display.blit(help_image, (0, 0))
+
+            # ESC button
+            button_maker(650, 550, 150, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '  ESC = Back', 'white',
+                         transparent_on=False)  # Exit
+
+            # Tips
+            text_position_y = 80
+            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5, text_position_y)
+            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5, text_position_y + 40)
+            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5, text_position_y + 80)
+            writing_text('', 25, '  - USE items (not yet)', 'pure_red', 5, text_position_y + 120)
+            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5, text_position_y + 170)
+
+            writing_text('', 25, 'While you SEARCH or BARRICADE your FOOD,', 'pure_red', 5, text_position_y + 220)
+            writing_text('', 25, 'DRINK and STAMINA decrease', 'pure_red', 5, text_position_y + 260)
+
+            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, text_position_y + 310)
+            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5,
+                         text_position_y + 350)
+
+            pygame.display.update()
+            clock.tick(FPS)
+
+
+help_window = HelpWindow()
 
 
 class LocationWindow:
@@ -1147,9 +1245,9 @@ class LocationWindow:
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            barricade.open_barricade_window(image, location_window.open_location_window, defence,
-                                                            location_name, window_name, found_item_location)
-
+                            OpenBarricadeWindow().open_barricade_window(image, location_window.open_location_window,
+                                                                        defence,
+                                                                        location_name, window_name, found_item_location)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
                     button = pygame.Rect(600, 550, 200, 40)
@@ -1165,14 +1263,14 @@ class LocationWindow:
             display.blit(location_image, (0, 0))
 
             # Add menu buttons
-            button_maker(0, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Search', 'white',
-                         transparent_on=False)  # Search
-            button_maker(200, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '         Sleep', 'white',
-                         transparent_on=False)  # Sleep
-            button_maker(400, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Barricade', 'white',
-                         transparent_on=False)  # Barricade
-            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '          Exit', 'white',
-                         transparent_on=False)  # Exit
+            button_maker(0, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '        Search', 'white',
+                         transparent_on=False, transparent_off=False)  # Search
+            button_maker(200, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '         Sleep', 'white',
+                         transparent_on=False, transparent_off=False)  # Sleep
+            button_maker(400, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '      Barricade', 'white',
+                         transparent_on=False, transparent_off=False)  # Barricade
+            button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23, '          Back', 'white',
+                         transparent_on=False, transparent_off=False)  # Exit
 
             # Show DEFENCE stat
             button_maker(20, 20, 220, 40, 'black', 'black', '', 45, 'Defence = ' + str(defence), 'red',
@@ -1183,8 +1281,7 @@ class LocationWindow:
             clock.tick(FPS)
 
 
-location_window = LocationWindow()  # Creates an instance of Location class
-
+location_window = LocationWindow()
 
 
 # Creates map window
@@ -1193,6 +1290,7 @@ class MapWindow:
         self.open_sound = pygame.mixer.Sound('audio/open_sound.wav')
         self.door_sound = pygame.mixer.Sound('audio/door.wav')
         self.raven_sound = pygame.mixer.Sound('audio/raven2.wav')
+        self.open_book = pygame.mixer.Sound('audio/open_book.wav')
 
     def open_map_window(self):
         while True:
@@ -1202,6 +1300,13 @@ class MapWindow:
                     pygame.quit()
                     sys.exit()
 
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Journal window
+                    button = pygame.Rect(0, 550, 200, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            self.open_book.play()
+                            journal_window.open_journal_window()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open an Inventory window
                     button = pygame.Rect(200, 550, 200, 40)
                     if event.button == 1:
@@ -1209,13 +1314,19 @@ class MapWindow:
                             self.open_sound.play()
                             inventory_window.open_inventory_window()
 
-
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Statistics window
                     button = pygame.Rect(400, 550, 200, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
                             self.open_sound.play()
                             statistic_window.open_statistics_window()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:  # Open a Help window
+                    button = pygame.Rect(600, 550, 200, 40)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            self.open_sound.play()
+                            help_window.open_help_window()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Black Pearl" window
                     print(chest.random_items_black_pearl)
@@ -1226,7 +1337,7 @@ class MapWindow:
                             location_window.open_location_window('images/black_pearl.jpg', '"Black Pearl"',
                                                                  chest.random_items_black_pearl,
                                                                  chest.found_items_black_pearl,
-                                                                 barricade.black_pearl_defence, 'black_pearl')
+                                                                 set_defence.black_pearl_defence, 'black_pearl')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Bridge" window
                     button = pygame.Rect(170, 100, 80, 50)
@@ -1235,7 +1346,7 @@ class MapWindow:
                             self.door_sound.play()
                             location_window.open_location_window('images/bridge.jpg', 'Bridge',
                                                                  chest.random_items_bridge,
-                                                                 chest.found_items_bridge, barricade.bridge_defence,
+                                                                 chest.found_items_bridge, set_defence.bridge_defence,
                                                                  'bridge')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Crane" window
@@ -1244,7 +1355,7 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.door_sound.play()
                             location_window.open_location_window('images/crane.jpg', 'Crane', chest.random_items_crane,
-                                                                 chest.found_items_crane, barricade.crane_defence,
+                                                                 chest.found_items_crane, set_defence.crane_defence,
                                                                  'crane')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Flat" window
@@ -1253,7 +1364,8 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.door_sound.play()
                             location_window.open_location_window('images/flat.jpg', 'Flat', chest.random_items_flat,
-                                                                 chest.found_items_flat, barricade.flat_defence, 'flat')
+                                                                 chest.found_items_flat, set_defence.flat_defence,
+                                                                 'flat')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Forest" window
                     button = pygame.Rect(450, 25, 75, 40)
@@ -1262,52 +1374,61 @@ class MapWindow:
                             self.raven_sound.play()
                             location_window.open_location_window('images/forest.jpg', 'Forest',
                                                                  chest.random_items_forest,
-                                                                 chest.found_items_forest, barricade.forest_defence,
+                                                                 chest.found_items_forest, set_defence.forest_defence,
                                                                  'forest')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Gate" window
                     button = pygame.Rect(610, 160, 60, 40)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            if key in inventory.inventory:
-                                self.door_sound.play()
-                                location_window.open_location_window('images/open_gate.jpg', 'Gate',
-                                                                     chest.random_items_gate,
-                                                                     chest.found_items_gate,
-                                                                     barricade.gate_defence,
-                                                                     'open_gate')
+                            while True:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.QUIT:
+                                        pygame.quit()
+                                        sys.exit()
 
-                            elif key not in inventory.inventory:
-                                while True:
+                                    if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                                        map_window.open_map_window()
 
-                                    for event in pygame.event.get():
-                                        if event.type == pygame.QUIT:
-                                            pygame.quit()
-                                            sys.exit()
+                                    if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
+                                        button = pygame.Rect(600, 550, 200, 40)
+                                        if event.button == 1:
+                                            if button.collidepoint(event.pos):
+                                                map_window.open_map_window()
 
-                                        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                                            map_window.open_map_window()
+                                    if event.type == pygame.MOUSEBUTTONDOWN:  # OPEN
+                                        button = pygame.Rect(325, 275, 150, 50)
+                                        if event.button == 1:
+                                            if button.collidepoint(event.pos):
+                                                if inventory.inventory.count(key) >= 3 or player1.attack >= 15 \
+                                                        or player1.dexterity >= 10:
+                                                    self.door_sound.play()
+                                                    VictoryWindow().open_victory_window()
+                                                else:
+                                                    button_maker(250, 220, 300, 40, 'blue', 'blue', '', 36,
+                                                                 " You can't open this now", 'white',
+                                                                 transparent_on=False, transparent_off=False)
+                                                    pygame.display.update()
+                                                    time.sleep(1.5)
 
-                                        if event.type == pygame.MOUSEBUTTONDOWN:  # Exit
-                                            button = pygame.Rect(600, 550, 200, 40)
-                                            if event.button == 1:
-                                                if button.collidepoint(event.pos):
-                                                    map_window.open_map_window()
+                                # Window name
+                                pygame.display.set_caption("Gate")
 
-                                    # Window name
-                                    pygame.display.set_caption("Closed Gate")
+                                # Add screen image
+                                location_image = pygame.image.load('images/closed_gate.jpg')
+                                display.blit(location_image, (0, 0))
 
-                                    # Add screen image
-                                    location_image = pygame.image.load('images/closed_gate.jpg')
-                                    display.blit(location_image, (0, 0))
+                                # Add menu buttons
+                                button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
+                                             '          Back', 'white',
+                                             transparent_on=False, transparent_off=False)  # Exit
 
-                                    # Add menu buttons
-                                    button_maker(600, 550, 200, 40, 'red', 'grey', 'Comic Sans MS', 23,
-                                                 '          Exit', 'white',
-                                                 transparent_on=False, transparent_off=False)  # Exit
+                                button_maker(325, 275, 150, 50, 'green', 'grey', 'Comic Sans MS', 23,
+                                             '      OPEN', 'white',
+                                             transparent_on=False, transparent_off=False)  # Open
 
-                                    pygame.display.update()
-                                    clock.tick(FPS)
+                                pygame.display.update()
+                                clock.tick(FPS)
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Hotel" window
                     button = pygame.Rect(450, 265, 70, 50)
@@ -1315,8 +1436,10 @@ class MapWindow:
                         if button.collidepoint(event.pos):
                             self.door_sound.play()
                             location_window.open_location_window('images/hotel.jpeg', 'Hotel', chest.random_items_hotel,
-                                                                 chest.found_items_hotel, barricade.hotel_defence,
+                                                                 chest.found_items_hotel, set_defence.hotel_defence,
                                                                  'hotel')
+
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Office" window
                     button = pygame.Rect(650, 270, 80, 50)
@@ -1325,7 +1448,7 @@ class MapWindow:
                             self.door_sound.play()
                             location_window.open_location_window('images/office.jpg', 'Office',
                                                                  chest.random_items_office,
-                                                                 chest.found_items_office, barricade.office_defence,
+                                                                 chest.found_items_office, set_defence.office_defence,
                                                                  'office')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Opera House" window
@@ -1335,7 +1458,7 @@ class MapWindow:
                             self.door_sound.play()
                             location_window.open_location_window('images/opera.jpg', 'Opera House',
                                                                  chest.random_items_opera,
-                                                                 chest.found_items_opera, barricade.opera_defence,
+                                                                 chest.found_items_opera, set_defence.opera_defence,
                                                                  'opera')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Restaurant" window
@@ -1346,7 +1469,7 @@ class MapWindow:
                             location_window.open_location_window('images/restaurant.jpg', 'Restaurant',
                                                                  chest.random_items_restaurant,
                                                                  chest.found_items_restaurant,
-                                                                 barricade.restaurant_defence, 'restaurant')
+                                                                 set_defence.restaurant_defence, 'restaurant')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Sołdek" window
                     button = pygame.Rect(200, 310, 100, 50)
@@ -1355,7 +1478,7 @@ class MapWindow:
                             self.door_sound.play()
                             location_window.open_location_window('images/soldek.jpg', '"Sołdek"',
                                                                  chest.random_items_soldek,
-                                                                 chest.found_items_soldek, barricade.soldek_defence,
+                                                                 chest.found_items_soldek, set_defence.soldek_defence,
                                                                  'soldek')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "St. Mary's Basilica" window
@@ -1366,7 +1489,7 @@ class MapWindow:
                             location_window.open_location_window('images/basilica.jpg', "St. Mary's Basilica",
                                                                  chest.random_items_basilica,
                                                                  chest.found_items_basilica,
-                                                                 barricade.basilica_defence, 'basilica')
+                                                                 set_defence.basilica_defence, 'basilica')
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Supermarket" window
                     button = pygame.Rect(10, 50, 135, 40)
@@ -1376,7 +1499,7 @@ class MapWindow:
                             location_window.open_location_window('images/supermarket.jpg', '"Supermarket"',
                                                                  chest.random_items_supermarket,
                                                                  chest.found_items_supermarket,
-                                                                 barricade.supermarket_defence, 'supermarket')
+                                                                 set_defence.supermarket_defence, 'supermarket')
 
                 # Open an Inventory window
                 if player1.health <= 20 or player1.food == 0 or player1.drink == 0 or player1.stamina <= 10:
@@ -1412,34 +1535,92 @@ class MapWindow:
                              transparent_off=False)
 
             # Locations on the Map
-            button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
-                         transparent_on=False, text_on=False)  # Black Pearl
-            button_maker(170, 100, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Bridge', 'white',
-                         transparent_on=False, text_on=False)  # Bridge
-            button_maker(280, 150, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Crane', 'white',
-                         transparent_on=False, text_on=False)  # Crane
-            button_maker(500, 175, 50, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Flat', 'white',
-                         transparent_on=False, text_on=False)  # Flat
-            button_maker(450, 25, 75, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Forest', 'white',
-                         transparent_on=False, text_on=False)  # Forest
+            if len(chest.random_items_black_pearl) == 0:
+                button_maker(575, 430, 135, 50, 'grey', 'white', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
+                             transparent_on=False, text_on=False)  # Black Pearl
+            else:
+                button_maker(575, 430, 135, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Black Pearl"', 'white',
+                             transparent_on=False, text_on=False)  # Black Pearl
+
+            if len(chest.random_items_bridge) == 0:
+                button_maker(170, 100, 80, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Bridge', 'white',
+                             transparent_on=False, text_on=False)  # Bridge
+            else:
+                button_maker(170, 100, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Bridge', 'white',
+                             transparent_on=False, text_on=False)  # Bridge
+
+            if len(chest.random_items_crane) == 0:
+                button_maker(280, 150, 70, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Crane', 'white',
+                             transparent_on=False, text_on=False)  # Crane
+            else:
+                button_maker(280, 150, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Crane', 'white',
+                             transparent_on=False, text_on=False)  # Crane
+
+            if len(chest.random_items_flat) == 0:
+                button_maker(500, 175, 50, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Flat', 'white',
+                             transparent_on=False, text_on=False)  # Flat
+            else:
+                button_maker(500, 175, 50, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Flat', 'white',
+                             transparent_on=False, text_on=False)  # Flat
+
+            if len(chest.random_items_forest) == 0:
+                button_maker(450, 25, 75, 40, 'grey', 'white', 'Comic Sans MS', 23, 'Forest', 'white',
+                             transparent_on=False, text_on=False)  # Forest
+            else:
+                button_maker(450, 25, 75, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Forest', 'white',
+                             transparent_on=False, text_on=False)  # Forest
 
             button_maker(610, 160, 60, 40, 'grey', 'yellow', 'Comic Sans MS', 23, 'Gate', 'white',
                          transparent_on=False, text_on=False)  # Gate
 
-            button_maker(450, 265, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Hotel', 'white',
-                         transparent_on=False, text_on=False)  # Hotel
-            button_maker(650, 270, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Office', 'white',
-                         transparent_on=False, text_on=False)  # Office
-            button_maker(180, 450, 140, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Opera House', 'white',
-                         transparent_on=False, text_on=False)  # Opera
-            button_maker(30, 230, 115, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Restaurant', 'white',
-                         transparent_on=False, text_on=False)  # Restaurant
-            button_maker(200, 310, 100, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Sołdek"', 'white',
-                         transparent_on=False, text_on=False)  # Sołdek
-            button_maker(540, 70, 180, 45, 'grey', 'pure_red', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
-                         transparent_on=False, text_on=False)  # St. Mary's Basilica
-            button_maker(10, 50, 135, 40, 'grey', 'pure_red', 'Comic Sans MS', 21, 'Supermarket', 'white',
-                         transparent_on=False, text_on=False)  # Supermarket
+            if len(chest.random_items_hotel) == 0:
+                button_maker(450, 265, 70, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Hotel', 'white',
+                             transparent_on=False, text_on=False)  # Hotel
+            else:
+                button_maker(450, 265, 70, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Hotel', 'white',
+                             transparent_on=False, text_on=False)  # Hotel
+
+            if len(chest.random_items_office) == 0:
+                button_maker(650, 270, 80, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Office', 'white',
+                             transparent_on=False, text_on=False)  # Office
+            else:
+                button_maker(650, 270, 80, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Office', 'white',
+                             transparent_on=False, text_on=False)  # Office
+
+            if len(chest.random_items_opera) == 0:
+                button_maker(180, 450, 140, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Opera House', 'white',
+                             transparent_on=False, text_on=False)  # Opera
+            else:
+                button_maker(180, 450, 140, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Opera House', 'white',
+                             transparent_on=False, text_on=False)  # Opera
+
+            if len(chest.random_items_restaurant) == 0:
+                button_maker(30, 230, 115, 50, 'grey', 'white', 'Comic Sans MS', 23, 'Restaurant', 'white',
+                             transparent_on=False, text_on=False)  # Restaurant
+            else:
+                button_maker(30, 230, 115, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, 'Restaurant', 'white',
+                             transparent_on=False, text_on=False)  # Restaurant
+
+            if len(chest.random_items_soldek) == 0:
+                button_maker(200, 310, 100, 50, 'grey', 'white', 'Comic Sans MS', 23, '"Sołdek"', 'white',
+                             transparent_on=False, text_on=False)  # Sołdek
+            else:
+                button_maker(200, 310, 100, 50, 'grey', 'pure_red', 'Comic Sans MS', 23, '"Sołdek"', 'white',
+                             transparent_on=False, text_on=False)  # Sołdek
+
+            if len(chest.random_items_basilica) == 0:
+                button_maker(540, 70, 180, 45, 'grey', 'white', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
+                             transparent_on=False, text_on=False)  # St. Mary's Basilica
+            else:
+                button_maker(540, 70, 180, 45, 'grey', 'pure_red', 'Comic Sans MS', 20, "St. Mary's Basilica", 'white',
+                             transparent_on=False, text_on=False)  # St. Mary's Basilica
+
+            if len(chest.random_items_supermarket) == 0:
+                button_maker(10, 50, 135, 40, 'grey', 'white', 'Comic Sans MS', 21, 'Supermarket', 'white',
+                             transparent_on=False, text_on=False)  # Supermarket
+            else:
+                button_maker(10, 50, 135, 40, 'grey', 'pure_red', 'Comic Sans MS', 21, 'Supermarket', 'white',
+                             transparent_on=False, text_on=False)  # Supermarket
 
             # Menu buttons
             button_maker(0, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Journal', 'white',
@@ -1448,14 +1629,14 @@ class MapWindow:
                          transparent_on=False)  # Inventory
             button_maker(400, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '      Statistics', 'white',
                          transparent_on=False)  # Statistics
-            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Options', 'white',
+            button_maker(600, 550, 200, 40, 'grey', 'pure_red', 'Comic Sans MS', 23, '        Help', 'white',
                          transparent_on=False)  # Options
 
             pygame.display.update()
             clock.tick(FPS)
 
 
-map_window = MapWindow()  # Creates instance of MapWindow class
+map_window = MapWindow()
 
 
 class MainMenuWindow:
@@ -1493,4 +1674,9 @@ class MainMenuWindow:
             clock.tick(FPS)
 
 
-main_menu_window = MainMenuWindow()  # Creates instance of MainMenuWindow class
+main_menu_window = MainMenuWindow()
+
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)

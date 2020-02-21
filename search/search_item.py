@@ -30,26 +30,26 @@ fishing_trouser = Item('Fishing ts.', 7, 'legs', '')
 military_trousers = Item('Military ts.', 9, 'legs', '')
 
 # create food instances
-insect = Item('Apple', 2, 'food', '')
-dog_food = Item('Potato', 4, 'food', '')
-rat = Item('Dog Food', 5, 'food', '')
-fish = Item('Rat', 6, 'food', '')
-canned_food = Item('Raw fish', 7, 'food', '')
+insect = Item('Apple', 20, 'food', '')
+dog_food = Item('Potato', 40, 'food', '')
+rat = Item('Dog Food', 50, 'food', '')
+fish = Item('Rat', 60, 'food', '')
+canned_food = Item('Raw fish', 70, 'food', '')
 
 # create drink instances
-soda = Item('Soda', 3, 'drink', '')
-juice = Item('Soda', 5, 'drink', '')
-water = Item('Water', 7, 'drink', '')
+soda = Item('Soda', 30, 'drink', '')
+juice = Item('Soda', 50, 'drink', '')
+water = Item('Water', 70, 'drink', '')
 
 # create health instances
-vodka = Item('Vodka', 2, 'health', '')
-painkillers = Item('Painkillers', 3, 'health', '')
-bandage = Item('Bandage', 6, 'health', '')
+vodka = Item('Vodka', 20, 'health', '')
+painkillers = Item('Painkillers', 30, 'health', '')
+bandage = Item('Bandage', 60, 'health', '')
 
 # create stamina instances
-energy_drink = Item('Energy Drink', 2, 'stamina', '')
-coffee = Item('Coffee', 3, 'stamina', '')
-cocaine = Item('Cocaine', 5, 'stamina', '')
+energy_drink = Item('Energy Drink', 20, 'stamina', '')
+coffee = Item('Coffee', 30, 'stamina', '')
+cocaine = Item('Cocaine', 50, 'stamina', '')
 
 # create other instances
 board = Item('Board', '', 'other', '')
@@ -152,7 +152,7 @@ class SearchItem:
             random_index = random.randint(0, len(random_items) - 1)  # Searching for random items
             found_item = random_items[random_index]
 
-            # Add items to found items and remove from the chest
+            # Add items to Found Items and remove from the chest
             found_item_location.append(found_item)
             random_items.remove(found_item)
 
@@ -162,8 +162,7 @@ class SearchItem:
                 player1.stamina -= 10
             elif player1.stamina <= 0:
                 player1.stamina = 0
-                print('You are too tired to search')  # todo: Zmień żeby nie dało się wtedy szukać
-            player1.exp += 10
+            player1.exp += 20
             if player1.exp >= player1.exp_to_next_level:
                 player1.level_up()
 
@@ -171,17 +170,17 @@ class SearchItem:
 
         except ValueError:
             self.show_found_items(found_item_location)
-            button_maker(200, 275, 370, 40, 'blue', 'blue', '', 36, "There's nothing more", 'white',
+            button_maker(300, 275, 200, 40, 'blue', 'blue', '', 36, "    Nothing left", 'white',
                          transparent_on=False, transparent_off=False)
             pygame.display.update()
-            time.sleep(1)
+            time.sleep(0.5)
 
     def add_to_inventory_while_search(self, index, found_item_location):
         if len(inventory.inventory) >= 12:
-            button_maker(150, 275, 500, 40, 'blue', 'blue', '', 36, "You don't have a space in your Inventory", 'white',
+            button_maker(290, 275, 220, 40, 'blue', 'blue', '', 36, "    Full Inventory", 'white',
                          transparent_on=False, transparent_off=False)
             pygame.display.update()
-            time.sleep(1.5)
+            time.sleep(0.5)
         else:
             item = found_item_location[index]
             inventory.inventory.append(item)
@@ -192,41 +191,46 @@ class SearchItem:
         x = 0
         y = 0
         for item in found_item_location:
-            # icon = pygame.image.load(self.items.icon)     ###### Wyświetlanie grafiki #######
-            # display.blit(icon, (300,120))
 
             if item.type == 'weapon':
                 text = 'Damage: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'orange', x, y + 50)
 
             if item.type == 'torso' or item.type == 'legs':
                 text = 'Defence: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'violet', x, y + 50)
 
             if item.type == 'food':
                 text = 'Food: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'brown', x, y + 50)
 
             if item.type == 'drink':
                 text = 'Drink: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'blue', x, y + 50)
 
             if item.type == 'health':
                 text = 'Health: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'green', x, y + 50)
 
             if item.type == 'stamina':
                 text = 'Stamina: '
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name, 'ultra_blue')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name, 'ultra_blue',
+                             transparent_off=False, transparent_on=True)
                 writing_text('', 35, text + str(item.attribute), 'yellow', x, y + 50)
 
             if item.type == 'other':
-                button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', 40, item.name.center(20), 'gold')
+                button_maker(x, y, item.size_x, item.size_y, 'green', 'grey', '', 40, item.name.center(20), 'gold',
+                             transparent_off=False, transparent_on=True)
 
             x += 200
             if x > 600:

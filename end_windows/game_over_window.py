@@ -3,7 +3,7 @@ import sys
 import pygame
 
 from clock import clock, FPS
-from create import writing_text
+from create import writing_text, button_maker
 from display import display
 
 
@@ -43,9 +43,9 @@ class GameOverWindow:
 
             writing_text('', 70, 'GAME OVER', 'red', 250, 150)
             # writing_text('', 50, 'Your level: ' + str(player1.level), 'white', 300, 300)
-            # writing_text('', 40, 'Again?', 'white', 350, 300)
-            # button_maker(270, 400, 100, 50, 'green', 'white', '', 35, 'YES', 'white', transparent_on=False, transparent_off=True)
-            # button_maker(430, 400, 100, 50, 'red', 'white', '', 35, 'NO', 'white', transparent_on=False, transparent_off=True)
+            writing_text('', 40, 'Again?', 'white', 350, 300)
+            button_maker(270, 400, 100, 50, 'green', 'white', '', 35, 'YES', 'white', transparent_on=False, transparent_off=True)
+            button_maker(430, 400, 100, 50, 'red', 'white', '', 35, 'NO', 'white', transparent_on=False, transparent_off=True)
 
             pygame.display.update()
             clock.tick(FPS)

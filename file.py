@@ -1186,13 +1186,19 @@ class HelpWindow:
                          transparent_on=False)  # Exit
 
             # Tips
-            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5, 140)
-            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5, 180)
-            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5, 220)
-            writing_text('', 25, '  - USE items', 'pure_red', 5, 260)
-            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5, 310)
-            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, 360)
-            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5, 400)
+            text_position_y = 80
+            writing_text('', 25, 'You can gain EXP points by:', 'pure_red', 5, text_position_y)
+            writing_text('', 25, '  - BARRICADE locations,', 'pure_red', 5, text_position_y + 40)
+            writing_text('', 25, '  - SEARCHING,', 'pure_red', 5, text_position_y + 80)
+            writing_text('', 25, '  - USE items (not yet)', 'pure_red', 5, text_position_y + 120)
+            writing_text('', 25, 'The main goal is written in your JOURNAL.', 'pure_red', 5, text_position_y + 170)
+
+            writing_text('', 25, 'While you SEARCH or BARRICADE your FOOD,', 'pure_red', 5, text_position_y + 220)
+            writing_text('', 25, 'DRINK and STAMINA decrease', 'pure_red', 5, text_position_y + 260)
+
+            writing_text('', 25, "If your FOOD, DRINK or STAMINA are too low,", 'pure_red', 5, text_position_y + 310)
+            writing_text('', 25, "you'll start to loose HEALTH and eventually die.", 'pure_red', 5, text_position_y + 350)
+
 
             pygame.display.update()
             clock.tick(FPS)

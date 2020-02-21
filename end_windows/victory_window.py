@@ -25,11 +25,12 @@ class VictoryWindow:
                     pygame.quit()
                     sys.exit()
 
-                # if event.type == pygame.MOUSEBUTTONDOWN:
-                #     button = pygame.Rect(270, 400, 100, 50)
-                #     if event.button == 1:
-                #         if button.collidepoint(event.pos):
-                #             main_menu_window.open_main_menu_window()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    button = pygame.Rect(270, 400, 100, 50)
+                    if event.button == 1:
+                        if button.collidepoint(event.pos):
+                            pass
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     button = pygame.Rect(430, 400, 100, 50)

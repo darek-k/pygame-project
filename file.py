@@ -1400,7 +1400,7 @@ class MapWindow:
                                         button = pygame.Rect(325, 275, 150, 50)
                                         if event.button == 1:
                                             if button.collidepoint(event.pos):
-                                                if inventory.inventory.count(key) == 3 or player1.attack >= 15 \
+                                                if inventory.inventory.count(key) >= 3 or player1.attack >= 15 \
                                                         or player1.dexterity >= 10:
                                                     self.door_sound.play()
                                                     VictoryWindow().open_victory_window()
@@ -1438,6 +1438,8 @@ class MapWindow:
                             location_window.open_location_window('images/hotel.jpeg', 'Hotel', chest.random_items_hotel,
                                                                  chest.found_items_hotel, set_defence.hotel_defence,
                                                                  'hotel')
+
+
 
                 if event.type == pygame.MOUSEBUTTONDOWN:  # Open a "Office" window
                     button = pygame.Rect(650, 270, 80, 50)
@@ -1673,3 +1675,8 @@ class MainMenuWindow:
 
 
 main_menu_window = MainMenuWindow()
+
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)
+inventory.add_to_inventory(key)

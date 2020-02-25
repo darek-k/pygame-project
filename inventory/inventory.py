@@ -21,10 +21,6 @@ class Inventory:
 
         for item in self.sorted_inventory:
 
-            # icon = pygame.image.load(items.icon)     ###### Wyświetlanie grafiki #######
-            # display.blit(icon, (300,120))
-
-
             if item.type == 'weapon':
                 text = 'Damage: '
                 button_maker(x, y, item.size_x, item.size_y, 'red', 'blue', '', font_size, item.name, 'white')

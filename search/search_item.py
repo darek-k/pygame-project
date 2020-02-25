@@ -57,7 +57,7 @@ key = Item('Key', '', 'other', '')
 
 
 class SearchItem:
-    """ Itemsy dodane są po to, żeby mieć wszystkie itemy w jednym miejscu, gdybym chciał pozmieniać coś """
+    """ Itemsy - all items in one place """
     itemsy = [stone, rod, bat, oar, hammer, knife, axe, shirt, vest, jacket, armor, sweatpants, jeans,
               fishing_trouser, military_trousers, insect, rat, fish, dog_food, canned_food, soda, juice, water,
               vodka, painkillers, bandage, energy_drink, coffee, cocaine, board, key]

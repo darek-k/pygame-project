@@ -1643,7 +1643,7 @@ class MainMenuWindow:
                     button = pygame.Rect(350, 400, 80, 30)
                     if event.button == 1:
                         if button.collidepoint(event.pos):
-                            effect = pygame.mixer.Sound('zombie_sound.wav')
+                            effect = pygame.mixer.Sound('audio/zombie_sound.wav')
                             effect.play()
                             time.sleep(2)
                             map_window.open_map_window()

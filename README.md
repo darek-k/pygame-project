@@ -1,4 +1,4 @@
-# pygame-project
+# PygameProject
 
 This is my first biggest project in Python. To build the game I used Pygame library. It's a simple point & click survival game, which I started to improve my Python skills.
 

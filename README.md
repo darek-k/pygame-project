@@ -8,8 +8,3 @@ Goal of the game is to open a special Gate - you can do this by different approa
 ![Screenshot](screen_map.png)
 ![Screenshot](screen_stats.png)
 ![Screenshot](screen_soldek.png)
-
-
-
-Project in exe: 
-https://megawrzuta.pl/download/8a844015a33abd8fca4fe4e506dc8b9e.html
